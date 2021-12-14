@@ -1,0 +1,15 @@
+WORKSPACE="~/.vim/saved_workspaces/$1/"
+CMD="${CMD}nvim +'WorkspaceOpen $1' +'CocCommand explorer --no-toggle ${WORKSPACE}'"
+ENV_FILE="${WOKSPACE}.env"
+if test -f "$ENV_FILE"; then
+  source ENV_FILE
+fi
+
+SESSION_NAME="dive-$1"
+if ! { [ "$TERM" = "screen" ] || [ -n "$TMUX" ]; } then
+  tmux new-session -d -s ${SESSION_NAME} "${CMD}"
+  tmux attach-session -t ${SESSION_NAME}
+else
+  eval "${CMD}"
+fi
+
