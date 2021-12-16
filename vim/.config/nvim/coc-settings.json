@@ -17,8 +17,12 @@
   "languageserver": {
     "golang": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
+      "rootPatterns": [
+        "go.mod"
+      ],
+      "filetypes": [
+        "go"
+      ]
     }
   },
   "go.goplsOptions": {
@@ -26,20 +30,44 @@
   },
   "explorer.root.customRules": {
     "vcs": {
-      "patterns": [".git", ".hg", ".projections.json"]
+      "patterns": [
+        ".git",
+        ".hg",
+        ".projections.json"
+      ]
     },
     "vcs-r": {
-      "patterns": [".git", ".hg", ".projections.json"],
+      "patterns": [
+        ".git",
+        ".hg",
+        ".projections.json"
+      ],
       "bottomUp": true
     }
   },
-  "explorer.root.strategies": ["custom:vcs-r", "custom:vcs", "workspace"],
+  "explorer.root.strategies": [
+    "custom:vcs-r",
+    "custom:vcs",
+    "workspace"
+  ],
   "explorer.quitOnOpen": false,
   "explorer.previewAction.onHover": false,
   "explorer.file.reveal.whenOpen": true,
   "explorer.file.reveal.auto": false,
   "explorer.icon.enableNerdfont": true,
-  "explorer.file.showHiddenFiles": true,
+  "explorer.file.showHiddenFiles": false,
+  "explorer.file.hiddenRules": {
+    "extensions": [
+      "o",
+      "a",
+      "obj",
+      "pyc"
+    ],
+    "filenames": [],
+    "patternMatches": [
+      "^\\.git$"
+    ]
+  },
   "explorer.buffer.root.template": "[icon & 1] OPEN EDITORS",
   "explorer.file.root.template": "[icon & 1] PROJECT ([root])",
   "explorer.file.child.template": "[git | 2] [selection | clip | 1] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5]"

@@ -13,9 +13,11 @@ source $HOME/.config/nvim/lua_autoformat.vim
 source $HOME/.config/nvim/coc-explorer.vim
 " source $HOME/.config/nvim/simpleworkspaces.vim
 " source $HOME/.config/nvim/neerdtree.vim
+source $HOME/.config/nvim/blamer.vim
 lua << EOF
 require"nvim-web-devicons".setup{}
 require"bufferline".setup{}
+require"Comment".setup()
 EOF
 source $HOME/.config/nvim/treesitter.vim
 source $HOME/.config/nvim/rest.vim

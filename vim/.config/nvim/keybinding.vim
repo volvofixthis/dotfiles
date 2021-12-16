@@ -1,8 +1,10 @@
 """""" KEYBINDING CONFIG FOR NVIM"""""""""
 
 " <silent> -- выделеное
+let mapleader = "/"
 
-"""LEADER KEY
+" Turn off search highlighting
+nnoremap <esc> :nohlsearch<CR>
 
 """FILE MANAGER"""
 " nnoremap <leader>b  :Lexplore<CR>
@@ -61,13 +63,6 @@ function! s:show_documentation()
   endif
 endfunction
 """"""END AUTOCOMPITE SETTINGS"""""""
-
-" NeoVim terminal
-nmap <leader>t :let $VIM_DIR=expand('%:p:h')<CR>:terminal<CR>cd $VIM_DIR<CR>
-
-" Commentary code
-nnoremap <M-/> :Commentary<CR>
-vnoremap <M-/> :Commentary<CR>
 
 " Format code 
 xmap <M-f>  <Plug>(coc-format-selected)
@@ -144,14 +139,14 @@ nmap <leader>cr <Plug>(coc-references)
 
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files prompt_prefix=🔍<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git prompt_prefix=🔍<CR>
-nnoremap <leader>fb <cmd>Telescope buffers:CR>
-nnoremap <leader>fh <cmd>Telescope help_tags<CR>
+nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files prompt_prefix=🔍<CR>
+nnoremap <leader>fg <Cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git prompt_prefix=🔍<CR>
+nnoremap <leader>fb <Cmd>Telescope buffers:CR>
+nnoremap <leader>fh <Cmd>Telescope help_tags<CR>
 nnoremap <silent> <leader>fp :Telescope project<CR>
 
 " GitBlame
-let g:blamer_enabled = 1
+nmap <silent> <leader>bl <Cmd>BlamerToggle<CR>
 
 " LazyGit
 nnoremap <silent> <leader>gg :LazyGit<CR>
@@ -162,17 +157,18 @@ endfunction
 nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
 
 " Floaterm
-nnoremap <silent> tt :FloatermNew<CR>
-nnoremap <silent> tp :FloatermPrev<CR>
-nnoremap <silent> tn :FloatermNext<CR>
-nnoremap <silent> tg :FloatermToggle<CR>
-nnoremap <silent> tk :FloatermKill<CR>
+nnoremap <silent> tt <Cmd>FloatermNew<CR>
+nnoremap <silent> tp <Cmd>FloatermPrev<CR>
+nnoremap <silent> tn <Cmd>FloatermNext<CR>
+nnoremap <silent> tg <Cmd>FloatermToggle<CR>
+nnoremap <silent> tk <Cmd>FloatermKill<CR>
 nnoremap <silent> tl <Cmd>CocList floaterm<CR>
 
 " Reload vim config
-nnoremap <C-r>  :so ~/.config/nvim/init.vim<Cr>
+nnoremap <silent> <leader>rs  :so ~/.config/nvim/init.vim<Cr>
 
 " Rest client
 nmap <silent> <leader>ru <Plug>RestNvim
 nmap <silent> <leader>rc <Plug>RestNvimPreview
 nmap <silent> <leader>rl <Plug>RestNvimLast
+

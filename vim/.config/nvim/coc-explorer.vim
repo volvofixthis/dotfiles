@@ -29,7 +29,7 @@ function! s:init_explorer()
   set winblend=10
 
   " vim-floaterm
-  nmap <buffer> <leader>tt <Cmd>call <SID>exec_cur_dir('FloatermNew --wintype=floating')<CR>
+  nmap <buffer> <leader>tt <Cmd>call <SID>exec_cur_dir('FloatermNew')<CR>
   nmap <buffer> <leader>tv <Cmd>call <SID>exec_cur_dir('vsplit term://bash')<CR>
   nmap <buffer> <leader>ts <Cmd>call <SID>exec_cur_dir('split term://bash')<CR>
 endfunction

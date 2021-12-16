@@ -16,7 +16,7 @@ call plug#begin('~/.vim/plugged')
     " Themes
     Plug 'ayu-theme/ayu-vim'
     " Comment any code!
-    Plug 'tpope/vim-commentary'
+    " Plug 'tpope/vim-commentary'
 
     " airlines
     Plug 'vim-airline/vim-airline'
@@ -71,6 +71,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-lua/plenary.nvim'
 
     Plug 'NTBBloodbath/rest.nvim', {'branch': 'main'}
+
+    Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
+    Plug 'numToStr/Comment.nvim'  
+    
 call plug#end()
 
 
