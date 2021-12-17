@@ -1,8 +1,8 @@
-WORKSPACE="~/.vim/saved_workspaces/$1/"
+export WORKSPACE="~/.vim/saved_workspaces/$1/"
 CMD="${CMD}nvim +'WorkspaceOpen $1' +'CocCommand explorer --no-toggle ${WORKSPACE}'"
 ENV_FILE="${WOKSPACE}.env"
 if test -f "$ENV_FILE"; then
-  source ENV_FILE
+  source $ENV_FILE
 fi
 
 SESSION_NAME="dive-$1"

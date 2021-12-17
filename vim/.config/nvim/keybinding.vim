@@ -85,19 +85,13 @@ nnoremap <M-h>    :vertical resize +2<CR>
 nnoremap <C-s> :w<CR>
 " Use control-c instead of escape
 nnoremap <C-c> <Esc>
+inoremap <Esc> <Esc>:w<CR>
+inoremap <C-c> <Esc>:w<CR>
 
-" Return to normal mode in terminal
-tmap <C-o> <C-\><C-n>
+if has("gui_running")
+  autocmd FocusLost * :wa
+endif
 
-" Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<CR>
-nnoremap <leader>fg <cmd>Telescope live_grep<CR>
-nnoremap <leader>fb <cmd>Telescope buffers<CR>
-nnoremap <leader>fh <cmd>Telescope help_tags<CR>
-nnoremap <silent> <leader>fp :Telescope project<CR>
-
-" Using Lua functions
-nnoremap <leader>pp :lua require'telescope.builtin'.planets{}<CR>
 
 """" Indents 
 vnoremap < <gv
@@ -145,6 +139,9 @@ nnoremap <leader>fb <Cmd>Telescope buffers:CR>
 nnoremap <leader>fh <Cmd>Telescope help_tags<CR>
 nnoremap <silent> <leader>fp :Telescope project<CR>
 
+" Using Lua functions
+nnoremap <leader>pp :lua require'telescope.builtin'.planets{}<CR>
+
 " GitBlame
 nmap <silent> <leader>bl <Cmd>BlamerToggle<CR>
 
@@ -157,6 +154,9 @@ endfunction
 nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
 
 " Floaterm
+" Return to normal mode in terminal
+tmap <C-o> <C-\><C-n>
+tmap <C-t> <silent> tg <Cmd>FloatermToggle<CR>
 nnoremap <silent> tt <Cmd>FloatermNew<CR>
 nnoremap <silent> tp <Cmd>FloatermPrev<CR>
 nnoremap <silent> tn <Cmd>FloatermNext<CR>
