@@ -85,13 +85,13 @@ nnoremap <M-h>    :vertical resize +2<CR>
 nnoremap <C-s> :w<CR>
 " Use control-c instead of escape
 nnoremap <C-c> <Esc>
-inoremap <Esc> <Esc>:w<CR>
-inoremap <C-c> <Esc>:w<CR>
 
+" autosave
+autocmd InsertLeave * silent! if expand('%') != '' | update | endif
 if has("gui_running")
-  autocmd FocusLost * :wa
+  autocmd FocusLost * silent! :wa
 endif
-
+autocmd BufLeave * silent! :wa
 
 """" Indents 
 vnoremap < <gv
@@ -130,7 +130,6 @@ autocmd BufEnter *.go nmap <leader>ii  <Plug>(go-implements)
 autocmd BufEnter *.go nmap <leader>ci  <Plug>(go-describe)
 autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
 nmap <leader>cr <Plug>(coc-references)
-
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files prompt_prefix=🔍<CR>
