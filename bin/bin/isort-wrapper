@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# shellcheck disable=SC2068
+
+SOURCES=$(isort . --show-config | jq '.sources | length')
+if [ "$SOURCES" = 1 ]; then
+  exec isort --settings-path ~/.config/isort/defaults.cfg $@
+else
+  exec isort $@
+fi

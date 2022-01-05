@@ -1,4 +1,19 @@
 {
+  "suggest.floatConfig": {
+    "winblend": 30
+  },
+  "hover.floatConfig": {
+    "winblend": 30,
+    "close": true
+  },
+  "diagnostic.floatConfig": {
+    "winblend": 30,
+    "close": true
+  },
+  "signature.floatConfig": {
+    "winblend": 30,
+    "close": true
+  },
   "suggest.noselect": false,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "!",
@@ -6,6 +21,9 @@
   "diagnostic.checkCurrentLine": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
     "html",
     "json",
     "css",
@@ -28,6 +46,21 @@
   "go.goplsOptions": {
     "staticcheck": true
   },
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/usr/bin/black",
+  "python.sortImports.path": "/home/loki/bin/isort-wrapper",
+  "pyright.organizeimports.provider": "/home/loki/bin/isort-wrapper",
+  "pyright.enable": true,
+  "tsserver.formatOnType": false,
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "coc.preferences.formatOnType": false,
+  "prettier.disableSuccessMessage": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
   "explorer.root.customRules": {
     "vcs": {
       "patterns": [

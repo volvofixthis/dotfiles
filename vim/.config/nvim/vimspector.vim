@@ -28,3 +28,7 @@
 
 
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+
+" Install
+let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-go', 'CodeLLDB', 'vscode-node-debug2' ]
+

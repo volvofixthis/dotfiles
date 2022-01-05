@@ -10,5 +10,12 @@
 set termguicolors     " enable true colors support
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
+
+" Colorscheme
+syntax enable
+set t_Co=256
+let g:rehash256 = 1
+let g:molokai_original = 1
+colorscheme molokai

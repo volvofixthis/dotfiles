@@ -1,6 +1,8 @@
 """File created by motive https://www.chrisatmachine.com/neovim
 set mouse=a  " enable mouse
 " set t_Co=256
+set langmenu=en_US.UTF-8
+language en_US.UTF-8
 set encoding=utf-8
 set number
 set noswapfile
@@ -17,6 +19,7 @@ set relativenumber
 set signcolumn=number
 " For right work install xclip (:help clipboard)
 set clipboard=unnamedplus " shared clipboard with system
+set guicursor=i:block
 
 " Tabs
 " set showtabline=2
@@ -29,3 +32,19 @@ set clipboard=unnamedplus " shared clipboard with system
 augroup JsonToJsonc
     autocmd! FileType json set filetype=jsonc
 augroup END
+
+set signcolumn=yes:2
+set wildmode=longest:full,full
+set smartcase 
+set ignorecase
+set list
+set nojoinspaces
+set splitright
+" Confirmation on unsaved buffer
+set confirm
+" Отображает пробелы
+" set listchars=trail:·
+set hidden
+" Transparency
+set pumblend=30
+set winblend=30

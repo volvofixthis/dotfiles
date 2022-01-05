@@ -14,7 +14,8 @@ call plug#begin('~/.vim/plugged')
     " sudo apt install fd-find
 
     " Themes
-    Plug 'ayu-theme/ayu-vim'
+    " Plug 'ayu-theme/ayu-vim'
+    Plug 'fatih/molokai'
     " Comment any code!
     " Plug 'tpope/vim-commentary'
 
@@ -25,8 +26,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'nathanaelkane/vim-indent-guides'
 
     " git flow
-    Plug 'tpope/vim-fugitive'
-    Plug 'junegunn/gv.vim'   
+    " Plug 'tpope/vim-fugitive'
+    " Plug 'junegunn/gv.vim'   
     " Plug 'airblade/vim-gitgutter'
 
     " LSP 
@@ -57,6 +58,7 @@ call plug#begin('~/.vim/plugged')
     " Workspaces
     Plug 'andreyorst/SimpleWorkspaces.vim'
 
+    " Git
     Plug 'APZelos/blamer.nvim'
     Plug 'kdheepak/lazygit.nvim'
 
@@ -74,8 +76,27 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
-    Plug 'numToStr/Comment.nvim'  
-    
-call plug#end()
+    Plug 'numToStr/Comment.nvim'
 
+    Plug 'fatih/vim-go', {'do': ':GoInstallBinaries'}
+
+    Plug 'gennaro-tedesco/nvim-peekup'
+
+    Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
+
+    Plug 'vimwiki/vimwiki'
+
+    Plug 'pangloss/vim-javascript'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    Plug 'styled-components/vim-styled-components', {'branch': 'main'}
+    Plug 'jparise/vim-graphql'
+    Plug 'acro5piano/vim-jsx-replace-tag'
+
+    Plug 'windwp/nvim-autopairs'
+    Plug 'lambdalisue/suda.vim'
+
+    Plug 'machakann/vim-highlightedyank'
+    Plug 'svban/YankAssassin.vim', {'branch': 'main'}
+call plug#end()
 

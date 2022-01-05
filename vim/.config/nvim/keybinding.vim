@@ -49,6 +49,9 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+" CoC actions
+nmap <leader>rn <Plug>(coc-rename)
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -69,7 +72,7 @@ xmap <M-f>  <Plug>(coc-format-selected)
 nmap <M-f>  <Plug>(coc-format-selected)
 xmap <M-f>  <Plug>(coc-format)
 nmap <M-f>  <Plug>(coc-format)
-nmap <M-i> :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+nmap <M-i> :call CocAction('runCommand', 'python.sortImports')<CR>
 
 
 " close buffer
@@ -78,8 +81,8 @@ nnoremap <leader>Q :bd!<CR>
 " Use alt + hjkl to resize windows
 nnoremap <M-j>    :resize -2<CR>
 nnoremap <M-k>    :resize +2<CR>
-nnoremap <M-l>   :vertical resize -2<CR>
-nnoremap <M-h>    :vertical resize +2<CR>
+nnoremap <M-h>   :vertical resize -2<CR>
+nnoremap <M-l>    :vertical resize +2<CR>
 
 " Alternate way to save
 nnoremap <C-s> :w<CR>
@@ -87,7 +90,7 @@ nnoremap <C-s> :w<CR>
 nnoremap <C-c> <Esc>
 
 " autosave
-autocmd InsertLeave * silent! if expand('%') != '' | update | endif
+autocmd InsertLeave * silent! :if expand('%') != '' | update | endif
 if has("gui_running")
   autocmd FocusLost * silent! :wa
 endif
@@ -132,8 +135,8 @@ autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
 nmap <leader>cr <Plug>(coc-references)
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files prompt_prefix=🔍<CR>
-nnoremap <leader>fg <Cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git prompt_prefix=🔍<CR>
+nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
+nnoremap <leader>fg <Cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
 nnoremap <leader>fb <Cmd>Telescope buffers:CR>
 nnoremap <leader>fh <Cmd>Telescope help_tags<CR>
 nnoremap <silent> <leader>fp :Telescope project<CR>
@@ -155,7 +158,7 @@ nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
 " Floaterm
 " Return to normal mode in terminal
 tmap <C-o> <C-\><C-n>
-tmap <C-t> <silent> tg <Cmd>FloatermToggle<CR>
+tmap <C-t> <Cmd>FloatermToggle<CR>
 nnoremap <silent> tt <Cmd>FloatermNew<CR>
 nnoremap <silent> tp <Cmd>FloatermPrev<CR>
 nnoremap <silent> tn <Cmd>FloatermNext<CR>
@@ -171,3 +174,50 @@ nmap <silent> <leader>ru <Plug>RestNvim
 nmap <silent> <leader>rc <Plug>RestNvimPreview
 nmap <silent> <leader>rl <Plug>RestNvimLast
 
+" Glow
+noremap <leader>p :Glow<CR>
+
+" Javascript
+function! ShowDocIfNoDiagnostic(timer_id)
+  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+    silent call CocActionAsync('doHover')
+  endif
+endfunction
+
+function! s:show_hover_doc()
+  call timer_start(500, 'ShowDocIfNoDiagnostic')
+endfunction
+
+autocmd CursorHoldI * :call <SID>show_hover_doc()
+autocmd CursorHold * :call <SID>show_hover_doc()
+autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
+autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+nnoremap <Leader>rt :JSXReplaceTag<CR>
+
+" delete and cut without pain https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim/11993928
+nnoremap x "_x
+nnoremap d "_d
+nnoremap D "_D
+vnoremap d "_d
+
+nnoremap <leader>d ""d
+nnoremap <leader>D ""D
+vnoremap <leader>d ""d
+vnoremap <leader>dd ""dd
+
+" Yank
+nmap <leader>y <Plug>YADefault
+xmap <leader>y <Plug>YADefault
+
+nmap y <Plug>YAMotion
+xmap y <Plug>YAVisual
+nmap yy <Plug>YALine
+
+" Move lines https://vim.fandom.com/wiki/Moving_lines_up_or_down
+inoremap <M-j> <Esc>:m .+1<CR>==gi
+inoremap <M-k> <Esc>:m .-2<CR>==gi
+vnoremap <M-j> :m '>+1<CR>gv=gv
+vnoremap <M-k> :m '<-2<CR>gv=gv
+
+" Save with sudo https://www.cyberciti.biz/faq/vim-vi-text-editor-save-file-without-root-permission/
+command W :SudaWrite
