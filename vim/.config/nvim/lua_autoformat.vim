@@ -3,7 +3,7 @@
 function! LuaFormat()
     silent !luafmt % -w replace    
     let view = winsaveview()
-    silent edit
+    silent<LeftMouse> edit
     call winrestview(view)
     redraw!
 endfunction

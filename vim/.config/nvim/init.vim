@@ -20,9 +20,9 @@ source $HOME/.config/nvim/coc.vim
 " source $HOME/.config/nvim/neerdtree.vim
 lua << EOF
 require"nvim-web-devicons".setup{}
-require"bufferline".setup{}
 require"Comment".setup()
 EOF
+source $HOME/.config/nvim/bufferline.vim
 source $HOME/.config/nvim/treesitter.vim
 source $HOME/.config/nvim/rest.vim
 source $HOME/.config/nvim/autopairs.vim

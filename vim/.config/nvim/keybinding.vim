@@ -84,10 +84,33 @@ nnoremap <M-k>    :resize +2<CR>
 nnoremap <M-h>   :vertical resize -2<CR>
 nnoremap <M-l>    :vertical resize +2<CR>
 
+" Movement in insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
+" Also allow line-wise scrolling
+inoremap <C-e> <C-o><C-e>
+inoremap <C-y> <C-o><C-y>
+
+" Movement in normal mode
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+
 " Alternate way to save
 nnoremap <C-s> :w<CR>
 " Use control-c instead of escape
 nnoremap <C-c> <Esc>
+inoremap <C-c> <Esc>
+inoremap <Esc> <Esc>`^
+
+" Change layout to US on insert leave
+autocmd InsertLeave * silent! :!xkblayout-state set 0
+" Disable touchpad on insert enter
+autocmd InsertEnter * silent! :!~/bin/touchpad_disable.sh
 
 " autosave
 autocmd InsertLeave * silent! :if expand('%') != '' | update | endif
@@ -125,19 +148,19 @@ nmap <C-d> <Plug>(coc-definition)
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
-autocmd BufEnter *.go nmap <leader>t  <Plug>(go-test)
-autocmd BufEnter *.go nmap <leader>tt <Plug>(go-test-func)
-autocmd BufEnter *.go nmap <leader>c  <Plug>(go-coverage-toggle)
-autocmd BufEnter *.go nmap <leader>i  <Plug>(go-info)
-autocmd BufEnter *.go nmap <leader>ii  <Plug>(go-implements)
-autocmd BufEnter *.go nmap <leader>ci  <Plug>(go-describe)
-autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
+autocmd BufEnter *.go nmap <buffer> <leader>t  <Plug>(go-test)
+autocmd BufEnter *.go nmap <buffer> <leader>tf <Plug>(go-test-func)
+autocmd BufEnter *.go nmap <buffer> <leader>c  <Plug>(go-coverage-toggle)
+autocmd BufEnter *.go nmap <buffer> <leader>i  <Plug>(go-info)
+autocmd BufEnter *.go nmap <buffer> <leader>ii  <Plug>(go-implements)
+autocmd BufEnter *.go nmap <buffer> <leader>ci  <Plug>(go-describe)
+autocmd BufEnter *.go nmap <buffer> <leader>cc  <Plug>(go-callers)
 nmap <leader>cr <Plug>(coc-references)
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
 nnoremap <leader>fg <Cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
-nnoremap <leader>fb <Cmd>Telescope buffers:CR>
+nnoremap <leader>fb <Cmd>Telescope buffers<CR>
 nnoremap <leader>fh <Cmd>Telescope help_tags<CR>
 nnoremap <silent> <leader>fp :Telescope project<CR>
 
@@ -159,12 +182,19 @@ nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
 " Return to normal mode in terminal
 tmap <C-o> <C-\><C-n>
 tmap <C-t> <Cmd>FloatermToggle<CR>
-nnoremap <silent> tt <Cmd>FloatermNew<CR>
-nnoremap <silent> tp <Cmd>FloatermPrev<CR>
-nnoremap <silent> tn <Cmd>FloatermNext<CR>
-nnoremap <silent> tg <Cmd>FloatermToggle<CR>
-nnoremap <silent> tk <Cmd>FloatermKill<CR>
-nnoremap <silent> tl <Cmd>CocList floaterm<CR>
+nnoremap <silent> <leader>tt <Cmd>FloatermNew<CR>
+nnoremap <silent> <leader>tp <Cmd>FloatermPrev<CR>
+nnoremap <silent> <leader>tn <Cmd>FloatermNext<CR>
+nnoremap <silent> <leader>tg <Cmd>FloatermToggle<CR>
+nnoremap <silent> <leader>tk <Cmd>FloatermKill<CR>
+nnoremap <silent> <leader>tl <Cmd>CocList floaterm<CR>
+tmap <M-p> <C-o><Cmd>FloatermPrev<CR>
+tmap <M-n> <C-o><Cmd>FloatermNext<CR>
+
+" TAB in general mode will move to text buffer
+nnoremap <TAB> :bnext<CR>
+" SHIFT-TAB will go back
+nnoremap <S-TAB> :bprevious<CR>
 
 " Reload vim config
 nnoremap <silent> <leader>rs  :so ~/.config/nvim/init.vim<Cr>
@@ -221,3 +251,10 @@ vnoremap <M-k> :m '<-2<CR>gv=gv
 
 " Save with sudo https://www.cyberciti.biz/faq/vim-vi-text-editor-save-file-without-root-permission/
 command W :SudaWrite
+
+" Folding
+nnoremap <silent> <Space> za
+vnoremap <Space> zf
+autocmd FileType go,python,javascript,typescript,json,jsonc set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevel=99
+autocmd BufWinLeave * silent! mkview
+autocmd BufWinEnter * silent! loadview

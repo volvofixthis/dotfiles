@@ -14,6 +14,7 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set fileformat=unix
+filetype on
 filetype indent on      " load filetype-specific indent files
 set relativenumber
 set signcolumn=number
@@ -48,3 +49,10 @@ set hidden
 " Transparency
 set pumblend=30
 set winblend=30
+set viewoptions-=options
+
+let g:go_gopls_enabled = 1
+let g:go_gopls_options = ['-remote=unix;/tmp/gopls-daemon-socket']
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_referrers_mode = 'gopls'
