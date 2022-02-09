@@ -38,7 +38,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'sheerun/vim-polyglot'
 
     " Debuger
-    Plug 'puremourning/vimspector'
+    Plug 'mfussenegger/nvim-dap'
+    Plug 'Pocco81/DAPInstall.nvim', {'branch': 'main'}
+    Plug 'rcarriga/nvim-dap-ui'
     " :VimspectorInstall debugpy
     " For use with python3 run 
     " python -m pip install --user --upgrade pynvim

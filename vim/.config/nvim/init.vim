@@ -11,11 +11,11 @@ source $HOME/.config/nvim/theme.vim
 source $HOME/.config/nvim/vimtest.vim
 source $HOME/.config/nvim/keybinding.vim
 source $HOME/.config/nvim/indent.vim
-source $HOME/.config/nvim/vimspector.vim
 source $HOME/.config/nvim/lua_autoformat.vim
 source $HOME/.config/nvim/coc-explorer.vim
 source $HOME/.config/nvim/go.vim
 source $HOME/.config/nvim/coc.vim
+source $HOME/.config/nvim/dap.vim
 " source $HOME/.config/nvim/simpleworkspaces.vim
 " source $HOME/.config/nvim/neerdtree.vim
 lua << EOF

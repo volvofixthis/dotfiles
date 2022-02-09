@@ -1,12 +1,10 @@
-function! s:explorer_cur_dir()
+function! s:explorer_current_dir()
   let node_info = CocAction('runCommand', 'explorer.getNodeInfo', 0)
   return fnamemodify(node_info['fullpath'], ':h')
 endfunction
 
-function! s:exec_cur_dir(cmd)
-  let dir = s:explorer_cur_dir()
-  execute 'cd ' . dir
-  execute a:cmd
+function! s:new_floaterm_current()
+  exec "FloatermNew --cwd=" .. s:explorer_current_dir()
 endfunction
 
 function! s:DisableFileExplorer()
@@ -19,6 +17,7 @@ function! s:OpenDirHere(dir)
     endif
 
     let g:first_coc_explorer_opened = 1
+    let g:workspace_path = a:dir
 
     if isdirectory(a:dir)
 	exec "silent CocCommand explorer --position=left " . a:dir
@@ -29,9 +28,9 @@ function! s:init_explorer()
   set winblend=10
 
   " vim-floaterm
-  nmap <buffer> <leader>tt <Cmd>call <SID>exec_cur_dir('FloatermNew')<CR>
-  nmap <buffer> <leader>tv <Cmd>call <SID>exec_cur_dir('vsplit term://bash')<CR>
-  nmap <buffer> <leader>ts <Cmd>call <SID>exec_cur_dir('split term://bash')<CR>
+  nmap <buffer> <leader>tt <Cmd>call <SID>new_floaterm_current()<CR>
+  nmap <buffer> <leader>gg :LazyGitCurrentExplorer<CR>
+  command! LazyGitCurrentExplorer call luaeval("require'lazygit'.lazygit(_A[1])", [GetCurrentGitPath(s:explorer_current_dir())])
 endfunction
 
 function! s:enter_explorer()

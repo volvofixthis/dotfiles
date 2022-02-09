@@ -19,9 +19,8 @@ endfunction
 nnoremap <silent> er :call <SID>open_explorer_reveal()<CR>
 
 function! s:open_explorer_project()
-  let path = getcwd()
-  echo path
-  exec ":CocCommand explorer ".path
+  echo g:workspace_path
+  exec ":CocCommand explorer ".g:workspace_path
 endfunction
 
 nnoremap <silent> <M-b> :call <SID>open_explorer_project()<CR>
@@ -140,7 +139,14 @@ nmap cn :let @*=expand("%")<CR>
 " Copy file path
 nmap cf :let @*=expand("%:p")<CR>
 
-nnoremap <F4> :call vimspector#Reset()<CR> 
+" Debug
+nnoremap <F5> :lua require'dap'.continue()<CR> 
+nnoremap <F17> :lua require'dap'.terminate()<CR> 
+nnoremap <F10> :lua require'dap'.step_over()<CR> 
+nnoremap <F11> :lua require'dap'.step_into()<CR> 
+nnoremap <F23> :lua require'dap'.step_out()<CR> 
+nnoremap <F9> :lua require'dap'.toggle_breakpoint()<CR> 
+nnoremap <F8> :lua require("dapui").toggle()<CR> 
 
 "  Go
 nmap <leader>r <Plug>(coc-rename)
@@ -171,7 +177,17 @@ nnoremap <leader>pp :lua require'telescope.builtin'.planets{}<CR>
 nmap <silent> <leader>bl <Cmd>BlamerToggle<CR>
 
 " LazyGit
-nnoremap <silent> <leader>gg :LazyGit<CR>
+function! GetCurrentGitPath(path)
+  echo "git in: "..a:path
+  let path = finddir('.git/..', a:path.';')
+  let path = fnamemodify(path, ':p')
+  return path
+endfunction
+nnoremap <silent> <leader>gg :LazyGitCurrent<CR>
+
+command! LazyGitCurrent call luaeval("require'lazygit'.lazygit(_A[1])", [GetCurrentGitPath(expand('%:p:h'))])
+command! -nargs=1 -range LazyGitPath call luaeval("require'lazygit'.lazygit(_A[1])", [<f-args>])
+
 function! s:copy_git_branch()
   let path = expand("%:p:h")
   exec ":!cd ".path." && git branch --show-current \| tr -d '\\n' \| xclip -selection c"
