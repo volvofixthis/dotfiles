@@ -15,7 +15,8 @@ call plug#begin('~/.vim/plugged')
 
     " Themes
     " Plug 'ayu-theme/ayu-vim'
-    Plug 'fatih/molokai'
+   Plug 'fatih/molokai'
+   " Plug 'tanvirtin/monokai.nvim'
     " Comment any code!
     " Plug 'tpope/vim-commentary'
 
@@ -23,7 +24,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     
-    Plug 'nathanaelkane/vim-indent-guides'
+    " Plug 'nathanaelkane/vim-indent-guides'
 
     " git flow
     " Plug 'tpope/vim-fugitive'
@@ -35,7 +36,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'neoclide/coc-python'
 
     " Better syntax support
-    Plug 'sheerun/vim-polyglot'
+    " Plug 'sheerun/vim-polyglot'
 
     " Debuger
     Plug 'mfussenegger/nvim-dap'
@@ -86,7 +87,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
 
-    Plug 'vimwiki/vimwiki'
+    " Plug 'vimwiki/vimwiki'
 
     Plug 'pangloss/vim-javascript'
     Plug 'leafgarland/typescript-vim'
@@ -100,5 +101,10 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'machakann/vim-highlightedyank'
     Plug 'svban/YankAssassin.vim', {'branch': 'main'}
+
+    Plug 'moll/vim-bbye'
+
+    Plug 'lukas-reineke/indent-blankline.nvim'
+    Plug 'sainnhe/sonokai'
 call plug#end()
 

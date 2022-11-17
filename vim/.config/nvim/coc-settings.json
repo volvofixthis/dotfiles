@@ -34,7 +34,7 @@
   ],
   "coc.preferences.hoverTarget": "float",
   "go.goplsOptions": {
-    "staticcheck": true,
+    "staticcheck": true
   },
   "go.goplsArgs": ["-remote=unix;/tmp/gopls-daemon-socket"],
   "go.goplsPath": "/home/loki/go/bin/gopls",

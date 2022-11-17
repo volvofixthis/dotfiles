@@ -30,18 +30,27 @@ nnoremap <silent> <M-b> :call <SID>open_explorer_project()<CR>
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm1()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
 """ GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -78,10 +87,10 @@ nmap <M-i> :call CocAction('runCommand', 'python.sortImports')<CR>
 nnoremap <C-q> :bd<CR>
 nnoremap <leader>Q :bd!<CR>
 " Use alt + hjkl to resize windows
-nnoremap <M-j>    :resize -2<CR>
-nnoremap <M-k>    :resize +2<CR>
-nnoremap <M-h>   :vertical resize -2<CR>
-nnoremap <M-l>    :vertical resize +2<CR>
+" nnoremap <M-j>    :resize -2<CR>
+" nnoremap <M-k>    :resize +2<CR>
+" nnoremap <M-h>   :vertical resize -2<CR>
+" nnoremap <M-l>    :vertical resize +2<CR>
 
 " Movement in insert mode
 inoremap <C-h> <C-o>h
@@ -109,7 +118,7 @@ inoremap <Esc> <Esc>`^
 " Change layout to US on insert leave
 autocmd InsertLeave * silent! :!xkblayout-state set 0
 " Disable touchpad on insert enter
-autocmd InsertEnter * silent! :!~/bin/touchpad_disable.sh
+" autocmd InsertEnter * silent! :!~/bin/touchpad_disable.sh
 
 " autosave
 autocmd InsertLeave * silent! :if expand('%') != '' | update | endif
@@ -204,8 +213,8 @@ nnoremap <silent> <leader>tn <Cmd>FloatermNext<CR>
 nnoremap <silent> <leader>tg <Cmd>FloatermToggle<CR>
 nnoremap <silent> <leader>tk <Cmd>FloatermKill<CR>
 nnoremap <silent> <leader>tl <Cmd>CocList floaterm<CR>
-tmap <M-p> <C-o><Cmd>FloatermPrev<CR>
-tmap <M-n> <C-o><Cmd>FloatermNext<CR>
+tmap <M-h> <C-o><Cmd>FloatermPrev<CR>
+tmap <M-l> <C-o><Cmd>FloatermNext<CR>
 
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
@@ -260,11 +269,37 @@ xmap y <Plug>YAVisual
 nmap yy <Plug>YALine
 
 " Move lines https://vim.fandom.com/wiki/Moving_lines_up_or_down
-inoremap <M-j> <Esc>:m .+1<CR>==gi
-inoremap <M-k> <Esc>:m .-2<CR>==gi
-vnoremap <M-j> :m '>+1<CR>gv=gv
-vnoremap <M-k> :m '<-2<CR>gv=gv
+inoremap <C-M-j> <Esc>:m .+1<CR>==gi
+inoremap <C-M-k> <Esc>:m .-2<CR>==gi
+vnoremap <C-M-j> :m '>+1<CR>gv=gv
+vnoremap <C-M-k> :m '<-2<CR>gv=gv
 
+"move by same keys in every mode
+noremap <M-h> h
+noremap <M-j> j
+noremap <M-k> k
+noremap <M-l> l
+noremap <M-о> j
+noremap <M-л> k
+noremap <M-р> h
+noremap <M-д> l
+inoremap <M-h> <Left>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-l> <Right>
+inoremap <M-р> <Left>
+inoremap <M-о> <Down>
+inoremap <M-л> <Up>
+inoremap <M-д> <Left>
+" if ! has('gui_running')
+"   set timeoutlen=1000
+"   augroup FixCursor
+"       autocmd!
+"       au InsertEnter * set timeoutlen=0
+"       au InsertLeave * set timeoutlen=1000
+"       au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
+"   augroup END
+" endif
 " Save with sudo https://www.cyberciti.biz/faq/vim-vi-text-editor-save-file-without-root-permission/
 command W :SudaWrite
 

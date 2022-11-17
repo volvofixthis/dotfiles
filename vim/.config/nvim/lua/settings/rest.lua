@@ -1,9 +1,8 @@
-lua << EOF
 require"rest-nvim".setup{
   -- Open request results in a horizontal split
   result_split_horizontal = false,
   -- Skip SSL verification, useful for unknown certificates
-  skip_ssl_verification = false,
+  skip_ssl_verification = true,
   -- Highlight request on run
   highlight = {
     enabled = true,
@@ -20,4 +19,3 @@ require"rest-nvim".setup{
   env_file = '.env',
   custom_dynamic_variables = {},
 }
-EOF

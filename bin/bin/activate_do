@@ -1,1 +1,2 @@
-export KUBECONFIG=~/.kube/do.config
+#!/bin/bash
+export KUBECONFIG=$HOME/.kube/do.config

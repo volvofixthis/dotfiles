@@ -6,6 +6,8 @@
 https://pepa.holla.cz/2021/03/01/golang-debugging-application-in-neovim/  
 https://github.com/microsoft/vscode-go/issues/318--
 ## Настройка CoC
+CocInstall
+TSInstall
 ## Python
 Ставим в системе pyright  
 В нужно окружении ставим плагины neovim, pynvim  

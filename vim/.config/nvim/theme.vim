@@ -17,5 +17,14 @@ set termguicolors     " enable true colors support
 syntax enable
 set t_Co=256
 let g:rehash256 = 1
-let g:molokai_original = 1
-colorscheme molokai
+" let g:molokai_original = 1
+" colorscheme molokai
+" hi CursorLine                    guibg=#f06932
+" hi CursorLineNr    guifg=#f06932               gui=none
+" hi Pmenu           guifg=#66D9EF guibg=#f06932
+" hi PmenuSel                      guibg=#f06932
+" hi PmenuSbar                     guibg=#f06932
+" hi PmenuThumb      guifg=#66D9EF
+let g:sonokai_style = 'andromeda'
+let g:sonokai_better_performance = 1
+colorscheme sonokai
