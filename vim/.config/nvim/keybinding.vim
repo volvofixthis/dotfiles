@@ -84,8 +84,8 @@ nmap <M-i> :call CocAction('runCommand', 'python.sortImports')<CR>
 
 
 " close buffer
-nnoremap <C-q> :bd<CR>
-nnoremap <leader>Q :bd!<CR>
+nnoremap <C-q> :bp\|bd #<CR>
+nnoremap <leader>Q :bp\|bd! #<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
 " nnoremap <M-k>    :resize +2<CR>

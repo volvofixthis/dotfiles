@@ -1,16 +1,45 @@
 # Установка Nvim
 ## Отладка
-Установить адаптеры:  
-:VimspectorInstall  
-Доки:  
-https://pepa.holla.cz/2021/03/01/golang-debugging-application-in-neovim/  
-https://github.com/microsoft/vscode-go/issues/318--
+## Install from snap on CentOS
+sudo yum install epel-release
+sudo yum install snapd
+sudo systemctl enable --now snapd.socket
+sudo systemctl start snapd
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install nvim --edge --classic
+## Install nodejs from snap on CentOS
+sudo snap install node --classic
+sudo npm install -g pyright
+sudo npm install -g neovim 
+## Установка clang, чтобы пофиксить сборку treesitter
+sudo yum install centos-release-scl
+sudo yum install llvm-toolset-7
+scl enable llvm-toolset-7 bash
+Либо на постоянку в .bashrc:
+export PATH=$PATH:/opt/rh/llvm-toolset-7/root/usr/bin/
+## lua для treesitter CentOS
+yum install lua luajit lua.devel
+## Install ripgrem on CentOS 
+sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+sudo yum instal repgrep
+## Ребилдим CoC
+cd .vim/pluged/coc.nvim
+yarn install
+yarn build
+## Установка LazyGit
+sudo yum install dnf
+sudo dnf install dnf-plugins-core
+sudo dnf copr enable atim/lazygit -y
+sudo dnf install lazygit
 ## Настройка CoC
 CocInstall
 TSInstall
+TSUpdate
+:checkhealth
 ## Python
-Ставим в системе pyright  
-В нужно окружении ставим плагины neovim, pynvim  
+В нужно окружении ставим плагины neovim, pynvim
+Или вообще в системе:
+pip install pynvim neovim
 Прописываем в coc-settings.json  python.pythonPath
 ## Workspaces
 Заходим в нужную папку, выполняем WorkspaceInit  
