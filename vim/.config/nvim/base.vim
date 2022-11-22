@@ -2,7 +2,7 @@
 set mouse=a  " enable mouse
 " set t_Co=256
 set langmenu=en_US.UTF-8
-language en_US.UTF-8
+" language en_US.UTF-8
 set encoding=utf-8
 set number
 " set noswapfile

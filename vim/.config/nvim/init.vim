@@ -1,8 +1,8 @@
 """" INIT CONFIG FOR NVIM
 let need_to_install_plugins = 0
-if empty(glob('~/.vim/autoload/plug.vim'))
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+       \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     let need_to_install_plugins = 1
 endif
 
@@ -32,6 +32,7 @@ source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/dap.vim
 " source $HOME/.config/nvim/neerdtree.vim
 lua << EOF
+-- require 'nvim-treesitter.install'.compilers = { "clang++" }
 require"nvim-web-devicons".setup{}
 require"Comment".setup()
 EOF
