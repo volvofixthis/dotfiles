@@ -199,9 +199,32 @@ command! -nargs=1 -range LazyGitPath call luaeval("require'lazygit'.lazygit(_A[1
 
 function! s:copy_git_branch()
   let path = expand("%:p:h")
-  exec ":!cd ".path." && git branch --show-current \| tr -d '\\n' \| xclip -selection c"
+  let s = system("cd ".resolve(path)." && git branch --show-current | tr -d '\\n'")
+  let @+ = substitute(s, '\n\+$', '', '')
 endfunction
 nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
+
+:function! s:enter_cm()
+    exec ":normal! \<s-v>"
+    exec ":set mouse-=a"
+    exec ":only"
+    exec ":setlocal nolist"
+    exec ":IndentBlanklineDisable"
+    exec ":setlocal signcolumn=no"
+    exec ":setlocal nonumber norelativenumber"
+endfunction
+
+nnoremap <silent> <leader>cm :call <SID>enter_cm()<CR>
+
+function! s:show_whitespace()
+    exec ":set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
+    exec ":set list"
+    exec ":IndentBlanklineEnable"
+endfunction
+
+nnoremap <silent> <leader>sw :call <SID>show_whitespace()<CR>
+nnoremap <silent> <leader>md :set mouse-=a<CR>
+nnoremap <silent> <leader>me :set mouse+=a<CR>
 
 " Floaterm
 " Return to normal mode in terminal
@@ -274,7 +297,7 @@ inoremap <C-M-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-M-j> :m '>+1<CR>gv=gv
 vnoremap <C-M-k> :m '<-2<CR>gv=gv
 
-"move by same keys in every mode
+" move by same keys in every mode
 noremap <M-h> h
 noremap <M-j> j
 noremap <M-k> k
@@ -291,16 +314,8 @@ inoremap <M-р> <Left>
 inoremap <M-о> <Down>
 inoremap <M-л> <Up>
 inoremap <M-д> <Left>
-" if ! has('gui_running')
-"   set timeoutlen=1000
-"   augroup FixCursor
-"       autocmd!
-"       au InsertEnter * set timeoutlen=0
-"       au InsertLeave * set timeoutlen=1000
-"       au InsertLeave * call cursor([getpos('.')[1], getpos('.')[2]+1])
-"   augroup END
-" endif
-" Save with sudo https://www.cyberciti.biz/faq/vim-vi-text-editor-save-file-without-root-permission/
+
+" SudaWrite
 command W :SudaWrite
 
 " Folding

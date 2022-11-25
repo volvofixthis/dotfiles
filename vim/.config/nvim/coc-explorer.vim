@@ -4,7 +4,7 @@ function! s:explorer_current_dir()
 endfunction
 
 function! s:new_floaterm_current()
-  exec "FloatermNew --cwd=" .. s:explorer_current_dir()
+  exec "FloatermNew --cwd=" .. resolve(s:explorer_current_dir())
 endfunction
 
 function! s:DisableFileExplorer()

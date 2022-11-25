@@ -1,6 +1,5 @@
-vim/.config/coc
-vim/.config/jesseduffield
-vim/.config/vim_last_workspac
 vim/.config/nvim/plugin/packer_compiled.lua
-vim/.config/vim_last_workspace
 bin/bin/sga-*
+bin/bin/oh-my-posh
+bin/bin/nvim
+bin/bin/lazygit

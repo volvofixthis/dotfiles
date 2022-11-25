@@ -106,5 +106,6 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'sainnhe/sonokai'
+    Plug 'tpope/vim-unimpaired'
 call plug#end()
 
