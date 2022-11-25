@@ -32,7 +32,6 @@ source $HOME/.config/nvim/coc.vim
 source $HOME/.config/nvim/dap.vim
 " source $HOME/.config/nvim/neerdtree.vim
 lua << EOF
--- require 'nvim-treesitter.install'.compilers = { "clang++" }
 require"nvim-web-devicons".setup{}
 require"Comment".setup()
 EOF

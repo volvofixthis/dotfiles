@@ -1,4 +1,5 @@
 lua << EOF
+-- require"nvim-treesitter.install".compilers = { "clang++" }
 require"nvim-treesitter.configs".setup {
   ensure_installed = {"go", "python", "lua", "json", "c", "cpp"}, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)

@@ -8,7 +8,7 @@ call plug#begin('~/.vim/plugged')
 
     " Telescope
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-treesitter/nvim-treesitter'
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     Plug 'nvim-telescope/telescope.nvim'
     " sudo apt-get install ripgrep
     " sudo apt install fd-find
@@ -55,7 +55,7 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
     " Plug 'ryanoasis/vim-devicons' Icons without colours
-    Plug 'akinsho/bufferline.nvim'
+    Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
     " Plug 'kyazdani42/nvim-tree.lua'
     " Plug 'preservim/nerdtree'
