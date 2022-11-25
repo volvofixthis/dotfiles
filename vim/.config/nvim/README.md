@@ -7,6 +7,8 @@ sudo systemctl enable --now snapd.socket
 sudo systemctl start snapd
 sudo ln -s /var/lib/snapd/snap /snap
 sudo snap install nvim --edge --classic
+## Install appimage from releases
+appimage can be downloaded from here https://github.com/neovim/neovim/releases
 ## Install nodejs from snap on CentOS
 sudo snap install node --classic
 sudo npm install -g pyright

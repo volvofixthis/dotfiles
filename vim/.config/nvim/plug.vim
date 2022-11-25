@@ -15,8 +15,10 @@ call plug#begin('~/.vim/plugged')
 
     " Themes
     " Plug 'ayu-theme/ayu-vim'
-   Plug 'fatih/molokai'
+   " Plug 'fatih/molokai'
    " Plug 'tanvirtin/monokai.nvim'
+   Plug 'sainnhe/sonokai'
+
     " Comment any code!
     " Plug 'tpope/vim-commentary'
 
@@ -105,7 +107,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'moll/vim-bbye'
 
     Plug 'lukas-reineke/indent-blankline.nvim'
-    Plug 'sainnhe/sonokai'
     Plug 'tpope/vim-unimpaired'
 call plug#end()
 
