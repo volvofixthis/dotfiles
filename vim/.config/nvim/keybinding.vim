@@ -282,10 +282,14 @@ nmap yy <Plug>YALine
 " Move lines https://vim.fandom.com/wiki/Moving_lines_up_or_down
 nnoremap <C-M-j> :m .+1<CR>==
 nnoremap <C-M-k> :m .-2<CR>==
+nnoremap <C-M-h> :MoveHChar(-1)<CR>
+nnoremap <C-M-j> :MoveHChar(1)<CR>
 inoremap <C-M-j> <Esc>:m .+1<CR>==gi
 inoremap <C-M-k> <Esc>:m .-2<CR>==gi
-vnoremap <C-M-j> :m '>+1<CR>gv=gv
-vnoremap <C-M-k> :m '<-2<CR>gv=gv
+vnoremap <C-M-j> :MoveBlock(1)
+vnoremap <C-M-k> :MoveBlock(-1)
+vnoremap <C-M-h> :MoveHBlock(-1)
+vnoremap <C-M-l> :MoveHBlock(1)
 
 " move by same keys in every mode
 noremap <M-h> h

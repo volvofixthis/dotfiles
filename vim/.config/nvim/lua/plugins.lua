@@ -24,4 +24,5 @@ return require("packer").startup(function()
 		},
 	})
     use("doums/oterm.nvim")
+    use 'fedepujol/move.nvim'
 end)

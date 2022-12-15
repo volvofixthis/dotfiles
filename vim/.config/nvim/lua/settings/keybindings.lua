@@ -18,9 +18,6 @@ vim.api.nvim_set_keymap("n", "<C-s>", "", {
 vim.api.nvim_set_keymap("i", "<C-s>", "", {
 	noremap = true,
 	callback = function()
-		vim.cmd("stopinsert")
 		vim.cmd("w")
-		vim.cmd("norm! l")
-		vim.cmd("startinsert")
 	end,
 })
