@@ -1,2 +1,5 @@
-require"settings.filetype"
-require"settings.rest"
+require("settings.filetype")
+require("settings.rest")
+require("settings.noice")
+require("settings.oterm")
+require("settings.keybindings")

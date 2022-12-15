@@ -4,7 +4,7 @@
 let mapleader = "/"
 
 " Turn off search highlighting
-nnoremap <esc> :nohlsearch<CR>
+" nnoremap <esc> :nohlsearch<CR>
 
 """FILE MANAGER"""
 " nnoremap <leader>b  :Lexplore<CR>
@@ -109,7 +109,8 @@ nnoremap <C-l> <C-w>l
 
 
 " Alternate way to save
-nnoremap <C-s> :w<CR>
+" nnoremap <C-s> :w<CR>
+" inoremap <C-s> <C-o>:w<CR>
 " Use control-c instead of escape
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
@@ -226,19 +227,6 @@ nnoremap <silent> <leader>sw :call <SID>show_whitespace()<CR>
 nnoremap <silent> <leader>md :set mouse-=a<CR>
 nnoremap <silent> <leader>me :set mouse+=a<CR>
 
-" Floaterm
-" Return to normal mode in terminal
-tmap <C-o> <C-\><C-n>
-tmap <C-t> <Cmd>FloatermToggle<CR>
-nnoremap <silent> <leader>tt <Cmd>FloatermNew<CR>
-nnoremap <silent> <leader>tp <Cmd>FloatermPrev<CR>
-nnoremap <silent> <leader>tn <Cmd>FloatermNext<CR>
-nnoremap <silent> <leader>tg <Cmd>FloatermToggle<CR>
-nnoremap <silent> <leader>tk <Cmd>FloatermKill<CR>
-nnoremap <silent> <leader>tl <Cmd>CocList floaterm<CR>
-tmap <M-h> <C-o><Cmd>FloatermPrev<CR>
-tmap <M-l> <C-o><Cmd>FloatermNext<CR>
-
 " TAB in general mode will move to text buffer
 nnoremap <TAB> :bnext<CR>
 " SHIFT-TAB will go back
@@ -292,6 +280,8 @@ xmap y <Plug>YAVisual
 nmap yy <Plug>YALine
 
 " Move lines https://vim.fandom.com/wiki/Moving_lines_up_or_down
+nnoremap <C-M-j> :m .+1<CR>==
+nnoremap <C-M-k> :m .-2<CR>==
 inoremap <C-M-j> <Esc>:m .+1<CR>==gi
 inoremap <C-M-k> <Esc>:m .-2<CR>==gi
 vnoremap <C-M-j> :m '>+1<CR>gv=gv
@@ -324,3 +314,10 @@ vnoremap <Space> zf
 autocmd FileType go,python,javascript,typescript,json,jsonc set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevel=99
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
+
+" Harpoon
+noremap <leader>hs <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
+noremap <leader>hm <Cmd>lua require("harpoon.mark").add_file()<CR>
+noremap <leader>hp <Cmd>lua require("harpoon.ui").nav_prev()<CR>
+noremap <leader>hn <Cmd>lua require("harpoon.ui").nav_next()<CR>
+noremap <leader>hc <Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>

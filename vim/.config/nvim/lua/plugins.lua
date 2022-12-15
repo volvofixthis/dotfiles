@@ -4,7 +4,24 @@ return require("packer").startup(function()
 	-- Packer can manage itself
 	use("wbthomason/packer.nvim")
 	use("nathom/filetype.nvim")
-	use({ "NTBBloodbath/rest.nvim", branch = "main" })
+	use({ "volvofixthis/rest.nvim", branch = "fixes" })
 	use("wesleimp/stylua.nvim")
-	use "neovim/nvim-lspconfig"
+	use("neovim/nvim-lspconfig")
+	use({
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup({
+				-- add any options here
+			})
+		end,
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	})
+    use("doums/oterm.nvim")
 end)

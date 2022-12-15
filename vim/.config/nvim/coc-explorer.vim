@@ -3,8 +3,12 @@ function! s:explorer_current_dir()
   return fnamemodify(node_info['fullpath'], ':h')
 endfunction
 
-function! s:new_floaterm_current()
-  exec "FloatermNew --cwd=" .. resolve(s:explorer_current_dir())
+function! s:new_termtab_current()
+  exec "lua require('oterm').open({layout='tab', command='cd " .. resolve(s:explorer_current_dir()) .. " && bash'})"
+endfunction
+
+function! s:new_termv_current()
+  exec "lua require('oterm').open({layout='vsplit', command='cd " .. resolve(s:explorer_current_dir()) .. " && bash'})"
 endfunction
 
 function! s:DisableFileExplorer()
@@ -28,7 +32,8 @@ function! s:init_explorer()
   set winblend=10
 
   " vim-floaterm
-  nmap <buffer> <leader>tt <Cmd>call <SID>new_floaterm_current()<CR>
+  nmap <buffer> <C-t> <Cmd>call <SID>new_termtab_current()<CR>
+  nmap <buffer> <leader>tv <Cmd>call <SID>new_termv_current()<CR>
   nmap <buffer> <leader>gg :LazyGitCurrentExplorer<CR>
   command! LazyGitCurrentExplorer call luaeval("require'lazygit'.lazygit(_A[1])", [GetCurrentGitPath(s:explorer_current_dir())])
 endfunction

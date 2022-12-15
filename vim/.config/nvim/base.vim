@@ -2,7 +2,7 @@
 set mouse=a  " enable mouse
 " set t_Co=256
 set langmenu=en_US.UTF-8
-" language en_US.UTF-8
+language en_US.UTF-8
 set encoding=utf-8
 set number
 " set noswapfile
@@ -19,8 +19,15 @@ filetype indent on      " load filetype-specific indent files
 " set relativenumber
 set signcolumn=number
 " For right work install xclip (:help clipboard)
-set clipboard=unnamedplus " shared clipboard with system
-set guicursor=i:block
+set clipboard^=unnamed,unnamedplus
+set guicursor+=i:block
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+" set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkon1
+" set guicursor+=i:blinkwait10
 
 " Tabs
 " set showtabline=2

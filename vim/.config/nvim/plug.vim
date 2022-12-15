@@ -57,17 +57,12 @@ call plug#begin('~/.vim/plugged')
     " Plug 'ryanoasis/vim-devicons' Icons without colours
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v3.*' }
 
-    " Plug 'kyazdani42/nvim-tree.lua'
-    " Plug 'preservim/nerdtree'
-
     " Workspaces
     Plug 'andreyorst/SimpleWorkspaces.vim'
 
     " Git
     Plug 'APZelos/blamer.nvim'
     Plug 'kdheepak/lazygit.nvim'
-
-    Plug 'voldikss/vim-floaterm'
 
     Plug 'ryanoasis/vim-devicons'
 
@@ -76,8 +71,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-dispatch'
 
     Plug 'nvim-lua/plenary.nvim'
-
-    Plug 'NTBBloodbath/rest.nvim', {'branch': 'main'}
 
     Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
@@ -88,8 +81,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'gennaro-tedesco/nvim-peekup'
 
     Plug 'ellisonleao/glow.nvim', {'branch': 'main'}
-
-    " Plug 'vimwiki/vimwiki'
 
     Plug 'pangloss/vim-javascript'
     Plug 'leafgarland/typescript-vim'
@@ -108,5 +99,6 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'lukas-reineke/indent-blankline.nvim'
     Plug 'tpope/vim-unimpaired'
+    Plug 'ThePrimeagen/harpoon'
 call plug#end()
 

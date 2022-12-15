@@ -39,3 +39,5 @@ source $HOME/.config/nvim/bufferline.vim
 source $HOME/.config/nvim/treesitter.vim
 source $HOME/.config/nvim/autopairs.vim
 source $HOME/.config/nvim/indent-blankline.vim
+source $HOME/.config/nvim/peekup.vim
+source $HOME/.config/nvim/harpoon.vim
