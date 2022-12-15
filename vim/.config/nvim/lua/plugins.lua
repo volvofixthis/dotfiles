@@ -23,6 +23,11 @@ return require("packer").startup(function()
 			"rcarriga/nvim-notify",
 		},
 	})
-    use("doums/oterm.nvim")
-    use 'fedepujol/move.nvim'
+	use("doums/oterm.nvim")
+	use("fedepujol/move.nvim")
+	use("ravenxrz/DAPInstall.nvim")
+	use("mfussenegger/nvim-dap")
+	use("rcarriga/nvim-dap-ui")
+	use("RishabhRD/popfix")
+	use("RishabhRD/nvim-cheat.sh")
 end)

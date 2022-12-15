@@ -37,19 +37,6 @@ call plug#begin('~/.vim/plugged')
     " Plug 'fannheyward/coc-pyright'
     Plug 'neoclide/coc-python'
 
-    " Better syntax support
-    " Plug 'sheerun/vim-polyglot'
-
-    " Debuger
-    Plug 'mfussenegger/nvim-dap'
-    Plug 'Pocco81/DAPInstall.nvim', {'branch': 'main'}
-    Plug 'rcarriga/nvim-dap-ui'
-    " :VimspectorInstall debugpy
-    " For use with python3 run 
-    " python -m pip install --user --upgrade pynvim
-    " pip3 install pynvim
-    " pip3 install jedi
-    "
     " Work with tests
     Plug 'vim-test/vim-test'
 
