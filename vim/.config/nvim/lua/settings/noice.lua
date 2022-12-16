@@ -24,5 +24,13 @@ require("noice").setup({
 			},
 			opts = { skip = true },
 		},
+		{
+			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "The only match",
+			},
+			opts = { skip = true },
+		},
 	},
 })
