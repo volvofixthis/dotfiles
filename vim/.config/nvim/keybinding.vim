@@ -153,12 +153,12 @@ nmap cf :let @*=expand("%:p")<CR>
 nnoremap <F5> :lua require'dap'.continue()<CR> 
 " shift + f5
 nnoremap <F17> :lua require'dap'.terminate()<CR> 
-" nnoremap <S-F5> :lua require'dap'.terminate()<CR> 
+nnoremap <S-F5> :lua require'dap'.terminate()<CR> 
 nnoremap <F10> :lua require'dap'.step_over()<CR> 
 nnoremap <F11> :lua require'dap'.step_into()<CR>
 " shift + f11
 nnoremap <F23> :lua require'dap'.step_out()<CR> 
-" nnoremap <S-F11> :lua require'dap'.step_out()<CR> 
+nnoremap <S-F11> :lua require'dap'.step_out()<CR> 
 nnoremap <F9> :lua require'dap'.toggle_breakpoint()<CR> 
 nnoremap <F8> :lua require("dapui").toggle()<CR> 
 
