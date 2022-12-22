@@ -1,4 +1,2 @@
 alias ls='ls -la --color=auto'
 alias git_clip="git branch --show-current | tr -d '\n' | xclip -selection c"
-alias vim="nvim"
-alias nvimconfig='nvim ~/.config/nvim/'

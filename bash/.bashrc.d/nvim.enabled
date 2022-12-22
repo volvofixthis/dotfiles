@@ -1,0 +1,6 @@
+if [ ! -f ~/bin/nvim ]; then
+    wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -O ~/bin/nvim
+    chmod +x ~/bin/nvim
+fi
+alias vim="nvim"
+alias nvimconfig='nvim ~/.config/nvim/'
