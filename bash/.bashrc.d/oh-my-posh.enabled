@@ -1,0 +1,1 @@
+eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/microverse-power.omp.json)"

@@ -1,0 +1,2 @@
+export PATH=$PATH:~/go/bin
+export GOPRIVATE=gitlab-ed7.cloud.gc.onl/*
