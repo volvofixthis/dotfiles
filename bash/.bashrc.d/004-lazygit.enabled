@@ -1,0 +1,3 @@
+if [ ! -f ~/go/bin/lazygit ]; then
+    go install github.com/jesseduffield/lazygit@latest
+fi
