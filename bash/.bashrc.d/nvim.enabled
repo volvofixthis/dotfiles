@@ -2,5 +2,9 @@ if [ ! -f ~/bin/nvim ]; then
     wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -O ~/bin/nvim
     chmod +x ~/bin/nvim
 fi
+if [ ! -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]; then
+    mkdir -p ~/.local/share/nvim/site/pack/packer/start/ 
+    git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+fi
 alias vim="nvim"
 alias nvimconfig='nvim ~/.config/nvim/'

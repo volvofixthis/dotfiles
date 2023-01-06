@@ -1,4 +1,4 @@
--- require("settings.filetype")
+require("settings.filetype")
 require("settings.rest")
 require("settings.noice")
 require("settings.oterm")

@@ -11,8 +11,7 @@ sudo snap install nvim --edge --classic
 appimage can be downloaded from here https://github.com/neovim/neovim/releases
 ## Install nodejs from snap on CentOS
 sudo snap install node --classic
-sudo npm install -g pyright
-sudo npm install -g neovim 
+sudo npm install -g pyright neovim
 ## Установка clang, чтобы пофиксить сборку treesitter
 sudo yum install centos-release-scl
 sudo yum install llvm-toolset-7
