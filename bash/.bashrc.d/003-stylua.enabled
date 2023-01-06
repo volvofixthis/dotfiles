@@ -1,0 +1,3 @@
+if [ ! -f ~/bin/stylua ]; then
+    wget https://github.com/JohnnyMorganz/StyLua/releases/download/v0.15.3/stylua-linux-x86_64.zip && unzip -d ~/bin -o stylua-linux-x86_64.zip && rm stylua-linux-x86_64.zip
+fi

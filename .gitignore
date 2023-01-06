@@ -3,4 +3,5 @@ bin/bin/sga-*
 bin/bin/oh-my-posh
 bin/bin/nvim
 bin/bin/lazygit
+bin/bin/stylua
 bash/.bashrc.d/*.local.enabled
