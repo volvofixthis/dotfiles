@@ -145,9 +145,9 @@ nmap <silent> ts :TestSuite<CR>
 
 ""Copy file path to clipboard
 " Copy file name
-nmap cn :let @*=expand("%")<CR>
+nmap <leader>cn :let @*=expand("%")<CR>
 " Copy file path
-nmap cf :let @*=expand("%:p")<CR>
+nmap <leader>cf :let @*=expand("%:p")<CR>
 
 " Debug
 nnoremap <F5> :lua require'dap'.continue()<CR> 
@@ -329,3 +329,6 @@ noremap <leader>hm <Cmd>lua require("harpoon.mark").add_file()<CR>
 noremap <leader>hp <Cmd>lua require("harpoon.ui").nav_prev()<CR>
 noremap <leader>hn <Cmd>lua require("harpoon.ui").nav_next()<CR>
 noremap <leader>hc <Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>
+
+" Buffers
+nnoremap <Leader>bb :b<Space>
