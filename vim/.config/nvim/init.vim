@@ -2,7 +2,6 @@
 source $HOME/.config/nvim/base.vim
 source $HOME/.config/nvim/glow.vim
 source $HOME/.config/nvim/blamer.vim
-lua require"plugins"
 lua require"settings"
 source $HOME/.config/nvim/filemanager.vim
 source $HOME/.config/nvim/yankassassin.vim
@@ -14,7 +13,6 @@ source $HOME/.config/nvim/lua_autoformat.vim
 source $HOME/.config/nvim/coc-explorer.vim
 source $HOME/.config/nvim/go.vim
 source $HOME/.config/nvim/coc.vim
-" source $HOME/.config/nvim/neerdtree.vim
 lua << EOF
 require"nvim-web-devicons".setup{}
 require"Comment".setup()
