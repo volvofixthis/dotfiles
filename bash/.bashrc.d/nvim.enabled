@@ -1,5 +1,5 @@
 if [ ! -f ~/bin/nvim ]; then
-    wget https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage -O ~/bin/nvim
+    wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/bin/nvim
     chmod +x ~/bin/nvim
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 fi
