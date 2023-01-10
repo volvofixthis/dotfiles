@@ -2,7 +2,8 @@ require("filetype").setup({
 	overrides = {
 		extensions = {
 			rest = "http",
-			-- enabled = "text",
+			enabled = "text",
+            sh = "bash",
 		},
 		function_extensions = {
 			["sql"] = function()

@@ -334,7 +334,7 @@ noremap <leader>hc <Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>
 nnoremap <Leader>bp :bp<CR>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent><leader>2 <Cmd>BuffrLineGoToBuffer 2<CR>
+nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
 nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
 nnoremap <silent><leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
 nnoremap <silent><leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
@@ -343,3 +343,7 @@ nnoremap <silent><leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
 nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
 nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 nnoremap <silent><leader>$ <Cmd>BufferLineGoToBuffer -1<CR>
+
+" Quit
+nnoremap . :wqa<CR>
+nnoremap , :qa!<CR>
