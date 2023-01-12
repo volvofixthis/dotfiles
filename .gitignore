@@ -7,3 +7,4 @@ bin/bin/stylua
 bash/.bashrc.d/*.local.enabled
 lazygit/.config/lazygit/*
 !lazygit/.config/lazygit/config.yml
+tmux/.tmux/plugins

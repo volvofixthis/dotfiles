@@ -345,5 +345,5 @@ nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
 nnoremap <silent><leader>$ <Cmd>BufferLineGoToBuffer -1<CR>
 
 " Quit
-nnoremap . :wqa<CR>
-nnoremap , :qa!<CR>
+nnoremap <Leader>. :wqa<CR>
+nnoremap <Leader>, :qa!<CR>
