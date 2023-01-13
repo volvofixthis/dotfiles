@@ -14,11 +14,7 @@ Install it first\n"
   exit 1
 fi
 
-REPODIR="$(cd "$(dirname "$0")"; pwd -P)"
-
-cd ../
 stow tmux
-cd $REPODIR
 
 if ! is_app_installed tmux; then
   printf "WARNING: \"tmux\" command is not found. \
