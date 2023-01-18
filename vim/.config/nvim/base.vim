@@ -19,7 +19,9 @@ filetype indent on      " load filetype-specific indent files
 " set relativenumber
 set signcolumn=number
 " For right work install xclip (:help clipboard)
-set clipboard^=unnamed,unnamedplus
+" let g:clipboard = {'name': 'my', 'copy': {'+': 'yank.sh', '*': 'yank.sh'}, 'paste': {'+': '~/bin/paste.sh', '*': '~/bin/paste.sh'}}
+let g:clipboard = {'name': 'my_clip', 'copy': {'+': 'yank.sh', '*': 'yank.sh'}, 'paste': {'+': 'xclip -o -selection clipboard', '*': 'xclip -o -selection clipboard'}}
+set clipboard=unnamedplus
 set guicursor+=i:block
 highlight Cursor guifg=white guibg=black
 highlight iCursor guifg=white guibg=steelblue

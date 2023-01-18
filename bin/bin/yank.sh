@@ -14,6 +14,7 @@ copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback")
 
 # Resolve copy backend: pbcopy (OSX), reattach-to-user-namespace (OSX), xclip/xsel (Linux)
 copy_backend=""
+echo "Searching backend"
 if is_app_installed pbcopy; then
   copy_backend="pbcopy"
 elif is_app_installed reattach-to-user-namespace; then
@@ -25,11 +26,17 @@ elif [ -n "${DISPLAY-}" ] && is_app_installed xclip; then
 elif [ -n "${copy_backend_remote_tunnel_port-}" ] \
     && (netstat -f inet -nl 2>/dev/null || netstat -4 -nl 2>/dev/null) \
       | grep -q "[.:]$copy_backend_remote_tunnel_port"; then
-  copy_backend="nc localhost $copy_backend_remote_tunnel_port"
+  copy_backend="nc -N localhost $copy_backend_remote_tunnel_port"
+fi
+
+if [ -n "$TMUX" ]
+then
+    printf "%s" "$buf" | tmux load-buffer -w -
 fi
 
 # if copy backend is resolved, copy and exit
 if [ -n "$copy_backend" ]; then
+  echo "Using backend: $copy_backend"
   printf "%s" "$buf" | eval "$copy_backend"
   exit;
 fi

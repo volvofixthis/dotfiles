@@ -1,0 +1,14 @@
+[Unit]
+Description=Remote clipboard
+StartLimitBurst=7
+StartLimitIntervalSec=33
+
+[Service]
+Type=simple
+Environment=DISPLAY=:0
+ExecStart=%h/bin/remote_clipboard.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

@@ -1,1 +1,2 @@
 export KUBECONFIG=$HOME/.kube/config
+alias k=kubectl

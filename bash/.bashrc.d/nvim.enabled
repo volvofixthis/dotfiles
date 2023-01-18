@@ -5,3 +5,4 @@ if [ ! -f ~/bin/nvim ]; then
 fi
 alias vim="nvim"
 alias nvimconfig='nvim ~/.config/nvim/'
+export EDITOR=$HOME/bin/nvim
