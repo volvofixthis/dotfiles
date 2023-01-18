@@ -12,8 +12,9 @@ stow lazygit
 stow vim
 stow systemd
 stow environment.d
-systemctl --user enable gopls remote-clipboard ssh-agent
-systemctl --user start gopls remote-clipboard ssh-agent
+systemctl --user daemon-reload
+systemctl --user enable gopls
+systemctl --user start gopls
 
 echo "PATH=$HOME/bin:$HOME/.local/bin/:$HOME/go/bin:$PATH" > ~/.config/environment.d/path.conf 
 echo "HOME=$HOME" >> ~/.config/environment.d/path.conf

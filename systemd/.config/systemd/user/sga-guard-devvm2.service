@@ -8,9 +8,6 @@ Type=simple
 EnvironmentFile=%h/.config/environment.d/path.conf
 Environment="SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket"
 Environment=DISPLAY=:0
-Environment=SSH_ASKPASS='/usr/bin/ksshaskpass'
-Environment=SSH_ASKPASS_REQUIRE=prefer
-ExecStartPre=/usr/bin/printenv
 ExecStart=%h/bin/sga-guard --stub=/home/loki/bin/sga-stub loki@devvm2
 Restart=always
 RestartSec=5
