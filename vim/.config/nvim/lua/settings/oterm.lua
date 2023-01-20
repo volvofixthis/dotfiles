@@ -11,7 +11,7 @@ end
 
 local function gen_callback(layout)
 	return function()
-		open({ layout = layout, command = "cd " .. get_current_folder_name() .. " && bash" })
+		open({ layout = layout, command = "cd " .. get_current_folder_name() .. " && $SHELL" })
 	end
 end
 

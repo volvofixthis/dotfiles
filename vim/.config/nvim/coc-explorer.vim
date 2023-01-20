@@ -4,11 +4,11 @@ function! s:explorer_current_dir()
 endfunction
 
 function! s:new_termtab_current()
-  exec "lua require('oterm').open({layout='tab', command='cd " .. resolve(s:explorer_current_dir()) .. " && bash'})"
+  exec "lua require('oterm').open({layout='tab', command='cd " .. resolve(s:explorer_current_dir()) .. " && $SHELL'})"
 endfunction
 
 function! s:new_termv_current()
-  exec "lua require('oterm').open({layout='vsplit', command='cd " .. resolve(s:explorer_current_dir()) .. " && bash'})"
+  exec "lua require('oterm').open({layout='vsplit', command='cd " .. resolve(s:explorer_current_dir()) .. " && $SHELL'})"
 endfunction
 
 function! s:DisableFileExplorer()

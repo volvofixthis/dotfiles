@@ -127,6 +127,8 @@ return require("packer").startup(function()
 
 	use("tpope/vim-unimpaired")
 
+	use({ "alexghergh/nvim-tmux-navigation" })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end

@@ -93,20 +93,30 @@ nnoremap <leader>Q :bp\|bd! #<CR>
 " nnoremap <M-l>    :vertical resize +2<CR>
 
 " Movement in insert mode
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
-" Also allow line-wise scrolling
-inoremap <C-e> <C-o><C-e>
-inoremap <C-y> <C-o><C-y>
-
-" Movement in normal mode
+inoremap <C-h> <C-o><C-w>h
+inoremap <C-j> <C-o><C-w>j
+inoremap <C-k> <C-o><C-w>k
+inoremap <C-l> <C-o><C-w>l
+" movement in normal modev
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-
+nnoremap <silent> <C-h> <Cmd>NvimTmuxNavigateLeft<CR>
+nnoremap <silent> <C-j> <Cmd>NvimTmuxNavigateDown<CR>
+nnoremap <silent> <C-k> <Cmd>NvimTmuxNavigateUp<CR>
+nnoremap <silent> <C-l> <Cmd>NvimTmuxNavigateRight<CR>
+nnoremap <silent> <C-\> <Cmd>NvimTmuxNavigateLastActive<CR>
+" nnoremap <silent> <C-Space> <Cmd>NvimTmuxNavigateNext<CR>
+inoremap <silent> <C-h> <Cmd>NvimTmuxNavigateLeft<CR>
+inoremap <silent> <C-j> <Cmd>NvimTmuxNavigateDown<CR>
+inoremap <silent> <C-k> <Cmd>NvimTmuxNavigateUp<CR>
+inoremap <silent> <C-l> <Cmd>NvimTmuxNavigateRight<CR>
+inoremap <silent> <C-\> <Cmd>NvimTmuxNavigateLastActive<CR>
+" inoremap <silent> <C-Space> <Cmd>NvimTmuxNavigateNext<CR>
+" Also allow line-wise scrolling
+inoremap <C-e> <C-o><C-e>
+inoremap <C-y> <C-o><C-y>
 
 " Alternate way to save
 " nnoremap <C-s> :w<CR>

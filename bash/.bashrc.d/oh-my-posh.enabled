@@ -7,4 +7,4 @@ if [ ! -f ~/bin/oh-my-posh ]; then
     chmod u+rw ~/.poshthemes/*.omp.*
     rm ~/.poshthemes/themes.zip
 fi
-eval "$(oh-my-posh --init --shell bash --config ~/.poshthemes/microverse-power.omp.json)"
+eval "$(oh-my-posh --init --shell $(basename $SHELL) --config ~/.poshthemes/microverse-power.omp.json)"

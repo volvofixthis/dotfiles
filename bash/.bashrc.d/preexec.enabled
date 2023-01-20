@@ -1,0 +1,19 @@
+if [ "$SHELL_NAME" = "bash" ]; then
+    [ -f ~/bin/bash-preexec.sh ] || curl https://raw.githubusercontent.com/rcaloras/bash-preexec/master/bash-preexec.sh -o ~/bin/bash-preexec.sh
+    source ~/bin/bash-preexec.sh
+fi
+
+if [ -n "$TMUX" ]; then
+  function refresh() {
+    export $(tmux show-environment | grep "^SSH_AUTH_SOCK") > /dev/null
+    export $(tmux show-environment | grep "^DISPLAY") > /dev/null
+  }
+else
+  function refresh() {
+    :
+  }
+fi
+
+function preexec {
+    refresh
+}

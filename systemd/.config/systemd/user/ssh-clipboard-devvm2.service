@@ -9,7 +9,7 @@ Environment="SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket"
 Environment=DISPLAY=:0
 Environment=SSH_ASKPASS='/usr/bin/ksshaskpass'
 Environment=SSH_ASKPASS_REQUIRE=prefer
-ExecStart=/usr/bin/ssh -T -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -R 127.0.0.1:1988:127.0.0.1:11988 loki@devvm2 sleep infinity 
+ExecStart=/usr/bin/ssh -T -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -R 127.0.0.1:11988:127.0.0.1:1988 loki@devvm2 sleep infinity 
 Restart=always
 RestartSec=5
 

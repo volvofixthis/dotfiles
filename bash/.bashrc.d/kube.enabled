@@ -1,2 +1,4 @@
 export KUBECONFIG=$HOME/.kube/config
 alias k=kubectl
+source <(kubectl completion zsh)
+compdef __start_kubectl k
