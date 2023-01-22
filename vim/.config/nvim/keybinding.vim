@@ -84,8 +84,8 @@ nmap <M-i> :call CocAction('runCommand', 'python.sortImports')<CR>
 
 
 " close buffer
-nnoremap <C-q> :bp\|bd #<CR>
-nnoremap <leader>Q :bp\|bd! #<CR>
+nnoremap <C-q> :sil! bp!\|bd! #<CR>
+nnoremap <leader>Q :sil! bp!\|bd! #<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
 " nnoremap <M-k>    :resize +2<CR>
@@ -125,6 +125,7 @@ inoremap <C-y> <C-o><C-y>
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 inoremap <Esc> <Esc>`^
+au WinLeave * stopinsert
 
 " Change layout to US on insert leave
 autocmd InsertLeave * silent! :!xkblayout-state set 0
