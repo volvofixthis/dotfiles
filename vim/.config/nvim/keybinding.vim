@@ -1,11 +1,5 @@
 """""" KEYBINDING CONFIG FOR NVIM"""""""""
 
-" <silent> -- выделеное
-let mapleader = "/"
-
-" Turn off search highlighting
-" nnoremap <esc> :nohlsearch<CR>
-
 """FILE MANAGER"""
 " nnoremap <leader>b  :Lexplore<CR>
 " nnoremap <C-b> :NERDTreeToggle<CR>
@@ -23,7 +17,7 @@ function! s:open_explorer_project()
   exec ":CocCommand explorer ".g:workspace_path
 endfunction
 
-nnoremap <silent> <M-b> :call <SID>open_explorer_project()<CR>
+nmap <leader>fe :call <SID>open_explorer_project()<CR>
 
 """"""AUTOCOMPITE SETTINGS"""""""
 " Use tab for trigger completion with characters ahead and navigate.
@@ -84,8 +78,9 @@ nmap <M-i> :call CocAction('runCommand', 'python.sortImports')<CR>
 
 
 " close buffer
-nnoremap <C-q> :sil! bp!\|bd! #<CR>
+" nnoremap <C-q> :sil! bp!\|bd! #<CR>
 nnoremap <leader>Q :sil! bp!\|bd! #<CR>
+nnoremap <leader>q :q<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
 " nnoremap <M-k>    :resize +2<CR>
@@ -162,16 +157,23 @@ nmap <leader>cf :let @*=expand("%:p")<CR>
 
 " Debug
 nnoremap <F5> :lua require'dap'.continue()<CR> 
+nmap <leader>dc :lua require'dap'.continue()<CR>
 " shift + f5
 nnoremap <F17> :lua require'dap'.terminate()<CR> 
 nnoremap <S-F5> :lua require'dap'.terminate()<CR> 
+nmap <leader>dtr :lua require'dap'.terminate()<CR>
 nnoremap <F10> :lua require'dap'.step_over()<CR> 
+nmap <leader>dov :lua require'dap'.step_over()<CR>
 nnoremap <F11> :lua require'dap'.step_into()<CR>
+nmap <leader>din :lua require'dap'.step_into()<CR>
 " shift + f11
 nnoremap <F23> :lua require'dap'.step_out()<CR> 
 nnoremap <S-F11> :lua require'dap'.step_out()<CR> 
+nmap <leader>dot :lua require'dap'.step_out()<CR>
 nnoremap <F9> :lua require'dap'.toggle_breakpoint()<CR> 
+nmap <leader>dbp :lua require'dap'.toggle_breakpoint()<CR>
 nnoremap <F8> :lua require("dapui").toggle()<CR> 
+nmap <leader>dtg :lua require("dapui").toggle()<CR>
 
 "  Go
 nmap <leader>r <Plug>(coc-rename)
@@ -189,11 +191,10 @@ autocmd BufEnter *.go nmap <buffer> <leader>cc  <Plug>(go-callers)
 nmap <leader>cr <Plug>(coc-references)
 
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
-nnoremap <leader>fg <Cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
-nnoremap <leader>fb <Cmd>Telescope buffers<CR>
-nnoremap <leader>fh <Cmd>Telescope help_tags<CR>
-nnoremap <silent> <leader>fp :Telescope project<CR>
+" nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
+" nnoremap <leader>fg <Cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
+" nnoremap <leader>fb <Cmd>Telescope buffers<CR>
+" nnoremap <leader>fh <Cmd>Telescope help_tags<CR>
 
 " Using Lua functions
 nnoremap <leader>pp :lua require'telescope.builtin'.planets{}<CR>
@@ -342,7 +343,7 @@ noremap <leader>hn <Cmd>lua require("harpoon.ui").nav_next()<CR>
 noremap <leader>hc <Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>
 
 " Buffers
-nnoremap <Leader>bp :bp<CR>
+nnoremap <Leader>bp :b>
 nnoremap <Leader>bn :bn<CR>
 nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
 nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>

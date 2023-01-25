@@ -42,7 +42,7 @@ return require("packer").startup(function()
 	-- 	},
 	-- })
 	use("doums/oterm.nvim")
-	use("fedepujol/move.nvim")
+	use({ "fedepujol/move.nvim", commit = "2cd533590" })
 
 	-- DAP
 	use("leoluz/nvim-dap-go")
@@ -128,6 +128,31 @@ return require("packer").startup(function()
 	use("tpope/vim-unimpaired")
 
 	use({ "alexghergh/nvim-tmux-navigation" })
+
+	use({
+		"naps62/pair-gpt.nvim",
+		config = function()
+			require("pair-gpt").setup()
+		end,
+	})
+
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+				-- optional configuration
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
+
+	use("mrjones2014/legendary.nvim")
+
+	use({ "stevearc/dressing.nvim" })
 
 	if packer_bootstrap then
 		require("packer").sync()

@@ -60,4 +60,4 @@ set pumblend=30
 set winblend=30
 set viewoptions-=options
 set timeoutlen=1000
-
+let mapleader = "/"

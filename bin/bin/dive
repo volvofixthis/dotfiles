@@ -1,3 +1,8 @@
+if [ "$1" = "ls" ]; then
+    for i in $(ls -d $HOME/.vim/saved_workspaces/*/); do echo $(basename $i); done
+    exit
+fi
+
 export WORKSPACE="$HOME/.vim/saved_workspaces/$1/"
 CMD="nvim +'WorkspaceOpen $1' +'CocCommand explorer --no-toggle ${WORKSPACE}'"
 ENV_FILE="${WORKSPACE}.env"

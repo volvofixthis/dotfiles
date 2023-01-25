@@ -20,8 +20,11 @@ function! s:OpenDirHere(dir)
     return -1
     endif
 
-    let g:first_coc_explorer_opened = 1
     let g:workspace_path = a:dir
+    let g:first_coc_explorer_opened = 1
+    if (!empty($WORKSPACE))
+        let g:workspace_path = $WORKSPACE
+    endif
 
     if isdirectory(a:dir)
 	exec "silent CocCommand explorer --position=left " . a:dir
