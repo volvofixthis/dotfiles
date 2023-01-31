@@ -79,8 +79,9 @@ nmap <M-i> :call CocAction('runCommand', 'python.sortImports')<CR>
 
 " close buffer
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
-nnoremap <leader>Q :sil! bp!\|bd! #<CR>
-nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :sil! q<CR>
+nnoremap <leader>qb :sil! bp!\|bd!#<CR>
+nnoremap <leader>qo :sil! %bd!\|e#\|bd!#<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
 " nnoremap <M-k>    :resize +2<CR>
@@ -260,18 +261,18 @@ nmap <silent> <leader>rl <Plug>RestNvimLast
 noremap <leader>p :Glow<CR>
 
 " Javascript
-function! ShowDocIfNoDiagnostic(timer_id)
-  if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
-    silent call CocActionAsync('doHover')
-  endif
-endfunction
+" function! ShowDocIfNoDiagnostic(timer_id)
+"   if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
+"     silent call CocActionAsync('doHover')
+"   endif
+" endfunction
+"
+" function! s:show_hover_doc()
+"   call timer_start(500, 'ShowDocIfNoDiagnostic')
+" endfunction
 
-function! s:show_hover_doc()
-  call timer_start(500, 'ShowDocIfNoDiagnostic')
-endfunction
-
-autocmd CursorHoldI * :call <SID>show_hover_doc()
-autocmd CursorHold * :call <SID>show_hover_doc()
+" autocmd CursorHoldI * :call <SID>show_hover_doc()
+" autocmd CursorHold * :call <SID>show_hover_doc()
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 nnoremap <Leader>rt :JSXReplaceTag<CR>

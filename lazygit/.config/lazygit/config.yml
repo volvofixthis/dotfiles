@@ -9,10 +9,10 @@ gui:
   theme:
     lightTheme: false # For terminals with a light background
     activeBorderColor:
-      - white
+      - green
       - bold
     inactiveBorderColor:
-      - green
+      - grey
     optionsTextColor:
       - blue
     selectedLineBgColor:
@@ -79,7 +79,7 @@ notARepository: 'skip' # one of: 'prompt' | 'create' | 'skip'
 keybinding:
   universal:
     quit: 'q'
-    quit-alt1: '<c-c>' # alternative/alias of quit
+    quit-alt1: '<esc>' # alternative/alias of quit
     return: '<esc>' # return to previous menu, will quit if there's nowhere to return
     quitWithoutChangingDirectory: 'Q'
     togglePanel: '<tab>' # goto the next panel

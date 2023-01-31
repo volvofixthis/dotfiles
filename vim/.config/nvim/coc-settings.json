@@ -15,6 +15,7 @@
     "close": true
   },
   "coc.preferences.messageLevel": "error",
+  "suggest.autoTrigger": "none",
   "suggest.noselect": false,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "!",

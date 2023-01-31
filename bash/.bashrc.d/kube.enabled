@@ -1,4 +1,14 @@
 export KUBECONFIG=$HOME/.kube/config
 alias k=kubectl
-source <(kubectl completion zsh)
-compdef __start_kubectl k
+if [ "$(basename $SHELL)" = "zsh" ]; then
+    source <(kubectl completion zsh)
+    compdef __start_kubectl k
+fi
+use_k_cfg () {
+    if [ -z "$1" ] || [ "$1" = "last" ]; then
+        export KUBECONFIG="$(\ls -1t ~/.kube/* | head -1)"
+    else
+        export KUBECONFIG="$(\ls -1t ~/.kube/* | grep "$1" | head -1)"
+    fi
+    echo "Used $KUBECONFIG"
+}

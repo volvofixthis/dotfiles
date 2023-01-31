@@ -61,3 +61,7 @@ set winblend=30
 set viewoptions-=options
 set timeoutlen=1000
 let mapleader = "/"
+
+if has('nvim') && executable('nvr')
+  let $EDITOR = "nvr -cc 'vsplit' --remote-wait +'set bufhidden=wipe'"
+endif
