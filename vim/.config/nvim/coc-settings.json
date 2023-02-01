@@ -103,6 +103,7 @@
 
     "*": "toggleSelection",
     "<tab>": "normal:q",
+    "~": "actionMenu",
 
     "gk": ["wait", "expandablePrev"],
     "gj": ["wait", "expandableNext"],
