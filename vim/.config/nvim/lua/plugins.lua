@@ -153,6 +153,7 @@ return require("packer").startup(function(use)
 	use("mrjones2014/legendary.nvim")
 
 	use({ "stevearc/dressing.nvim" })
+    use({ "numToStr/BufOnly.nvim" })
 
 	if packer_bootstrap then
 		require("packer").sync()
