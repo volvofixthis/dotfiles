@@ -24,4 +24,8 @@ windows:
     - dive cloud-api
   - mkaas-api:
     - dive mkaas-api
-
+  - app-debug:
+    - cd ~/projects/cloud-api
+    - set -a && . envs/main
+    - export LISTEN_PORT=8887
+    - poetry run python src/app.py 2>&1

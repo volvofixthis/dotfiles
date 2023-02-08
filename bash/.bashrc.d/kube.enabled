@@ -4,7 +4,7 @@ if [ "$(basename $SHELL)" = "zsh" ]; then
     source <(kubectl completion zsh)
     compdef __start_kubectl k
 fi
-use_k_cfg () {
+k_use_cfg () {
     if [ -z "$1" ] || [ "$1" = "last" ]; then
         export KUBECONFIG="$(\ls -1t ~/.kube/* | head -1)"
     else
