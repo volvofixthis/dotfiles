@@ -9,5 +9,6 @@ let g:coc_global_extensions = [
     \'coc-prettier',
     \'coc-eslint',
     \'coc-tsserver',
-    \'coc-svelte'
+    \'coc-svelte',
+    \'coc-pydocstring'
     \]
