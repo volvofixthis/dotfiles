@@ -56,6 +56,9 @@ nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> ga <Plug>(coc-codeaction-line)
 xmap <silent> ga <Plug>(coc-codeaction-selected)
 nmap <silent> gA <Plug>(coc-codeaction)
+nmap <silent> dte :call CocAction('diagnosticToggle', 1) \| call CocAction('diagnosticRefresh')<CR>
+nmap <silent> dtd :call CocAction('diagnosticToggle', 0) \| call CocAction('diagnosticRefresh')<CR>
+nmap <silent> dr :call CocAction('diagnosticRefresh')<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -82,9 +85,9 @@ nmap <M-i> :call CocAction('runCommand', 'python.sortImports')<CR>
 " close buffer
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
 nnoremap <leader>Q :sil! q<CR>
+nnoremap <leader>Qo :only<CR>
 nnoremap <leader>qb :sil! bp!\|bd!#<CR>
 nnoremap <leader>qo :BufOnly<CR>
-nnoremap <leader>qwo :only<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
 " nnoremap <M-k>    :resize +2<CR>
@@ -144,43 +147,13 @@ vnoremap > >gv
 """" Select all 
 nnoremap <C-A> ggVG
 
-"""" VIM-TEST 
-" these "Ctrl mappings" work well when Caps Lock is mapped to Ctrl
-" nmap <silent> t<C-n> :TestNearest<CR>
-nmap <silent> tf :TestFile<CR>
-nmap <silent> ts :TestSuite<CR>
-"nmap <silent> t<C-l> :TestLast<CR>
-"nmap <silent> t<C-g> :TestVisit<CR>
-
-
 ""Copy file path to clipboard
 " Copy file name
 nmap <leader>cn :let @*=expand("%")<CR>
 " Copy file path
 nmap <leader>cf :let @*=expand("%:p")<CR>
 
-" Debug
-nnoremap <F5> :lua require'dap'.continue()<CR> 
-nmap <leader>dc :lua require'dap'.continue()<CR>
-" shift + f5
-nnoremap <F17> :lua require'dap'.terminate()<CR> 
-nnoremap <S-F5> :lua require'dap'.terminate()<CR> 
-nmap <leader>dtr :lua require'dap'.terminate()<CR>
-nnoremap <F10> :lua require'dap'.step_over()<CR> 
-nmap <leader>dov :lua require'dap'.step_over()<CR>
-nnoremap <F11> :lua require'dap'.step_into()<CR>
-nmap <leader>din :lua require'dap'.step_into()<CR>
-" shift + f11
-nnoremap <F23> :lua require'dap'.step_out()<CR> 
-nnoremap <S-F11> :lua require'dap'.step_out()<CR> 
-nmap <leader>dot :lua require'dap'.step_out()<CR>
-nnoremap <F9> :lua require'dap'.toggle_breakpoint()<CR> 
-nmap <leader>dbp :lua require'dap'.toggle_breakpoint()<CR>
-nnoremap <F8> :lua require("dapui").toggle()<CR> 
-nmap <leader>dtg :lua require("dapui").toggle()<CR>
-
 "  Go
-nmap <leader>r <Plug>(coc-rename)
 nmap <C-d> <Plug>(coc-definition)
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
@@ -193,6 +166,8 @@ autocmd BufEnter *.go nmap <buffer> <leader>ii  <Plug>(go-implements)
 autocmd BufEnter *.go nmap <buffer> <leader>ci  <Plug>(go-describe)
 autocmd BufEnter *.go nmap <buffer> <leader>cc  <Plug>(go-callers)
 nmap <leader>cr <Plug>(coc-references)
+autocmd BufEnter *.py nmap <buffer> <leader>tc :lua require('dap-python').test_class()<CR>
+autocmd BufEnter *.py nmap <buffer> <leader>tf :lua require('dap-python').test_method()<CR>
 
 " Find files using Telescope command-line sugar.
 " nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
@@ -363,3 +338,9 @@ nnoremap <silent><leader>$ <Cmd>BufferLineGoToBuffer -1<CR>
 " Quit
 nnoremap <Leader>. :wqa<CR>
 nnoremap <Leader>, :qa!<CR>
+
+" Loading breakpoints
+autocmd BufRead * :lua load_breakpoints()
+
+" Symbol outline
+nnoremap <Leader>so :AerialToggle! right<CR>

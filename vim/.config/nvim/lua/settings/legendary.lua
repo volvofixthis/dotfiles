@@ -1,7 +1,7 @@
 require("legendary").setup({
 	keymaps = {
 		-- map keys to a command
-        -- Telescope
+		-- Telescope
 		{
 			"<leader>ff",
 			":Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>",
@@ -53,6 +53,55 @@ require("legendary").setup({
 			"<leader>la",
 			":Legendary autocmds",
 			description = "Legendary autcmds",
+			mode = "n",
+		},
+		-- DAP
+		{
+			"<leader>dc",
+			":lua require'dap'.continue()<CR>",
+			description = "Debug continue",
+			mode = "n",
+		},
+		{
+			"<leader>dtr",
+			":lua require'dap'.terminate()<CR>",
+			description = "Debug terminate",
+			mode = "n",
+		},
+		{
+			"<leader>dot",
+			":lua require'dap'.step_out()<CR>",
+			description = "Debug step over",
+			mode = "n",
+		},
+		{
+			"<leader>din",
+			":lua require'dap'.step_into()<CR>",
+			description = "Debug step out",
+			mode = "n",
+		},
+		{
+			"<leader>dov",
+			":lua require'dap'.step_over()<CR>",
+			description = "Debug step over",
+			mode = "n",
+		},
+		{
+			"<leader>dbs",
+			":lua require'dap'.toggle_breakpoint();store_breakpoints(false)<CR>",
+			description = "Debug toggle breakpoint",
+			mode = "n",
+		},
+		{
+			"<leader>dbc",
+			":lua require'dap'.clear_breakpoints();store_breakpoints(true)<CR>",
+			description = "Debug toggle breakpoint",
+			mode = "n",
+		},
+		{
+			"<leader>dtg",
+			":lua require'dapui'.toggle()<CR>",
+			description = "Debug toggle dapui",
 			mode = "n",
 		},
 	},

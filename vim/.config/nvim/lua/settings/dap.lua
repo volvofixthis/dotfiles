@@ -1,4 +1,82 @@
 local dap = require("dap")
+require("dap-python").setup("/usr/bin/python3")
+require("dap-python").test_runner = "pytest"
+require("dap-python").resolve_python = function()
+	local cwd = vim.fn.getcwd()
+	if vim.fn.executable(os.getenv("VIRTUAL_ENV") .. "/bin/python") then
+		return os.getenv("VIRTUAL_ENV") .. "/bin/python"
+	elseif vim.fn.executable(os.getenv("CONDA_PREFIX") .. "/bin/python") then
+		return os.getenv("VIRTUAL_ENV") .. "/bin/python"
+	elseif vim.fn.executable(cwd .. "/venv/bin/python") then
+		return cwd .. "/venv/bin/python"
+	elseif vim.fn.executable(cwd .. "/.venv/bin/python") then
+		return cwd .. "/.venv/bin/python"
+	else
+		return "/usr/bin/python3"
+	end
+end
+local breakpoints = require("dap.breakpoints")
+
+HOME = os.getenv("HOME")
+
+function _G.store_breakpoints(clear)
+	local fp = io.open(HOME .. "/.vim/breakpoints.json", "r")
+	local bps = {}
+	if fp then
+		local content = fp:read("*a")
+		bps = vim.fn.json_decode(content)
+	end
+	local breakpoints_by_buf = breakpoints.get()
+	if clear then
+		for _, bufrn in ipairs(vim.api.nvim_list_bufs()) do
+			local file_path = vim.api.nvim_buf_get_name(bufrn)
+			if bps[file_path] ~= nil then
+				bps[file_path] = {}
+			end
+		end
+	else
+		for buf, buf_bps in pairs(breakpoints_by_buf) do
+			bps[vim.api.nvim_buf_get_name(buf)] = buf_bps
+		end
+	end
+	local fp = io.open(HOME .. "/.vim/breakpoints.json", "w")
+	local final = vim.fn.json_encode(bps)
+	fp:write(final)
+	fp:close()
+end
+
+function _G.load_breakpoints()
+	local fp = io.open(HOME .. "/.vim/breakpoints.json", "r")
+	local bps = {}
+	if fp then
+		local content = fp:read("*a")
+		bps = vim.fn.json_decode(content)
+	end
+	local loaded_buffers = {}
+	local found = false
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		local file_name = vim.api.nvim_buf_get_name(buf)
+		if bps[file_name] ~= nil and bps[file_name] ~= {} then
+			found = true
+		end
+		loaded_buffers[file_name] = buf
+	end
+	if found == false then
+		return
+	end
+	for path, buf_bps in pairs(bps) do
+		for _, bp in pairs(buf_bps) do
+			local line = bp.line
+			local opts = {
+				condition = bp.condition,
+				log_message = bp.logMessage,
+				hit_condition = bp.hitCondition,
+			}
+			breakpoints.set(opts, tonumber(loaded_buffers[path]), line)
+		end
+	end
+end
+
 dap.adapters.go = function(callback, config)
 	local stdout = vim.loop.new_pipe(false)
 	local handle
@@ -60,20 +138,5 @@ dap.configurations.python = {
 		request = "launch",
 		name = "Launch file",
 		program = "${file}",
-		pythonPath = function()
-			-- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-			-- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-			-- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-			local cwd = vim.fn.getcwd()
-			if vim.fn.executable(os.getenv("VIRTUAL_ENV") .. "/bin/python") == 1 then
-				return os.getenv("VIRTUAL_ENV") .. "/bin/python"
-			elseif vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
-				return cwd .. "/venv/bin/python"
-			elseif vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
-				return cwd .. "/.venv/bin/python"
-			else
-				return "/usr/bin/python"
-			end
-		end,
 	},
 }
