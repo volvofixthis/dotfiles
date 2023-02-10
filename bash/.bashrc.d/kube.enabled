@@ -1,6 +1,6 @@
 export KUBECONFIG=$HOME/.kube/config
 alias k=kubectl
-if [ "$(basename $SHELL)" = "zsh" ]; then
+if [ "$(basename $SHELL)" = "zsh" ] && command -v kubectl &> /dev/null; then
     source <(kubectl completion zsh)
     compdef __start_kubectl k
 fi
