@@ -1,0 +1,31 @@
+name: cloud-api
+root: ~/
+
+windows:
+  - app:
+    - truncate -s 0 ~/logs/app.log
+    - cd ~/projects/cloud-api
+    - set -a && source envs/.main.env
+    - poetry run python src/app.py 2>&1 | tee ~/logs/app.log
+  - worker:
+    - cd ~/projects/cloud-api
+    - trucate -s 0 ~/logs/worker.log
+    - set -a && source envs/.main.env
+    - poetry run python src/worker.py 2>&1 | tee ~/logs/worker.log
+  - mkaas-api-ed8:
+    - cd ~/projects/mkaas-api
+    - set -a && source .env-ed8
+    - ./bin/manager
+  - mkaas-api-ed10:
+    - cd ~/projects/mkaas-api
+    - set -a && source .env-ed10
+    - ./bin/manager
+  - cloud-api:
+    - dive open cloud-api
+  - mkaas-api:
+    - dive open mkaas-api
+  - app-debug:
+    - cd ~/projects/cloud-api
+    - set -a && source envs/.main.env
+    - export LISTEN_PORT=8887
+    - poetry run python src/app.py 2>&1
