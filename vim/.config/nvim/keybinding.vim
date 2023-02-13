@@ -10,7 +10,7 @@ function! s:open_explorer_reveal()
   exec ":CocCommand explorer --no-toggle ".path
 endfunction
 
-nnoremap <silent> er :call <SID>open_explorer_reveal()<CR>
+nnoremap <silent> re :call <SID>open_explorer_reveal()<CR>
 
 function! s:open_explorer_project()
   echo g:workspace_path
@@ -45,20 +45,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
-""" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" CoC actions
-nmap <leader>rn <Plug>(coc-rename)
-nmap <silent> ga <Plug>(coc-codeaction-line)
-xmap <silent> ga <Plug>(coc-codeaction-selected)
-nmap <silent> gA <Plug>(coc-codeaction)
-nmap <silent> dte :call CocAction('diagnosticToggle', 1) \| call CocAction('diagnosticRefresh')<CR>
-nmap <silent> dtd :call CocAction('diagnosticToggle', 0) \| call CocAction('diagnosticRefresh')<CR>
-nmap <silent> dr :call CocAction('diagnosticRefresh')<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

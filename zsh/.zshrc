@@ -58,6 +58,6 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 zinit light jeffreytse/zsh-vi-mode
-# zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
 # zinit light zsh-users/zsh-autosuggestions
-zinit light marlonrichert/zsh-autocomplete
+# zinit light marlonrichert/zsh-autocomplete

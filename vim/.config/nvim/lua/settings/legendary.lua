@@ -104,5 +104,72 @@ require("legendary").setup({
 			description = "Debug toggle dapui",
 			mode = "n",
 		},
+		-- Coc
+		{
+			"<leader>rn",
+			"<Plug>(coc-rename)",
+			description = "Coc rename symbol",
+			mode = "n",
+		},
+		{
+			"gd",
+			"<Plug>(coc-definition)",
+			description = "Coc goto definition",
+			mode = "n",
+		},
+		{
+			"gy",
+			"<Plug>(coc-type-definition)",
+			description = "Coc type definition",
+			mode = "n",
+		},
+		{
+			"gi",
+			"<Plug>(coc-implementation)",
+			description = "Coc implementation",
+			mode = "n",
+		},
+		{
+			"gr",
+			"<Plug>(coc-references)",
+			description = "Coc references",
+			mode = "n",
+		},
+		{
+			"ga",
+			"<Plug>(coc-codeaction-line)",
+			description = "Coc codeaction line",
+			mode = "n",
+		},
+		{
+			"ga",
+			"<Plug>(coc-codeaction-line)",
+			description = "Coc codeaction line",
+			mode = "x",
+		},
+		{
+			"gA",
+			"<Plug>(coc-codeaction)",
+			description = "Coc codeaction",
+			mode = "n",
+		},
+		{
+			"dte",
+			"<Plug>:call CocAction('diagnosticToggle', 1) | call CocAction('diagnosticRefresh')<CR>",
+			description = "Coc diagnostic disable",
+			mode = "n",
+		},
+		{
+			"dtd",
+			":call CocAction('diagnosticToggle', 0) | call CocAction('diagnosticRefresh')<CR>",
+			description = "Coc diagnostic enable",
+			mode = "n",
+		},
+		{
+			"dr",
+			":call CocAction('diagnosticRefresh')<CR>",
+			description = "Coc diagnostic refresh",
+			mode = "n",
+		},
 	},
 })

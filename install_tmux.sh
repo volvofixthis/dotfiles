@@ -15,6 +15,7 @@ Install it first\n"
 fi
 
 stow tmux
+stow tmuxinator
 
 if ! is_app_installed tmux; then
   printf "WARNING: \"tmux\" command is not found. \

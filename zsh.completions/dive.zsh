@@ -11,7 +11,8 @@ _dive() {
         cmds)
             _values "dive commands" \
                     "ls" \
-                    "open"
+                    "open" \
+                    "help"
             ;;
         args)
             case $line[1] in

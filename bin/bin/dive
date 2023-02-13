@@ -18,4 +18,9 @@ elif [ "$1" = "open" ]; then
     else
       eval "${CMD}"
     fi
+else
+    [ "$1" = "help" ] || echo "No such subcommand!"
+    echo "Available command are:"
+    echo "ls - list of projects"
+    echo "open [project] - open project for editing"
 fi
