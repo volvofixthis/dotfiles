@@ -25,6 +25,11 @@ require("legendary").setup({
 			description = "Telescope help tags",
 		},
 		{
+			"<leader>tg",
+			":lua require('telescope').extensions.lazygit.lazygit()<CR>",
+			description = "Git repositories",
+		},
+		{
 			"<leader>ll",
 			":Legendary<CR>",
 			description = "Legendary",

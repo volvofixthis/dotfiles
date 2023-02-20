@@ -1,13 +1,6 @@
-function! s:explorer_current_dir()
+function! Explorer_current_dir()
   let node_info = CocAction('runCommand', 'explorer.getNodeInfo', 0)
-  return fnamemodify(node_info['fullpath'], ':h')
-endfunction
-
-function! s:new_term(layout)
-  let path = resolve(s:explorer_current_dir())
-  exec a:layout
-  exec "startinsert | term cd " . path . " && $SHELL"
-  exec "file term"
+  return resolve(fnamemodify(node_info['fullpath'], ':h'))
 endfunction
 
 function! s:DisableFileExplorer()
@@ -34,10 +27,10 @@ function! s:init_explorer()
   set winblend=10
 
   " vim-floaterm
-  nmap <buffer> <C-t> :call <SID>new_term('tabnew')<CR>
-  nmap <buffer> <leader>tv :call <SID>new_term('vsplit')<CR>
+  nmap <buffer> <C-t> :lua explorer_new_term_tab()<CR>
+  nmap <buffer> <leader>tv :lua explorer_new_term_vsplit()<CR>
   nmap <buffer> <leader>gg :LazyGitCurrentExplorer<CR>
-  command! LazyGitCurrentExplorer call luaeval("require'lazygit'.lazygit(_A[1])", [GetCurrentGitPath(s:explorer_current_dir())])
+  command! LazyGitCurrentExplorer call luaeval("require'lazygit'.lazygit(_A[1])", [GetCurrentGitPath(Explorer_current_dir())])
 endfunction
 
 function! s:enter_explorer()

@@ -60,8 +60,13 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter")
 
 	-- Telescope
-	use("nvim-lua/plenary.nvim")
-	use("nvim-telescope/telescope.nvim")
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+		config = function()
+			require("telescope").load_extension("lazygit")
+		end,
+	})
 
 	-- Themes
 	use("sainnhe/sonokai")
@@ -87,7 +92,7 @@ return require("packer").startup(function(use)
 
 	-- Git
 	use("APZelos/blamer.nvim")
-	use("kdheepak/lazygit.nvim")
+	-- use("kdheepak/lazygit.nvim")
 
 	use("tpope/vim-dispatch")
 

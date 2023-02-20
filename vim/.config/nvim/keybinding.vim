@@ -175,6 +175,7 @@ function! GetCurrentGitPath(path)
   return path
 endfunction
 nnoremap <silent> <leader>gg :LazyGitCurrent<CR>
+autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
 
 command! LazyGitCurrent call luaeval("require'lazygit'.lazygit(_A[1])", [GetCurrentGitPath(expand('%:p:h'))])
 command! -nargs=1 -range LazyGitPath call luaeval("require'lazygit'.lazygit(_A[1])", [<f-args>])
