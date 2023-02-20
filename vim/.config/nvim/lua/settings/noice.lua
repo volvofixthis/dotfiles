@@ -36,7 +36,7 @@ require("noice").setup({
 			filter = {
 				event = "msg_show",
 				kind = "",
-				find = "Git:",
+				find = "git in:",
 			},
 			opts = { skip = true },
 		},
