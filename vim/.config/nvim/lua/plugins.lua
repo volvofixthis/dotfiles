@@ -25,23 +25,22 @@ return require("packer").startup(function(use)
 	use({ "volvofixthis/rest.nvim", branch = "fixes" })
 	use("wesleimp/stylua.nvim")
 	use("neovim/nvim-lspconfig")
-	-- use({
-	-- 	"folke/noice.nvim",
-	-- 	config = function()
-	-- 		require("noice").setup({
-	-- 			-- add any options here
-	-- 		})
-	-- 	end,
-	-- 	requires = {
-	-- 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		-- OPTIONAL:
-	-- 		--   `nvim-notify` is only needed, if you want to use the notification view.
-	-- 		--   If not available, we use `mini` as the fallback
-	-- 		"rcarriga/nvim-notify",
-	-- 	},
-	-- })
-	use("doums/oterm.nvim")
+	use({
+		"folke/noice.nvim",
+		config = function()
+			require("noice").setup({
+				-- add any options here
+			})
+		end,
+		requires = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+			"rcarriga/nvim-notify",
+		},
+	})
 	use({ "fedepujol/move.nvim", commit = "2cd533590" })
 
 	-- DAP
@@ -156,7 +155,7 @@ return require("packer").startup(function(use)
 
 	use({ "numToStr/BufOnly.nvim" })
 
-    use("stevearc/aerial.nvim")
+	use("stevearc/aerial.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
