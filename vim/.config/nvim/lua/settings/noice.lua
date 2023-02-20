@@ -28,6 +28,22 @@ require("noice").setup({
 			filter = {
 				event = "msg_show",
 				kind = "",
+				find = "BufOnly",
+			},
+			opts = { skip = true },
+		},
+		{
+			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "Git:",
+			},
+			opts = { skip = true },
+		},
+		{
+			filter = {
+				event = "msg_show",
+				kind = "",
 				find = "The only match",
 			},
 			opts = { skip = true },

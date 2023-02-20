@@ -162,6 +162,14 @@ return require("packer").startup(function(use)
 
 	use("stevearc/aerial.nvim")
 
+	-- use({
+	-- 	"giusgad/pets.nvim",
+	-- 	requires = {
+	-- 		"edluffy/hologram.nvim",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- })
+
 	if packer_bootstrap then
 		require("packer").sync()
 	end
