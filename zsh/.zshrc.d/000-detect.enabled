@@ -1,0 +1,3 @@
+OSNAME=$(uname)
+OSNAME=${OSNAME:l}
+SHELL_NAME=$(basename $SHELL)

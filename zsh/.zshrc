@@ -2,7 +2,7 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-setopt autocd extendedglob nomatch notify histignoredups correct globdots cdablevars
+setopt autocd extendedglob nomatch notify histignoredups globdots cdablevars
 unsetopt beep
 bindkey -e
 # End of lines configured by zsh-newuser-install
@@ -31,9 +31,26 @@ function zvm_after_lazy_keybindings() {
 # ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
 # ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
 # ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
-# [[ -e ~/.bashrc ]] && emulate bash -c 'source ~/.bashrc'
-[[ -e ~/.bashrc ]] && source ~/.bashrc
-stty -ixon
+
+# setting up env
+# If not running interactively, don't do anything
+# [[ $- != *i* ]] && return
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+if [ -d ~/.zshrc.d ]; then
+        for rc in ~/.zshrc.d/*.enabled; do
+                if [ -f "$rc" ]; then
+                        source "$rc"
+                fi
+        done
+fi
+unset rc
+
+# disable XON/XOFF flow control
+stty -ixon 
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
