@@ -75,15 +75,11 @@ return require("packer").startup(function(use)
 	use("vim-airline/vim-airline")
 	use("vim-airline/vim-airline-themes")
 
-	-- Tests
-	use("vim-test/vim-test")
-
 	-- Icons
 	use("kyazdani42/nvim-web-devicons")
-	-- use("ryanoasis/vim-devicons")
 
 	-- Bufferline
-	use({ "akinsho/bufferline.nvim", tag = "v3.*" })
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 
 	-- Workspaces
 	use("andreyorst/SimpleWorkspaces.vim")
@@ -127,7 +123,7 @@ return require("packer").startup(function(use)
 	use("moll/vim-bbye")
 
 	-- indent blankline
-	use("lukas-reineke/indent-blankline.nvim")
+	-- use("lukas-reineke/indent-blankline.nvim")
 
 	use("tpope/vim-unimpaired")
 

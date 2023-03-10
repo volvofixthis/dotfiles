@@ -1,5 +1,8 @@
 set autowrite
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
+let g:go_fmt_options = {
+    \ 'gofmt': '-s',
+    \ }
 let g:go_autodetect_gopath = 1
 let g:go_list_type = "quickfix"
 

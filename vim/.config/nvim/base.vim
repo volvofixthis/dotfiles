@@ -5,7 +5,7 @@ set langmenu=en_US.UTF-8
 language en_US.UTF-8
 set encoding=utf-8
 set number
-" set noswapfile
+set noswapfile
 set scrolloff=7
 set cursorline
 set tabstop=4

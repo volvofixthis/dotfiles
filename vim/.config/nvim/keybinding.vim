@@ -13,7 +13,7 @@ endfunction
 nnoremap <silent> re :call <SID>open_explorer_reveal()<CR>
 
 function! s:open_explorer_project()
-  echo g:workspace_path
+  " echo g:workspace_path
   exec ":CocCommand explorer ".g:workspace_path
 endfunction
 
@@ -31,7 +31,7 @@ inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm1()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
@@ -192,7 +192,7 @@ nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
     exec ":set mouse-=a"
     exec ":only"
     exec ":setlocal nolist"
-    exec ":IndentBlanklineDisable"
+    " exec ":IndentBlanklineDisable"
     exec ":setlocal signcolumn=no"
     exec ":setlocal nonumber norelativenumber"
 endfunction
@@ -202,7 +202,7 @@ nnoremap <silent> <leader>cm :call <SID>enter_cm()<CR>
 function! s:show_whitespace()
     exec ":set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
     exec ":set list"
-    exec ":IndentBlanklineEnable"
+    " exec ":IndentBlanklineEnable"
 endfunction
 
 nnoremap <silent> <leader>sw :call <SID>show_whitespace()<CR>

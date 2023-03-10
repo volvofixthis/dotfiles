@@ -3,6 +3,10 @@ if [ ! -f ~/bin/nvim ]; then
     chmod +x ~/bin/nvim
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 fi
-alias vim="nvim"
+if [ -z "$NVIM" ]; then
+    alias vim="nvim"
+else
+    alias vim="nvr --remote-tab"
+fi
 alias nvimconfig='nvim ~/.config/nvim/'
 export EDITOR=$HOME/bin/nvim

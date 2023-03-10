@@ -6,7 +6,7 @@ local function gen_callback(layout, pwd_func)
 	return function()
 		path = pwd_func()
 		vim.cmd(layout)
-		vim.cmd("term cd " .. path .. " && $SHELL")
+		vim.cmd("term cd " .. path .. " && $SHELL && alias vim='nvr --remote-tab'")
 		vim.cmd("file term" .. vim.fn.bufnr())
 		vim.api.nvim_buf_set_keymap(0, "t", "<Esc>", "", {
 			noremap = true,

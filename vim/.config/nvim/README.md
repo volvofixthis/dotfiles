@@ -80,4 +80,10 @@ source ${WORSPACE}/env/bin/activate
     - [X] Env воркспейса
     - [X] Glow
     - [X] Настройка CoC
-    - [ ] Установка с нуля
+    - [X] Установка с нуля
+    - [ ] Поиск файлов, грепа в директории которая выбрана, либо директории файла в которой он находится
+    - [*] Что с MD файлами?
+    - [ ] Открытие эксплорера при открытии конкретного файла
+    - [ * Fix render problem when saving golang files
+    - [ ] Try to open file in existing window via nvr add custom function
+    - [ ] Add generation links to repository
