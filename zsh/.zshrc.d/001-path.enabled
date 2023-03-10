@@ -1,7 +1,7 @@
 set_path(){
 
     # Check if user id is 1000 or higher
-    [ "$(id -u)" -ge 1000 ] || return
+    # [ "$(id -u)" -ge 1000 ] || return
 
     for i in "$@";
     do
@@ -16,4 +16,5 @@ set_path(){
     done
 }
 
+set_path /opt/homebrew/bin
 set_path $HOME/.local/bin $HOME/bin

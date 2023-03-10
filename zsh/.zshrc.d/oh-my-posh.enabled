@@ -1,5 +1,9 @@
 if [ ! -f ~/bin/oh-my-posh ]; then
-    wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O ~/bin/oh-my-posh
+    URL="https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v14.10.1/posh-linux-amd64"
+    if [ "$OSNAME" = "darwin" ]; then
+        URL="https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v14.10.1/posh-darwin-arm64"
+    fi
+    wget $URL -O ~/bin/oh-my-posh
     chmod +x ~/bin/oh-my-posh
     mkdir ~/.poshthemes
     wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
