@@ -1,9 +1,8 @@
-if command -v nvim &> /dev/null && [ "$OSNAME" = "linux" ]; then
-    wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/bin/nvim
-    chmod +x ~/bin/nvim
-fi
-if [ -f ~/bin/nvim.installed ]; then
-    touch ~/bin/nvim.installed
+# if command -v nvim &> /dev/null && [ "$OSNAME" = "linux" ]; then
+#     wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage -O ~/bin/nvim
+#     chmod +x ~/bin/nvim
+# fi
+if [ -d ~/.config/nvim ]; then
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 fi
 if [ -z "$NVIM" ]; then
