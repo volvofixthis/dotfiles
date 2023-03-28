@@ -1,10 +1,11 @@
-local notify = require("notify")
-
 vim.api.nvim_set_keymap("n", "<Esc>", "", {
 	noremap = true,
 	callback = function()
-		notify.dismiss()
 		vim.cmd("nohlsearch")
+		if is_module_available("notify") then
+			local notify = require("notify")
+			notify.dismiss()
+		end
 	end,
 })
 

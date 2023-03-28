@@ -16,7 +16,7 @@
   },
   "coc.preferences.messageLevel": "error",
   "suggest.autoTrigger": "none",
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   "diagnostic.errorSign": "✘",
   "diagnostic.warningSign": "!",
   "diagnostic.infoSign": "?",
@@ -92,7 +92,9 @@
     ],
     "filenames": [],
     "patternMatches": [
-      "^\\.git$"
+      "^\\.git$",
+      "^vendor$",
+      "^node_modules$"
     ]
   },
   "explorer.buffer.root.template": "[icon & 1] OPEN EDITORS",

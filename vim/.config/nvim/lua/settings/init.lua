@@ -1,3 +1,4 @@
+require("settings.helpers")
 require("settings.filetype")
 require("settings.rest")
 require("settings.legendary")

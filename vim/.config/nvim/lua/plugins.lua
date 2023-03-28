@@ -89,6 +89,7 @@ return require("packer").startup(function(use)
 	-- Git
 	use("APZelos/blamer.nvim")
 	-- use("kdheepak/lazygit.nvim")
+	use("volvofixthis/vim-gh-line")
 
 	use("tpope/vim-dispatch")
 

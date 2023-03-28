@@ -1,5 +1,6 @@
 export KUBECONFIG=$HOME/.kube/config
 alias k=kubectl
+alias nettools="k run -it --image=jrecord/nettools nettools"
 if [ "$(basename $SHELL)" = "zsh" ] && command -v kubectl &> /dev/null; then
     source <(kubectl completion zsh)
     compdef __start_kubectl k

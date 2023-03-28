@@ -1,0 +1,1 @@
+kubectl -n $1 get secret $2-kubeconfig -o jsonpath='{.data.value}' | base64 -d > ~/.kube/config-slave-$1-cluster-$2

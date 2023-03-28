@@ -2,14 +2,13 @@ require("filetype").setup({
 	overrides = {
 		extensions = {
 			rest = "http",
-			enabled = "text",
 			sh = "bash",
-            enabled = "bash",
+			enabled = "bash",
 		},
 		function_extensions = {
 			["sql"] = function()
 				vim.bo.filetype = "sql"
-				vim.bo.coc_suggest_disable = true
+				-- vim.bo.coc_suggest_disable = true
 			end,
 			["gcss"] = function()
 				vim.opt.tabstop = 2

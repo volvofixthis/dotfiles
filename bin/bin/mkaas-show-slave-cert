@@ -1,0 +1,1 @@
+cat .kube/config-slave-8-1-test2 | yq .users.0.user.client-certificate-data | base64 -d | openssl x509 -text -noout

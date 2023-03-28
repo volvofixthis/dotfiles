@@ -4,12 +4,28 @@ require("legendary").setup({
 		-- Telescope
 		{
 			"<leader>ff",
-			":Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>",
+			function()
+				local path = get_current_folder_path()
+				vim.cmd(
+					"Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,"
+						.. "-g,!.git/,--iglob,!*.pyc,-g,!vendor/,-g,!node_modules/,"
+						.. path
+						.. " prompt_prefix=🔍"
+				)
+			end,
 			description = "Find files",
 		},
 		{
 			"<leader>fg",
-			":Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>",
+			function()
+				local path = get_current_folder_path()
+				vim.cmd(
+					"Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,"
+						.. "-g,!.git,--iglob,!*.pyc,,-g,!vendor/,-g,!node_modules/,"
+						.. path
+						.. " prompt_prefix=🔍"
+				)
+			end,
 			description = "Live grep",
 			mode = "n",
 		},
@@ -23,19 +39,37 @@ require("legendary").setup({
 			"<leader>ft",
 			":Telescope help_tags<CR>",
 			description = "Telescope help tags",
+			mode = "n",
 		},
+		-- LazyGit
 		{
 			"<leader>tg",
 			":lua require('telescope').extensions.lazygit.lazygit()<CR>",
 			description = "Git repositories",
+			mode = "n",
 		},
+		{
+			"<leader>gg",
+			function()
+				require("lazygit").lazygit(get_current_git_folder_path())
+			end,
+			description = "LazyGit",
+			mode = "n",
+		},
+		-- GitBlame
+		{
+			"<leader>bl",
+			"BlamerToggle",
+			description = "Git Blame",
+			mode = "n",
+		},
+		-- Legendary
 		{
 			"<leader>ll",
 			":Legendary<CR>",
 			description = "Legendary",
 			mode = "n",
 		},
-		-- Legendary
 		{
 			"<leader>lk",
 			":Legendary keymaps<CR>",

@@ -1,10 +1,6 @@
-local function get_current_folder_name()
-	return vim.fn.resolve(vim.fn.expand("%:p:h"))
-end
-
-local function gen_callback(layout, pwd_func)
+local function gen_callback(layout)
 	return function()
-		path = pwd_func()
+		local path = get_current_folder_path()
 		vim.cmd(layout)
 		vim.cmd("term cd " .. path .. " && $SHELL && alias vim='nvr --remote-tab'")
 		vim.cmd("file term" .. vim.fn.bufnr())
@@ -24,11 +20,9 @@ local function gen_callback(layout, pwd_func)
 	end
 end
 
-explorer_new_term_tab = gen_callback("tabnew", vim.fn.Explorer_current_dir)
-explorer_new_term_vsplit = gen_callback("vsplit", vim.fn.Explorer_current_dir)
-new_term_tab = gen_callback("tabnew", get_current_folder_name)
-new_term_split = gen_callback("split", get_current_folder_name)
-new_term_vsplit = gen_callback("vsplit", get_current_folder_name)
+new_term_tab = gen_callback("tabnew")
+new_term_split = gen_callback("split")
+new_term_vsplit = gen_callback("vsplit")
 
 vim.api.nvim_set_keymap("n", "<C-t>", "", {
 	noremap = true,

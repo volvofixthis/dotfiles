@@ -155,17 +155,8 @@ nmap <leader>cr <Plug>(coc-references)
 autocmd BufEnter *.py nmap <buffer> <leader>tc :lua require('dap-python').test_class()<CR>
 autocmd BufEnter *.py nmap <buffer> <leader>tf :lua require('dap-python').test_method()<CR>
 
-" Find files using Telescope command-line sugar.
-" nnoremap <leader>ff <Cmd>Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
-" nnoremap <leader>fg <Cmd>Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,--iglob,!.git,--iglob,!*.pyc prompt_prefix=🔍<CR>
-" nnoremap <leader>fb <Cmd>Telescope buffers<CR>
-" nnoremap <leader>fh <Cmd>Telescope help_tags<CR>
-
 " Using Lua functions
 nnoremap <leader>pp :lua require'telescope.builtin'.planets{}<CR>
-
-" GitBlame
-nmap <silent> <leader>bl <Cmd>BlamerToggle<CR>
 
 " LazyGit
 function! GetCurrentGitPath(path)
@@ -174,12 +165,9 @@ function! GetCurrentGitPath(path)
   let path = fnamemodify(path, ':p')
   return path
 endfunction
-nnoremap <silent> <leader>gg :LazyGitCurrent<CR>
 autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
 
-command! LazyGitCurrent call luaeval("require'lazygit'.lazygit(_A[1])", [GetCurrentGitPath(expand('%:p:h'))])
-command! -nargs=1 -range LazyGitPath call luaeval("require'lazygit'.lazygit(_A[1])", [<f-args>])
-
+" Git
 function! s:copy_git_branch()
   let path = expand("%:p:h")
   let s = system("cd ".resolve(path)." && git branch --show-current | tr -d '\\n'")
@@ -187,6 +175,7 @@ function! s:copy_git_branch()
 endfunction
 nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
 
+" Copy mode
 :function! s:enter_cm()
     exec ":normal! \<s-v>"
     exec ":set mouse-=a"
