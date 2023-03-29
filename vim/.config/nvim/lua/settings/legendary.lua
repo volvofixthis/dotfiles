@@ -6,12 +6,21 @@ require("legendary").setup({
 			"<leader>ff",
 			function()
 				local path = get_current_folder_path()
-				vim.cmd(
-					"Telescope find_files find_command=rg,-L,--ignore,--hidden,--files,"
-						.. "-g,!.git/,--iglob,!*.pyc,-g,!vendor/,-g,!node_modules/,"
-						.. path
-						.. " prompt_prefix=🔍"
-				)
+				require("telescope.builtin").find_files({
+					cwd = path,
+					prompt_prefix = "🔍",
+					find_command = {
+						"rg",
+						"-L",
+						"--ignore",
+						"--hidden",
+						"--files",
+						"-g=!.git/",
+						"--iglob=!*.pyc",
+						"-g=!vendor/",
+						"-g=!node_modules/",
+					},
+				})
 			end,
 			description = "Find files",
 		},
@@ -19,14 +28,27 @@ require("legendary").setup({
 			"<leader>fg",
 			function()
 				local path = get_current_folder_path()
-				vim.cmd(
-					"Telescope live_grep vimgrep_arguments=rg,-L,--hidden,--color=never,--no-heading,--with-filename,--line-number,--column,--smart-case,"
-						.. "-g,!.git,--iglob,!*.pyc,,-g,!vendor/,-g,!node_modules/,"
-						.. path
-						.. " prompt_prefix=🔍"
-				)
+				require("telescope.builtin").live_grep({
+					cwd = path,
+					prompt_title = "Live grep current directory",
+					prompt_prefix = "🔍",
+					additional_args = {
+						"-L",
+						"--hidden",
+						"--color=never",
+						"--no-heading",
+						"--with-filename",
+						"--line-number",
+						"--column",
+						"--smart-case",
+						"-g=!.git",
+						"--iglob=!*.pyc",
+						"-g=!vendor/",
+						"-g=!node_modules/",
+					},
+				})
 			end,
-			description = "Live grep",
+			description = "Live grep current directory",
 			mode = "n",
 		},
 		{
