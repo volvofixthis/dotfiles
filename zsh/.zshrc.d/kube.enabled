@@ -13,3 +13,4 @@ k_use_cfg () {
     fi
     echo "Used $KUBECONFIG"
 }
+set_path ~/bin/kubectl-plugins

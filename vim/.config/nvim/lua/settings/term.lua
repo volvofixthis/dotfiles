@@ -16,6 +16,12 @@ local function gen_callback(layout)
 				vim.cmd("q!")
 			end,
 		})
+		vim.api.nvim_buf_set_keymap(0, "n", "<C-q>", "", {
+			noremap = true,
+			callback = function()
+				vim.cmd("q!")
+			end,
+		})
 		vim.cmd("startinsert")
 	end
 end
