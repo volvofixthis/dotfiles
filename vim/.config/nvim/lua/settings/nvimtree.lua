@@ -98,9 +98,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         signcolumn = "yes",
         mappings = {
             custom_only = false,
-            list = {
-                -- user mappings go here
-            },
+            list = {},
         },
         float = {
             enable = false,
@@ -118,7 +116,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     renderer = {
         add_trailing = false,
         group_empty = false,
-        highlight_git = false,
+        highlight_git = true,
         full_name = false,
         highlight_opened_files = "none",
         highlight_modified = "none",
@@ -191,8 +189,8 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         args = {},
     },
     diagnostics = {
-        enable = false,
-        show_on_dirs = false,
+        enable = true,
+        show_on_dirs = true,
         show_on_open_dirs = true,
         debounce_delay = 50,
         severity = {

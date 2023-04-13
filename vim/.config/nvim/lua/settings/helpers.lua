@@ -11,6 +11,16 @@ function get_current_folder_path()
     return vim.fn.resolve(vim.fn.expand("%:p:h"))
 end
 
+function path_startswith(path1, path2)
+    local path1_len = #path1
+    local path2_len = #path2
+    if path1_len < path2_len then
+        return false
+    end
+    local sub_path = string.sub(path1, 1, path2_len)
+    return sub_path == path2
+end
+
 function get_current_git_folder_path()
     return vim.fn.GetCurrentGitPath(get_current_folder_path())
 end

@@ -1,16 +1,5 @@
 """""" KEYBINDING CONFIG FOR NVIM"""""""""
 
-"""FILE MANAGER"""
-
-nnoremap <silent> re :NvimTreeFindFile<CR>
-
-function! s:toggle_file_explorer_project()
-  " echo g:workspace_path
-  exec ":NvimTreeToggle ".g:workspace_path
-endfunction
-nmap <leader>fe :call <SID>toggle_file_explorer_project()<CR>
-nmap <leader>fc :NvimTreeFocus<CR>
-
 " close buffer
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
 nnoremap <leader>Q :sil! q<CR>
