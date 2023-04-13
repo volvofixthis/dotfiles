@@ -52,6 +52,11 @@ source ${WORSPACE}/env/bin/activate
 Вероятно нужно это пока автор не внесёт нужные изменения https://issueexplorer.com/issue/charmbracelet/glow/212  
 Бинарь потом нужно закинуть в .local/bin  
 Ещё по какой-то причине пишлось закомментить скачивание glow, он почему-то его не видел
+## Cmp
+yay -S pylyzer efm-langserver lua-language-server shellcheck
+go install mvdan.cc/sh/v3/cmd/shfmt@latest
+npm install -g prettier prettier-plugin-sh prettier-plugin-sql 
+
 
 ## Хоткеи которые использую активно
 - TAB/S-TAB переход по буферам

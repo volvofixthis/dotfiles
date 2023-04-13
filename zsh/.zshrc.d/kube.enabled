@@ -1,11 +1,12 @@
+#!/bin/bash
 export KUBECONFIG=$HOME/.kube/config
 alias k=kubectl
 alias nettools="k run -it --image=jrecord/nettools nettools"
-if [ "$(basename $SHELL)" = "zsh" ] && command -v kubectl &> /dev/null; then
+if [ "$(basename $SHELL)" = "zsh" ] && command -v kubectl &>/dev/null; then
     source <(kubectl completion zsh)
     compdef __start_kubectl k
 fi
-k_use_cfg () {
+k_use_cfg() {
     if [ -z "$1" ] || [ "$1" = "last" ]; then
         export KUBECONFIG="$(\ls -1t ~/.kube/* | head -1)"
     else
