@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 require("settings.helpers")
 require("settings.filetype")
 require("settings.rest")
@@ -20,3 +23,4 @@ require("settings.autopairs")
 require("settings.peekup")
 require("settings.cmp")
 require("settings.lspconfig")
+require("settings.nvimtree")

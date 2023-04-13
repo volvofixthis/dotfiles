@@ -4,7 +4,7 @@ if [ "$1" = "ls" ]; then
     exit
 elif [ "$1" = "open" ]; then
     export WORKSPACE="$HOME/.vim/saved_workspaces/$2/"
-    CMD="nvim +'WorkspaceOpen $2' +'CocCommand explorer --no-toggle ${WORKSPACE}'"
+    CMD="nvim +'WorkspaceOpen $2' +'NvimTreeOpen ${WORKSPACE}'"
     ENV_FILE="${WORKSPACE}.env"
     if test -f "$ENV_FILE"; then
       set -a

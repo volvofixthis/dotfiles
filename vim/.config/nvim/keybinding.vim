@@ -1,23 +1,15 @@
 """""" KEYBINDING CONFIG FOR NVIM"""""""""
 
 """FILE MANAGER"""
-" nnoremap <leader>b  :Lexplore<CR>
-" nnoremap <C-b> :NERDTreeToggle<CR>
-function! s:open_explorer_reveal()
-  let path = expand("%:p:h")
-  echo "reveal in coc explorer".path
-  exec ":call CocAction('runCommand', 'explorer.doAction', 'closest', ['quit'])"
-  exec ":CocCommand explorer --no-toggle ".path
-endfunction
 
-nnoremap <silent> re :call <SID>open_explorer_reveal()<CR>
+nnoremap <silent> re :NvimTreeFindFile<CR>
 
-function! s:open_explorer_project()
+function! s:toggle_file_explorer_project()
   " echo g:workspace_path
-  exec ":CocCommand explorer ".g:workspace_path
+  exec ":NvimTreeToggle ".g:workspace_path
 endfunction
-
-nmap <leader>fe :call <SID>open_explorer_project()<CR>
+nmap <leader>fe :call <SID>toggle_file_explorer_project()<CR>
+nmap <leader>fc :NvimTreeFocus<CR>
 
 " close buffer
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>

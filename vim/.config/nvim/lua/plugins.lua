@@ -62,8 +62,10 @@ return require("packer").startup(function(use)
     use("RishabhRD/nvim-cheat.sh")
 
     -- coc
-    use({ "neoclide/coc.nvim", branch = "release" })
-    use("neoclide/coc-python")
+    -- use({ "neoclide/coc.nvim", branch = "release" })
+
+    -- Nvimtree
+    use("nvim-tree/nvim-tree.lua")
 
     use("nvim-treesitter/nvim-treesitter")
 
