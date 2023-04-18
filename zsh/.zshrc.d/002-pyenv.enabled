@@ -1,2 +1,2 @@
 export PYENV_ROOT="$HOME/.pyenv"
-set_path $HOME/.pyenv
+set_path $PYENV_ROOT/bin
