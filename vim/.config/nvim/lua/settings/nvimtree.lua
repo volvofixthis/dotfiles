@@ -208,7 +208,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         dotfiles = false,
         git_clean = false,
         no_buffer = false,
-        custom = { "^\\.git$", "\\.py$", "\\.obj$", "\\.pyc$", "\\.a$", "\\.o$", "^vendor$", "^node_modules$" },
+        custom = { "^\\.git$", "\\.obj$", "\\.pyc$", "\\.a$", "\\.o$", "^vendor$", "^node_modules$" },
         exclude = {},
     },
     filesystem_watchers = {
