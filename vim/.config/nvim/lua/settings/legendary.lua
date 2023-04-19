@@ -116,7 +116,7 @@ require("legendary").setup({
         -- GitBlame
         {
             "<leader>bl",
-            "BlamerToggle",
+            ":BlamerToggle<CR>",
             description = "Git Blame",
             mode = "n",
         },
