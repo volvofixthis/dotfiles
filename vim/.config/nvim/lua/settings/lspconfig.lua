@@ -46,21 +46,33 @@ lspconfig.efm.setup {
             },
             go = {
                 { formatCommand = "goimports", formatStdin = true },
-                { formatCommand = "gofmt",     formatStdin = true },
+                { formatCommand = "gofmt -s",  formatStdin = true },
             }
         },
     },
     filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim' }
 }
-lspconfig.pyright.setup({ on_attach = lspformat.on_attach, capabilities = capabilities })
+lspconfig.pyright.setup({
+    on_attach = function(client, buffer)
+        client.handlers["textDocument/publishDiagnostics"] = function(...)
+        end
+        lspformat.on_attach(client, buffer)
+    end,
+    capabilities = capabilities
+})
 lspconfig.rust_analyzer.setup({ on_attach = lspformat.on_attach, capabilities = capabilities })
+-- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting
 lspconfig.gopls.setup({
+    on_attach = function(client, buffer)
+        client.handlers["textDocument/formatting"] = function(...)
+        end
+        client.handlers["textDocument/rangeFormatting"] = function(...)
+        end
+    end,
     cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
-    on_attach = lspformat.on_attach,
     capabilities = capabilities
 })
 lspconfig.lua_ls.setup({
-    on_attach = lspformat.on_attach,
     capabilities = capabilities,
     settings = {
         Lua = {

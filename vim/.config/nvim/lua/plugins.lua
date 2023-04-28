@@ -33,22 +33,22 @@ return require("packer").startup(function(use)
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-cmdline')
     use('hrsh7th/nvim-cmp')
-    use({
-        "folke/noice.nvim",
-        config = function()
-            require("noice").setup({
-                -- add any options here
-            })
-        end,
-        requires = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-            "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
-        },
-    })
+    -- use({
+    --     "folke/noice.nvim",
+    --     config = function()
+    --         require("noice").setup({
+    --             -- add any options here
+    --         })
+    --     end,
+    --     requires = {
+    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    --         "MunifTanjim/nui.nvim",
+    --         -- OPTIONAL:
+    --         --   `nvim-notify` is only needed, if you want to use the notification view.
+    --         --   If not available, we use `mini` as the fallback
+    --         "rcarriga/nvim-notify",
+    --     },
+    -- })
     use({ "fedepujol/move.nvim", commit = "2cd533590" })
 
     -- DAP
@@ -67,7 +67,7 @@ return require("packer").startup(function(use)
     -- Nvimtree
     use("nvim-tree/nvim-tree.lua")
 
-    use("nvim-treesitter/nvim-treesitter")
+    use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.0" })
 
     -- Telescope
     use({
@@ -113,14 +113,6 @@ return require("packer").startup(function(use)
 
     use({ "ellisonleao/glow.nvim", branch = "main" })
 
-    -- JS
-    use("pangloss/vim-javascript")
-    use("leafgarland/typescript-vim")
-    use("peitalin/vim-jsx-typescript")
-    use({ "styled-components/vim-styled-components", branch = "main" })
-    use("jparise/vim-graphql")
-    use("acro5piano/vim-jsx-replace-tag")
-
     -- Autopairs
     use("windwp/nvim-autopairs")
 
@@ -140,20 +132,15 @@ return require("packer").startup(function(use)
 
     use({ "alexghergh/nvim-tmux-navigation" })
 
-    use({
-        "naps62/pair-gpt.nvim",
-        config = function()
-            require("pair-gpt").setup()
-        end,
-    })
+    -- use({
+    --     "naps62/pair-gpt.nvim",
+    --     config = function()
+    --         require("pair-gpt").setup()
+    --     end,
+    -- })
 
     use({
-        "jackMort/ChatGPT.nvim",
-        config = function()
-            require("chatgpt").setup({
-                -- optional configuration
-            })
-        end,
+        "volvofixthis/ChatGPT.nvim",
         requires = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
@@ -182,9 +169,9 @@ return require("packer").startup(function(use)
         config = function()
             require("neogen").setup({})
         end,
-        requires = "nvim-treesitter/nvim-treesitter",
+        -- requires = "nvim-treesitter/nvim-treesitter",
         -- Uncomment next line if you want to follow only stable versions
-        -- tag = "*"
+        tag = "2.13.2"
     })
 
     if packer_bootstrap then

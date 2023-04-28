@@ -12,7 +12,7 @@ vim.api.nvim_set_keymap("n", "<Esc>", "", {
 vim.api.nvim_set_keymap("n", "<C-s>", "", {
     noremap = true,
     callback = function()
-        vim.lsp.buf.format({ async = true })
+        vim.lsp.buf.format({ async = false })
         vim.cmd("w")
     end,
 })
@@ -20,7 +20,7 @@ vim.api.nvim_set_keymap("n", "<C-s>", "", {
 vim.api.nvim_set_keymap("i", "<C-s>", "", {
     noremap = true,
     callback = function()
-        vim.lsp.buf.format({ async = true })
+        vim.lsp.buf.format({ async = false })
         vim.cmd("w")
     end,
 })
