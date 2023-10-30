@@ -10,6 +10,7 @@ require("legendary").setup({
                 local api = require('nvim-tree.api')
                 local path = vim.g.workspace_path
                 local relative_path = utils.path_relative(get_current_file_path(), path)
+                api.tree.change_root(path)
                 api.tree.find_file({buf = relative_path, open = true, focus = true, update_root = false })
             end,
             description = "Reveal file",
