@@ -13,6 +13,9 @@ cmp.event:on(
 )
 
 cmp.setup({
+    completion = {
+        autocomplete = false,
+    },
     snippet = {
         -- REQUIRED - you must specify a snippet engine
         expand = function(args)
@@ -26,6 +29,7 @@ cmp.setup({
         -- completion = cmp.config.window.bordered(),
         -- documentation = cmp.config.window.bordered(),
     },
+    preselect = cmp.PreselectMode.None,
     mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then

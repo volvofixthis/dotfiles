@@ -52,7 +52,7 @@ return require("packer").startup(function(use)
     use({ "fedepujol/move.nvim", commit = "2cd533590" })
 
     -- DAP
-    use("leoluz/nvim-dap-go")
+    use({ "volvofixthis/nvim-dap-go", branch = "fixes" })
     use("mfussenegger/nvim-dap-python")
     use("mfussenegger/nvim-dap")
     use("rcarriga/nvim-dap-ui")
@@ -65,7 +65,8 @@ return require("packer").startup(function(use)
     -- use({ "neoclide/coc.nvim", branch = "release" })
 
     -- Nvimtree
-    use("nvim-tree/nvim-tree.lua")
+    -- use("nvim-tree/nvim-tree.lua")
+    use({"/home/loki/projects/nvim-tree.lua", branch = "fixes"})
 
     use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.0" })
 

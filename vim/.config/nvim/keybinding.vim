@@ -78,6 +78,8 @@ nmap <C-d> <Plug>(coc-definition)
 let g:go_def_mapping_enabled = 0
 autocmd BufEnter *.go nmap <buffer> <leader>t  <Plug>(go-test)
 autocmd BufEnter *.go nmap <buffer> <leader>tf <Plug>(go-test-func)
+autocmd BufEnter *.go nmap <buffer> <leader>td :lua require('dap-go').debug_test()<CR>
+autocmd BufEnter *.go nmap <buffer> <leader>tl :lua require('dap-go').debug_test_last()<CR>
 autocmd BufEnter *.go nmap <buffer> <leader>c  <Plug>(go-coverage-toggle)
 autocmd BufEnter *.go nmap <buffer> <leader>i  <Plug>(go-info)
 autocmd BufEnter *.go nmap <buffer> <leader>ii  <Plug>(go-implements)
@@ -92,17 +94,25 @@ nnoremap <leader>pp :lua require'telescope.builtin'.planets{}<CR>
 
 " LazyGit
 function! GetCurrentGitPath(path)
-  echo "git in: "..a:path
+  " echo "git in: "..a:path
   let path = finddir('.git/..', a:path.';')
   let path = fnamemodify(path, ':p')
   return path
 endfunction
+
+function! GetTopModPath(path)
+  " echo "git in: "..a:path
+  let path = findfile('go.mod', a:path.';')
+  let path = fnamemodify(path, ':p:h')
+  return path
+endfunction
+
 autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
 
 " Git
 function! s:copy_git_branch()
   let path = expand("%:p:h")
-  let s = system("cd ".resolve(path)." && git branch --show-current | tr -d '\\n'")
+  let s = system("cd ".(path)." && git branch --show-current | tr -d '\\n'")
   let @+ = substitute(s, '\n\+$', '', '')
 endfunction
 nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
@@ -252,3 +262,6 @@ autocmd BufRead * :lua load_breakpoints()
 
 " Symbol outline
 nnoremap <Leader>so :AerialToggle! right<CR>
+
+" 
+" autocmd BufReadCmd * :lua print(vim.fn.expand("<afile>"))

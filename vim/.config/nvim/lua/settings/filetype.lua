@@ -4,6 +4,7 @@ require("filetype").setup({
             rest = "http",
             sh = "bash",
             enabled = "bash",
+            env = "bash"
         },
         function_extensions = {
             ["sql"] = function()

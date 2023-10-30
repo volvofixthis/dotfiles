@@ -11,6 +11,14 @@ function get_current_folder_path()
     return vim.fn.resolve(vim.fn.expand("%:p:h"))
 end
 
+function get_current_file_path()
+    local nvimtree_api = require("nvim-tree.api")
+    if vim.bo.filetype == "NvimTree" then
+        return nvimtree_api.tree.get_node_under_cursor().absolute_path
+    end
+    return vim.fn.resolve(vim.fn.expand("%"))
+end
+
 function path_startswith(path1, path2)
     local path1_len = #path1
     local path2_len = #path2
@@ -38,4 +46,9 @@ function is_module_available(name)
         end
         return false
     end
+end
+
+function file_exists(name)
+    if type(name)~="string" then return false end
+    return os.rename(name,name) and true or false
 end

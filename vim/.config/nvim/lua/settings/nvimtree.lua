@@ -83,23 +83,17 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     reload_on_bufenter = false,
     respect_buf_cwd = false,
     on_attach = my_on_attach,
-    remove_keymaps = false,
     select_prompts = false,
     view = {
         centralize_selection = false,
         cursorline = true,
         debounce_delay = 15,
-        width = 30,
-        hide_root_folder = false,
+        width = 60,
         side = "left",
         preserve_window_proportions = false,
         number = false,
         relativenumber = false,
         signcolumn = "yes",
-        mappings = {
-            custom_only = false,
-            list = {},
-        },
         float = {
             enable = false,
             quit_on_focus_loss = true,
@@ -115,7 +109,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     },
     renderer = {
         add_trailing = false,
-        group_empty = false,
+        group_empty = true,
         highlight_git = true,
         full_name = false,
         highlight_opened_files = "none",

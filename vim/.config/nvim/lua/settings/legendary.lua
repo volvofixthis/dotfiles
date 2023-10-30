@@ -1,3 +1,5 @@
+local utils = require "nvim-tree.utils"
+
 require("legendary").setup({
     keymaps = {
         -- map keys to a command
@@ -6,12 +8,18 @@ require("legendary").setup({
             "<leader>re",
             function()
                 local api = require('nvim-tree.api')
-                local path = get_current_folder_path()
-                if path_startswith(path, vim.g.workspace_path) then
-                    path = vim.g.workspace_path
-                end
-                api.tree.change_root(path)
-                api.tree.find_file({ open = true, focus = true })
+                local path = vim.g.workspace_path
+                local relative_path = utils.path_relative(get_current_file_path(), path)
+                api.tree.find_file({buf = relative_path, open = true, focus = true, update_root = false })
+            end,
+            description = "Reveal file",
+            mode = "n",
+        },
+        {
+            "<leader>rf",
+            function()
+                local api = require('nvim-tree.api')
+                api.tree.find_file({open = true, focus = true, update_root = true })
             end,
             description = "Reveal file",
             mode = "n",
@@ -24,6 +32,15 @@ require("legendary").setup({
                 api.tree.open({ focus = true })
             end,
             description = "Open file explorer",
+            mode = "n",
+        },
+        {
+            "<leader>fh",
+            function()
+                local api = require('nvim-tree.api')
+                api.tree.close()
+            end,
+            description = "Close file explorer",
             mode = "n",
         },
         {
@@ -191,7 +208,7 @@ require("legendary").setup({
         {
             "<leader>dbc",
             ":lua require'dap'.clear_breakpoints();store_breakpoints(true)<CR>",
-            description = "Debug toggle breakpoint",
+            description = "Debug clear breakpoints",
             mode = "n",
         },
         {
