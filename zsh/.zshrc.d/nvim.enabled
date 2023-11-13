@@ -11,4 +11,4 @@ else
     alias vim="nvr --remote-tab"
 fi
 alias nvimconfig='nvim ~/.config/nvim/'
-export EDITOR=$HOME/bin/nvim
+export EDITOR=vim

@@ -1,2 +1,4 @@
-export XDG_RUNTIME_DIR=/run/user/$UID
+if [ ! "$OSNAME" = "darwin" ]; then
+    export XDG_RUNTIME_DIR=/run/user/$UID
+fi
 export XDG_CONFIG_HOME=$HOME/.config

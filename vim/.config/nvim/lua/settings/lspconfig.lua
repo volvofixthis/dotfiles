@@ -1,5 +1,6 @@
 local lspconfig = require("lspconfig")
 local lspformat = require("lsp-format")
+local lspsignature = require("lsp_signature")
 lspformat.setup {
     typescript = {
         tab_width = function()
@@ -18,6 +19,7 @@ lspformat.setup {
     },
     yaml = { tab_width = 2 },
 }
+lspsignature.setup({})
 local prettier = {
     formatCommand = [[prettier --stdin-filepath ${INPUT} ${--tab-width:tab_width}]],
     formatStdin = true,
@@ -54,13 +56,35 @@ lspconfig.efm.setup {
 }
 lspconfig.pyright.setup({
     on_attach = function(client, buffer)
+        client.config.settings.diagnosticMode = "openFilesOnly"
+        client.config.settings.useLibraryCodeForTypes = false
+        client.config.settings.autoSearchPaths = false
+        client.config.settings.
+            client.notify("workspace/didChangeConfiguration")
         client.handlers["textDocument/publishDiagnostics"] = function(...)
         end
         lspformat.on_attach(client, buffer)
+        lspsignature.on_attach({
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        }, buffer)
     end,
     capabilities = capabilities
 })
-lspconfig.rust_analyzer.setup({ on_attach = lspformat.on_attach, capabilities = capabilities })
+lspconfig.rust_analyzer.setup({
+    on_attach = function(client, buffer)
+        lspformat.on_attach(client, buffer)
+        lspsignature.on_attach({
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        }, buffer)
+    end,
+    capabilities = capabilities
+})
 -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting
 lspconfig.gopls.setup({
     on_attach = function(client, buffer)
@@ -68,11 +92,26 @@ lspconfig.gopls.setup({
         end
         client.handlers["textDocument/rangeFormatting"] = function(...)
         end
+        lspsignature.on_attach({
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        }, buffer)
     end,
     cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
     capabilities = capabilities
 })
 lspconfig.lua_ls.setup({
+    on_attach = function(client, buffer)
+        lspformat.on_attach(client, buffer)
+        lspsignature.on_attach({
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        }, buffer)
+    end,
     capabilities = capabilities,
     settings = {
         Lua = {

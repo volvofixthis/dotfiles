@@ -74,7 +74,7 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-rust
 ### End of Zinit's installer chunk
 
-zinit light jeffreytse/zsh-vi-mode
+# zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
 # zinit light zsh-users/zsh-autosuggestions
 # zinit light marlonrichert/zsh-autocomplete
