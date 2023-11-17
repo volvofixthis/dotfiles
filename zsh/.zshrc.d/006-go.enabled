@@ -1,2 +1,2 @@
-set_path ~/go/bin
+set_path $HOME/go/bin
 export GOPRIVATE=gitlab-ed7.cloud.gc.onl/*

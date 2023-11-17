@@ -76,5 +76,6 @@ zinit light-mode for \
 
 # zinit light jeffreytse/zsh-vi-mode
 zinit light zsh-users/zsh-syntax-highlighting
-# zinit light zsh-users/zsh-autosuggestions
-# zinit light marlonrichert/zsh-autocomplete
+zinit load z-shell/H-S-MW
+zinit light zsh-users/zsh-autosuggestions
+zinit light marlonrichert/zsh-autocomplete

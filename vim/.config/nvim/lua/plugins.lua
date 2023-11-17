@@ -135,14 +135,7 @@ return require("packer").startup(function(use)
     --     end,
     -- })
 
-    use({
-        "volvofixthis/ChatGPT.nvim",
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-    })
+    use("robitx/gp.nvim")
 
     use("mrjones2014/legendary.nvim")
 
