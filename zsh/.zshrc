@@ -78,4 +78,4 @@ zinit light-mode for \
 zinit light zsh-users/zsh-syntax-highlighting
 zinit load z-shell/H-S-MW
 zinit light zsh-users/zsh-autosuggestions
-zinit light marlonrichert/zsh-autocomplete
+# zinit light marlonrichert/zsh-autocomplete
