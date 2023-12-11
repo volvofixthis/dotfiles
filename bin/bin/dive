@@ -3,7 +3,12 @@ if [ "$1" = "ls" ]; then
     for i in $(ls -d $HOME/.vim/saved_workspaces/*/); do echo $(basename $i); done
     exit
 elif [ "$1" = "open" ]; then
-    export WORKSPACE="$HOME/.vim/saved_workspaces/$2/"
+    PROJECT=$2
+    WORKSPACE="$HOME/.vim/saved_workspaces/$PROJECT/"
+    if [ ! -d "$WORKSPACE" ]; then
+        echo "Can't find project $PROJECT"
+    fi
+    export WORKSPACE=$WORKSPACE
     CMD="nvim +'WorkspaceOpen $2' +'NvimTreeOpen ${WORKSPACE}'"
     ENV_FILE="${WORKSPACE}.env"
     if test -f "$ENV_FILE"; then
@@ -15,7 +20,9 @@ elif [ "$1" = "open" ]; then
     if ! { [ "$TERM" = "screen" ] || [ -n "$TMUX" ]; } then
       tmux new-session -d -s ${SESSION_NAME} "${CMD}"
       tmux attach-session -t ${SESSION_NAME}
+      tmux rename-window "p:$PROJECT"
     else
+      tmux rename-window "p:$PROJECT"
       eval "${CMD}"
     fi
 else

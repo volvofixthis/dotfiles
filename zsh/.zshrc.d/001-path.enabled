@@ -3,7 +3,7 @@ set_path(){
     # Check if user id is 1000 or higher
     # [ "$(id -u)" -ge 1000 ] || return
 
-    for i in "$@";
+    for i in $@;
     do
         # Check if the directory exists
         [ -d "$i" ] || continue

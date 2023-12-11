@@ -26,6 +26,7 @@ return require("packer").startup(function(use)
     -- use("wesleimp/stylua.nvim")
     use("neovim/nvim-lspconfig")
     use("lukas-reineke/lsp-format.nvim")
+    use("ray-x/lsp_signature.nvim")
     use('dcampos/nvim-snippy')
     use('dcampos/cmp-snippy')
     use('hrsh7th/cmp-nvim-lsp')
@@ -33,22 +34,17 @@ return require("packer").startup(function(use)
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-cmdline')
     use('hrsh7th/nvim-cmp')
-    -- use({
-    --     "folke/noice.nvim",
-    --     config = function()
-    --         require("noice").setup({
-    --             -- add any options here
-    --         })
-    --     end,
-    --     requires = {
-    --         -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-    --         "MunifTanjim/nui.nvim",
-    --         -- OPTIONAL:
-    --         --   `nvim-notify` is only needed, if you want to use the notification view.
-    --         --   If not available, we use `mini` as the fallback
-    --         "rcarriga/nvim-notify",
-    --     },
-    -- })
+    use({
+        "folke/noice.nvim",
+        requires = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        },
+    })
     use({ "fedepujol/move.nvim", commit = "2cd533590" })
 
     -- DAP
@@ -65,8 +61,7 @@ return require("packer").startup(function(use)
     -- use({ "neoclide/coc.nvim", branch = "release" })
 
     -- Nvimtree
-    -- use("nvim-tree/nvim-tree.lua")
-    use({"/home/loki/projects/nvim-tree.lua", branch = "fixes"})
+    use("nvim-tree/nvim-tree.lua")
 
     use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.0" })
 
@@ -140,14 +135,7 @@ return require("packer").startup(function(use)
     --     end,
     -- })
 
-    use({
-        "volvofixthis/ChatGPT.nvim",
-        requires = {
-            "MunifTanjim/nui.nvim",
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-    })
+    use("robitx/gp.nvim")
 
     use("mrjones2014/legendary.nvim")
 
