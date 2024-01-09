@@ -6,6 +6,9 @@ vim.api.nvim_set_keymap("n", "<Esc>", "", {
             local notify = require("notify")
             notify.dismiss()
         end
+        if is_module_available("gp") then
+            vim.cmd("GpStop")
+        end
     end,
 })
 

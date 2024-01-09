@@ -11,7 +11,7 @@ require("legendary").setup({
                 local path = vim.g.workspace_path
                 local relative_path = utils.path_relative(get_current_file_path(), path)
                 api.tree.change_root(path)
-                api.tree.find_file({buf = relative_path, open = true, focus = true, update_root = false })
+                api.tree.find_file({ buf = relative_path, open = true, focus = true, update_root = false })
             end,
             description = "Reveal file",
             mode = "n",
@@ -20,7 +20,7 @@ require("legendary").setup({
             "<leader>rf",
             function()
                 local api = require('nvim-tree.api')
-                api.tree.find_file({open = true, focus = true, update_root = true })
+                api.tree.find_file({ open = true, focus = true, update_root = true })
             end,
             description = "Reveal file",
             mode = "n",
@@ -218,73 +218,6 @@ require("legendary").setup({
             description = "Debug toggle dapui",
             mode = "n",
         },
-        -- Coc
-        -- {
-        -- 	"<leader>rn",
-        -- 	"<Plug>(coc-rename)",
-        -- 	description = "Coc rename symbol",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"gd",
-        -- 	"<Plug>(coc-definition)",
-        -- 	description = "Coc goto definition",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"gy",
-        -- 	"<Plug>(coc-type-definition)",
-        -- 	description = "Coc type definition",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"gi",
-        -- 	"<Plug>(coc-implementation)",
-        -- 	description = "Coc implementation",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"gr",
-        -- 	"<Plug>(coc-references)",
-        -- 	description = "Coc references",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"ga",
-        -- 	"<Plug>(coc-codeaction-line)",
-        -- 	description = "Coc codeaction line",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"ga",
-        -- 	"<Plug>(coc-codeaction-line)",
-        -- 	description = "Coc codeaction line",
-        -- 	mode = "x",
-        -- },
-        -- {
-        -- 	"gA",
-        -- 	"<Plug>(coc-codeaction)",
-        -- 	description = "Coc codeaction",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"dte",
-        -- 	"<Plug>:call CocAction('diagnosticToggle', 1) | call CocAction('diagnosticRefresh')<CR>",
-        -- 	description = "Coc diagnostic disable",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"dtd",
-        -- 	":call CocAction('diagnosticToggle', 0) | call CocAction('diagnosticRefresh')<CR>",
-        -- 	description = "Coc diagnostic enable",
-        -- 	mode = "n",
-        -- },
-        -- {
-        -- 	"dr",
-        -- 	":call CocAction('diagnosticRefresh')<CR>",
-        -- 	description = "Coc diagnostic refresh",
-        -- 	mode = "n",
-        -- },
         -- Neogen
         {
             "<leader>nt",
@@ -309,6 +242,67 @@ require("legendary").setup({
             ":lua require('neogen').generate({ type = 'file' })<CR>",
             description = "Generate file doc",
             mode = "n",
+        },
+        -- ChatGPT
+        {
+            itemgroup = "chatgpt",
+            description = "ChatGPT hotkeys",
+            keymaps = {
+                {
+                    "<C-g>r",
+                    { n = ":GpRewrite<cr>", v = ":<C-u>'<,'>GpRewrite<cr>", i = "<cmd>GpRewrite<cr>" },
+                    description = "ChatGPT rewrite",
+                },
+                {
+                    "<C-g>i",
+                    { n = ":GpImplement<cr>", v = ":<C-u>'<,'>GpImplement<cr>", i = "<cmd>GpImplement<cr>" },
+                    description = "ChatGPT implement",
+                },
+                {
+                    "<C-g>a",
+                    { n = ":GpPrepend<cr>", v = ":<C-u>'<,'>GpPrepend<cr>", i = "<cmd>GpPrepend<cr>" },
+                    description = "ChatGPT append (below)",
+                },
+                {
+                    "<C-g>b",
+                    { n = ":GpAppend<cr>", v = ":<C-u>'<,'>GpAppend<cr>", i = "<cmd>GpAppend<cr>" },
+                    description = "ChatGPT append (below)",
+                },
+                {
+                    "<C-g>n",
+                    { n = ":GpChatNew<cr>", v = ":<C-u>'<,'>GpChatNew<cr>" },
+                    description = "ChatGPT new chat",
+                },
+                {
+                    "<C-g>t",
+                    { n = ":GpChatToggle<cr>", v = ":<C-u>'<,'>GpChatToggle<cr>" },
+                    description = "ChatGPT chat toggle",
+                },
+                {
+                    "<C-g>p",
+                    ":<C-u>'<,'>GpChatPaste<cr>",
+                    description = "ChatGPT visual chat paste",
+                    mode = "v",
+                },
+                {
+                    "<C-g>s",
+                    ":<C-u>'<,'>GpCodeSimplify<cr>",
+                    description = "ChatGPT visual code simplify",
+                    mode = "v",
+                },
+                {
+                    "<C-g>f",
+                    ":<C-u>'<,'>GpCodeFormat<cr>",
+                    description = "ChatGPT visual code format",
+                    mode = "v",
+                },
+                {
+                    "<C-g>v",
+                    ":<C-u>'<,'>GpCodeFix<cr>",
+                    description = "ChatGPT visual code format",
+                    mode = "v",
+                },
+            },
         },
     },
 })

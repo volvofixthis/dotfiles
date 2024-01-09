@@ -128,13 +128,6 @@ return require("packer").startup(function(use)
 
     use({ "alexghergh/nvim-tmux-navigation" })
 
-    -- use({
-    --     "naps62/pair-gpt.nvim",
-    --     config = function()
-    --         require("pair-gpt").setup()
-    --     end,
-    -- })
-
     use("robitx/gp.nvim")
 
     use("mrjones2014/legendary.nvim")
@@ -162,6 +155,8 @@ return require("packer").startup(function(use)
         -- Uncomment next line if you want to follow only stable versions
         tag = "2.13.2"
     })
+
+    use 'ivanesmantovich/xkbswitch.nvim'
 
     if packer_bootstrap then
         require("packer").sync()

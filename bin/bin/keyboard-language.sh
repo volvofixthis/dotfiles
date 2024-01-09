@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ "$OSNAME" == "darwin" ]; then
-    OUTPUT=$(defaults read ~/Library/Preferences/com.apple.HIToolbox.plist AppleSelectedInputSources | egrep -w 'KeyboardLayout Name' | sed -n -e 's/^.*KeyboardLayout Name" = \(.*\);$/\1/p')
+    OUTPUT=$(issw | sed -n -e 's/^com.apple.keylayout.\(.*\)$/\1/p')
     if [ "$OUTPUT" == "ABC" ]; then
         echo "[EN]"
     elif [ "$OUTPUT" == "RussianWin" ]; then

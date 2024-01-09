@@ -1,3 +1,4 @@
-export OSNAME=$(uname)
-export OSNAME=${OSNAME:l}
+OSNAME=$(uname)
+OSNAME=$(echo $OSNAME | tr '[:upper:]' '[:lower:]')
+export OSNAME=$OSNAME
 export SHELL_NAME=$(basename $SHELL)

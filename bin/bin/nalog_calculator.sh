@@ -14,7 +14,7 @@ m = re.search(r"<td>1 Euro<\/td>[\s\t\n]+<td>([\d\.]+)<\/td>", r.text, re.M)
 curs = float(m.group(1))
 
 payment_amount_gel = round(payment_amount * curs, 4)
-payment_amount_total = payment_amount_gel + payment_amount_total_last
+payment_amount_total = round(payment_amount_gel + payment_amount_total_last, 4)
 
 report = f"""Payment amount total last: {payment_amount_total_last}
 Payment date: {payment_date}
