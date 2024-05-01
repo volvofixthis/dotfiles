@@ -42,15 +42,10 @@ inoremap <C-y> <C-o><C-y>
 " nnoremap <C-s> :w<CR>
 " inoremap <C-s> <C-o>:w<CR>
 " Use control-c instead of escape
-nnoremap <C-c> <Esc>
-inoremap <C-c> <Esc>
+" nnoremap <C-c> <Esc>
+" inoremap <C-c> <Esc>
 inoremap <Esc> <Esc>`^
 au WinLeave * stopinsert
-
-" Change layout to US on insert leave
-autocmd InsertLeave * silent! :!xkblayout-state set 0
-" Disable touchpad on insert enter
-" autocmd InsertEnter * silent! :!~/bin/touchpad_disable.sh
 
 " autosave
 autocmd InsertLeave * silent! :if expand('%') != '' | update | endif
@@ -60,8 +55,8 @@ endif
 autocmd BufLeave * silent! :wa
 
 """" Indents 
-vnoremap < <gv
-vnoremap > >gv
+vnoremap <silent> << <gv
+vnoremap <silent> >> >gv
 """" Select all 
 nnoremap <C-A> ggVG
 
@@ -72,8 +67,6 @@ nmap <leader>cn :let @*=expand("%")<CR>
 nmap <leader>cf :let @*=expand("%:p")<CR>
 
 "  Go
-nmap <C-d> <Plug>(coc-definition)
-" disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 autocmd BufEnter *.go nmap <buffer> <leader>t  <Plug>(go-test)
@@ -141,9 +134,9 @@ nnoremap <silent> <leader>md :set mouse-=a<CR>
 nnoremap <silent> <leader>me :set mouse+=a<CR>
 
 " TAB in general mode will move to text buffer
-nnoremap <TAB> :bnext<CR>
+" nnoremap <TAB> :bnext<CR>
 " SHIFT-TAB will go back
-nnoremap <S-TAB> :bprevious<CR>
+" nnoremap <S-TAB> :bprevious<CR>
 
 " Reload vim config
 nnoremap <silent> <leader>rs  :so ~/.config/nvim/init.vim<Cr>
@@ -157,18 +150,6 @@ nmap <silent> <leader>rl <Plug>RestNvimLast
 noremap <leader>p :Glow<CR>
 
 " Javascript
-" function! ShowDocIfNoDiagnostic(timer_id)
-"   if (coc#float#has_float() == 0 && CocHasProvider('hover') == 1)
-"     silent call CocActionAsync('doHover')
-"   endif
-" endfunction
-"
-" function! s:show_hover_doc()
-"   call timer_start(500, 'ShowDocIfNoDiagnostic')
-" endfunction
-
-" autocmd CursorHoldI * :call <SID>show_hover_doc()
-" autocmd CursorHold * :call <SID>show_hover_doc()
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 nnoremap <Leader>rt :JSXReplaceTag<CR>
@@ -228,16 +209,9 @@ command W :SudaWrite
 " Folding
 nnoremap <silent> <Space> za
 vnoremap <Space> zf
-autocmd FileType go,python,javascript,typescript,json,jsonc set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevel=99
+autocmd FileType rust,go,python,javascript,typescript,json,jsonc set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevel=99
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
-
-" Harpoon
-noremap <leader>hs <Cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>
-noremap <leader>hm <Cmd>lua require("harpoon.mark").add_file()<CR>
-noremap <leader>hp <Cmd>lua require("harpoon.ui").nav_prev()<CR>
-noremap <leader>hn <Cmd>lua require("harpoon.ui").nav_next()<CR>
-noremap <leader>hc <Cmd>lua require('harpoon.cmd-ui').toggle_quick_menu()<CR>
 
 " Buffers
 nnoremap <Leader>bp :b>
