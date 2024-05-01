@@ -79,3 +79,8 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit load z-shell/H-S-MW
 zinit light zsh-users/zsh-autosuggestions
 # zinit light marlonrichert/zsh-autocomplete
+#
+bindkey "[D" backward-word
+bindkey "[C" forward-word
+bindkey "^[a" beginning-of-line
+bindkey "^[e" end-of-line
