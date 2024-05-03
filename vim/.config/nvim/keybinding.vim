@@ -66,24 +66,11 @@ nmap <leader>cn :let @*=expand("%")<CR>
 " Copy file path
 nmap <leader>cf :let @*=expand("%:p")<CR>
 
-"  Go
-" this is handled by LanguageClient [LC]
-let g:go_def_mapping_enabled = 0
-autocmd BufEnter *.go nmap <buffer> <leader>t  <Plug>(go-test)
-autocmd BufEnter *.go nmap <buffer> <leader>tf <Plug>(go-test-func)
+"  DAP
 autocmd BufEnter *.go nmap <buffer> <leader>td :lua require('dap-go').debug_test()<CR>
 autocmd BufEnter *.go nmap <buffer> <leader>tl :lua require('dap-go').debug_test_last()<CR>
-autocmd BufEnter *.go nmap <buffer> <leader>c  <Plug>(go-coverage-toggle)
-autocmd BufEnter *.go nmap <buffer> <leader>i  <Plug>(go-info)
-autocmd BufEnter *.go nmap <buffer> <leader>ii  <Plug>(go-implements)
-autocmd BufEnter *.go nmap <buffer> <leader>ci  <Plug>(go-describe)
-autocmd BufEnter *.go nmap <buffer> <leader>cc  <Plug>(go-callers)
-nmap <leader>cr <Plug>(coc-references)
 autocmd BufEnter *.py nmap <buffer> <leader>tc :lua require('dap-python').test_class()<CR>
 autocmd BufEnter *.py nmap <buffer> <leader>tf :lua require('dap-python').test_method()<CR>
-
-" Using Lua functions
-nnoremap <leader>pp :lua require'telescope.builtin'.planets{}<CR>
 
 " LazyGit
 function! GetCurrentGitPath(path)
@@ -99,8 +86,6 @@ function! GetTopModPath(path)
   let path = fnamemodify(path, ':p:h')
   return path
 endfunction
-
-autocmd BufEnter * :lua require('lazygit.utils').project_root_dir()
 
 " Git
 function! s:copy_git_branch()
@@ -148,11 +133,6 @@ nmap <silent> <leader>rl <Plug>RestNvimLast
 
 " Glow
 noremap <leader>p :Glow<CR>
-
-" Javascript
-autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-nnoremap <Leader>rt :JSXReplaceTag<CR>
 
 " delete and cut without pain https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim/11993928
 nnoremap x "_x
@@ -209,7 +189,7 @@ command W :SudaWrite
 " Folding
 nnoremap <silent> <Space> za
 vnoremap <Space> zf
-autocmd FileType rust,go,python,javascript,typescript,json,jsonc set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevel=99
+autocmd FileType rust,go,python,javascript,typescript,json,jsonc,lua,http set foldmethod=expr foldexpr=nvim_treesitter#foldexpr() foldlevel=99
 autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 
