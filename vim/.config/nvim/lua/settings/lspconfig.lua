@@ -1,6 +1,11 @@
 local lspconfig = require("lspconfig")
 local lspformat = require("lsp-format")
 local lspsignature = require("lsp_signature")
+vim.diagnostic.config({
+    virtual_text = false,
+    update_in_insert = false,
+    underline = true,
+})
 lspformat.setup {
     typescript = {
         tab_width = function()
@@ -49,16 +54,16 @@ lspconfig.efm.setup {
             go = {
                 { formatCommand = "goimports", formatStdin = true },
                 { formatCommand = "gofmt -s",  formatStdin = true },
-            }
+            },
         },
     },
-    filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim' }
+    filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim', 'rust', 'c', 'cpp' }
 }
 lspconfig.pyright.setup({
     on_attach = function(client, buffer)
         client.config.settings.diagnosticMode = "openFilesOnly"
-        client.config.settings.useLibraryCodeForTypes = false
-        client.config.settings.autoSearchPaths = false
+        client.config.settings.useLibraryCodeForTypes = true
+        client.config.settings.autoSearchPaths = true
         client.config.settings.
             client.notify("workspace/didChangeConfiguration")
         client.handlers["textDocument/publishDiagnostics"] = function(...)
@@ -88,6 +93,7 @@ lspconfig.rust_analyzer.setup({
 -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting
 lspconfig.gopls.setup({
     on_attach = function(client, buffer)
+        client.resolved_capabilities.document_formatting = false
         client.handlers["textDocument/formatting"] = function(...)
         end
         client.handlers["textDocument/rangeFormatting"] = function(...)
@@ -140,6 +146,16 @@ lspconfig.jsonls.setup({
     capabilitiesJson = capabilities,
 })
 -- lspconfig.bashls.setup({ on_attach = lspformat.on_attach, capabilities = capabilities })
+require 'lspconfig'.clangd.setup {
+    on_attach = function(client, buffer)
+        lspformat.on_attach(client, buffer)
+    end,
+    capabilities = capabilities,
+    cmd = {
+        "clangd",
+        "--offset-encoding=utf-16",
+    },
+}
 
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
