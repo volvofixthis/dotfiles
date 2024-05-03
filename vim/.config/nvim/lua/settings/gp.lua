@@ -11,15 +11,15 @@ require("gp").setup({
             local template = "I have the following code from {{filename}}:\n\n"
                 .. "```{{filetype}}\n{{selection}}\n```\n\n"
                 .. "Please respond by explaining the code above."
-            local agent = gp.get_chat_agent()
-            gp.Prompt(params, gp.Target.popup, nil, agent.model, template, agent.system_prompt)
+            local agent = gp.get_command_agent()
+            gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
         end,
         CodeReview = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
                 .. "```{{filetype}}\n{{selection}}\n```\n\n"
                 .. "Please analyze for code smells and suggest improvements."
-            local agent = gp.get_chat_agent()
-            gp.Prompt(params, gp.Target.enew("markdown"), nil, agent.model, template, agent.system_prompt)
+            local agent = gp.get_command_agent()
+            gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
         end,
         CodeSimplify = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
@@ -37,7 +37,7 @@ require("gp").setup({
                 .. "on function arguments where appropriate.\n"
                 .. "- Don't add any explanations.\n"
                 .. "- Produced code must be ready to compile without any errors.\n"
-                .. "- The code style should be similar to the output of go-fmt for golang or black for python.\n"
+                .. "- The code style should be similar to the output of go-fmt command\n"
                 .. "- Maximum line length is 140 characters.\n"
                 .. "- Maximum line length in comment block is 80 characters.\n"
                 .. "- Add comment before struct definition.\n"
@@ -50,12 +50,12 @@ require("gp").setup({
                 .. "- Refactor suboptimal usage of loops.\n"
                 .. "- Cache function return value if input values not changed and there is no need to call it again.\n"
                 .. "- Inline functions if they are too small and don't used few times.\n"
-                .. "- Use existing comments before as guideline howto improve code.\n"
+                .. "- Use existing comments above code line as guideline howto improve code.\n"
                 .. "- Implement all requests from comments.\n"
                 .. "- Keep code as simple as possible.\n"
                 .. "- Follow KISS, DRY and SOLID principles.\n"
                 .. "- Use only slash for comments.\n"
-            local agent = gp.get_chat_agent()
+            local agent = gp.get_command_agent()
             gp.Prompt(params, gp.Target.vnew, nil, agent.model, template, agent.system_prompt)
         end,
         CodeFormat = function(gp, params)
@@ -75,7 +75,7 @@ require("gp").setup({
                 .. "- You must format code without adding anything new to the code.\n"
                 .. "- You must answer only with valid code and nothing else.\n"
                 .. "- Use only slash for comments.\n"
-            local agent = gp.get_chat_agent()
+            local agent = gp.get_command_agent()
             gp.Prompt(params, gp.Target.rewrite, nil, agent.model, template, agent.system_prompt)
         end,
         CodeFix = function(gp, params)
@@ -85,15 +85,14 @@ require("gp").setup({
                 .. "You must use and respect following rules:\n"
                 .. "- Syntax must be valid.\n"
                 .. "- Preserve logic as close to original as possible\n"
-                .. "- The code style should be similar to the output of go-fmt.\n"
+                .. "- The code style should be similar to the output of go-fmt command.\n"
                 .. "- Don't add any explanations.\n"
                 .. "- Don't add additional comments or text.\n"
                 .. "- You must fix code without adding anything new to the code.\n"
                 .. "- Produced code must compile without errors.\n"
                 .. "- You must answer only with fixed code and nothing else.\n"
-            local agent = gp.get_chat_agent()
+            local agent = gp.get_command_agent()
             gp.Prompt(params, gp.Target.rewrite, nil, agent.model, template, agent.system_prompt)
         end,
     }
 })
-vim.cmd("GpAgent CodeGPT4")
