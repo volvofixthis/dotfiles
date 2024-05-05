@@ -10,4 +10,3 @@ source $HOME/.config/nvim/yankassassin.vim
 source $HOME/.config/nvim/theme.vim
 source $HOME/.config/nvim/keybinding.vim
 source $HOME/.config/nvim/file-explorer.vim
-source $HOME/.config/nvim/go.vim
