@@ -4,11 +4,23 @@ require("filetype").setup({
             rest = "http",
             sh = "bash",
             enabled = "bash",
-            env = "bash"
+            env = "bash",
+            c = "c",
+            h = "c",
+            cpp = "cpp",
+            hpp = "cpp",
         },
         function_extensions = {
             ["sql"] = function()
                 vim.bo.filetype = "sql"
+            end,
+            ["tf"] = function()
+                vim.bo.filetype = "hcl"
+                vim.bo.commentstring = '// %s'
+                vim.opt.tabstop = 2
+                vim.opt.shiftwidth = 2
+                vim.opt.expandtab = true
+                vim.bo.softtabstop = 2
             end,
             ["gcss"] = function()
                 vim.opt.tabstop = 2
