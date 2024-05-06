@@ -1,7 +1,0 @@
-if [ ! -f ~/bin/stylua ]; then
-    STYLUA_URL="https://github.com/JohnnyMorganz/StyLua/releases/download/v0.16.1/stylua-linux-x86_64.zip"
-    if [ "$OSNAME" = "darwin" ]; then 
-        STYLUA_URL="https://github.com/JohnnyMorganz/StyLua/releases/download/v0.16.1/stylua-macos-aarch64.zip"
-    fi
-    wget $STYLUA_URL  && unzip -d ~/bin -o stylua-*.zip && rm stylua-*.zip
-fi
