@@ -18,7 +18,7 @@ echo "Searching backend"
 if [ -n "${copy_backend_remote_tunnel_port-}" ] \
     && (netstat -f inet -nl 2>/dev/null || netstat -4 -nl 2>/dev/null) \
       | grep -q "[.:]$copy_backend_remote_tunnel_port"; then
-  copy_backend="nc -N localhost $copy_backend_remote_tunnel_port"
+  copy_backend="nc -N -w 3 localhost $copy_backend_remote_tunnel_port"
 elif is_app_installed pbcopy; then
   copy_backend="pbcopy"
 elif is_app_installed reattach-to-user-namespace; then
