@@ -4,7 +4,7 @@ StartLimitBurst=7
 StartLimitIntervalSec=33
 
 [Service]
-ExecStart=%h/go/bin/gopls serve -listen="unix;/tmp/gopls-daemon-socket"
+ExecStart=/usr/bin/env gopls serve -listen="unix;/tmp/gopls-daemon-socket"
 ExecStartPre=/usr/bin/rm -f /tmp/gopls-daemon-socket
 Restart=always
 RestartSec=5
