@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>tech.lakin.clipboard-devvm3</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/bin/ssh -T -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -R 127.0.0.1:11988:127.0.0.1:1988 loki@devvm3 sleep infinity</string>
+    </array>
+    <key>StandardErrorPath</key>
+    <string>/tmp/clipboard-devvm3.job.out</string>
+    <key>StandardOutPath</key>
+    <string>/tmp/clipboard-devvm3.job.out</string> 
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+  </dict>
+</plist>
