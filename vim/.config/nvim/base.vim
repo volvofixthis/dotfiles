@@ -18,7 +18,7 @@ set fileformat=unix
 filetype on
 filetype indent on      " load filetype-specific indent files
 " set relativenumber
-set signcolumn=number
+" set signcolumn=number
 " For right work install xclip (:help clipboard)
 let g:clipboard = {'name': 'my', 'copy': {'+': 'yank.sh', '*': 'yank.sh'}, 'paste': {'+': 'paste.sh', '*': 'paste.sh'}, 'cache_enabled': 1,}
 " let g:clipboard = {'name': 'my_clip', 'copy': {'+': 'yank.sh', '*': 'yank.sh'}, 'paste': {'+': 'xclip -o -selection clipboard', '*': 'xclip -o -selection clipboard'}}
@@ -64,5 +64,5 @@ set timeoutlen=1000
 let mapleader = "/"
 
 if has('nvim') && executable('nvr')
-  let $EDITOR = "nvr --remote-tab +'set bufhidden=delete'"
+  let $EDITOR = "nvr -cc 'wincmd l' --remote +'set bufhidden=delete'"
 endif

@@ -22,6 +22,7 @@ local function my_on_attach(bufnr)
     vim.keymap.set('n', '<C-v>', api.node.open.vertical, opts('Open: Vertical Split'))
     vim.keymap.set('n', '<C-x>', api.node.open.horizontal, opts('Open: Horizontal Split'))
     vim.keymap.set('n', '<BS>', api.node.navigate.parent_close, opts('Close Directory'))
+    vim.keymap.set('n', '<DEL>', api.node.navigate.parent_close, opts('Close Directory'))
     vim.keymap.set('n', '<CR>', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', '<Tab>', api.tree.close, opts('Close'))
     vim.keymap.set('n', 'h', api.node.navigate.parent_close, opts('Close Directory'))
@@ -109,7 +110,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
     },
     renderer = {
         add_trailing = false,
-        group_empty = true,
+        group_empty = false,
         highlight_git = true,
         full_name = false,
         highlight_opened_files = "none",
@@ -203,7 +204,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         git_clean = false,
         no_buffer = false,
         custom = { "^\\.git$", "\\.obj$", "\\.pyc$", "\\.a$", "\\.o$", "^vendor$", "^node_modules$" },
-        exclude = {},
+        exclude = { ".env" },
     },
     filesystem_watchers = {
         enable = true,
@@ -218,7 +219,7 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         timeout = 400,
     },
     modified = {
-        enable = false,
+        enable = true,
         show_on_dirs = true,
         show_on_open_dirs = true,
     },

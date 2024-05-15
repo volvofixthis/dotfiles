@@ -14,18 +14,18 @@ vim.api.nvim_set_keymap("n", "<Esc>", "", {
 
 vim.api.nvim_set_keymap("n", "<C-s>", "", {
     noremap = true,
+    silent = true,
     callback = function()
-        -- vim.lsp.buf.format({ async = false })
-        vim.cmd("Format sync")
+        -- vim.lsp.buf.format()
         vim.cmd("w")
     end,
 })
 
 vim.api.nvim_set_keymap("i", "<C-s>", "", {
     noremap = true,
+    silent = true,
     callback = function()
-        -- vim.lsp.buf.format({ async = false })
-        vim.cmd("Format sync")
+        -- vim.lsp.buf.format()
         vim.cmd("w")
     end,
 })
