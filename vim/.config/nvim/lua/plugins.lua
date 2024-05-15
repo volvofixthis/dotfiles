@@ -27,6 +27,8 @@ return require("packer").startup(function(use)
     use("neovim/nvim-lspconfig")
     use("lukas-reineke/lsp-format.nvim")
     use("ray-x/lsp_signature.nvim")
+    use("folke/trouble.nvim")
+    use({ "volvofixthis/e-kaput.nvim", branch = "fixes" })
     use('dcampos/nvim-snippy')
     use('dcampos/cmp-snippy')
     use('hrsh7th/cmp-nvim-lsp')
@@ -50,8 +52,7 @@ return require("packer").startup(function(use)
     -- DAP
     use({ "volvofixthis/nvim-dap-go", branch = "fixes" })
     use("mfussenegger/nvim-dap-python")
-    use("mfussenegger/nvim-dap")
-    use("rcarriga/nvim-dap-ui")
+    use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
 
     -- cheat
     use("RishabhRD/popfix")
@@ -68,10 +69,7 @@ return require("packer").startup(function(use)
     -- Telescope
     use({
         "nvim-telescope/telescope.nvim",
-        requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
-        config = function()
-            require("telescope").load_extension("lazygit")
-        end,
+        requires = { { "nvim-lua/plenary.nvim" }, },
     })
 
     -- Themes
@@ -89,12 +87,10 @@ return require("packer").startup(function(use)
 
     -- Workspaces
     use("andreyorst/SimpleWorkspaces.vim")
-    use("tpope/vim-projectionist")
-    use("ThePrimeagen/harpoon")
+    -- use("tpope/vim-projectionist")
 
     -- Git
     use("APZelos/blamer.nvim")
-    -- use("kdheepak/lazygit.nvim")
     use("volvofixthis/vim-gh-line")
 
     use("tpope/vim-dispatch")
@@ -103,7 +99,7 @@ return require("packer").startup(function(use)
 
     use("numToStr/Comment.nvim")
 
-    use("fatih/vim-go")
+    -- use("fatih/vim-go")
 
     use("gennaro-tedesco/nvim-peekup")
 
@@ -120,9 +116,6 @@ return require("packer").startup(function(use)
 
     -- remove buffers without messing layout
     use("moll/vim-bbye")
-
-    -- indent blankline
-    -- use("lukas-reineke/indent-blankline.nvim")
 
     use("tpope/vim-unimpaired")
 
@@ -156,7 +149,29 @@ return require("packer").startup(function(use)
         tag = "2.13.2"
     })
 
-    use 'ivanesmantovich/xkbswitch.nvim'
+    -- use 'ivanesmantovich/xkbswitch.nvim'
+
+    -- use({
+    --     'crusj/bookmarks.nvim',
+    --     branch = 'main',
+    --     requires = { 'kyazdani42/nvim-web-devicons' },
+    --     config = function()
+    --         require("bookmarks").setup()
+    --         require("telescope").load_extension("bookmarks")
+    --     end
+    -- })
+
+    use {
+        'tomasky/bookmarks.nvim',
+        -- tag = 'release' -- To use the latest release
+    }
+
+    use {
+        'boltlessengineer/bufterm.nvim',
+        config = function()
+            require('bufterm').setup()
+        end,
+    }
 
     if packer_bootstrap then
         require("packer").sync()

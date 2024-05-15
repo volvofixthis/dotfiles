@@ -29,8 +29,19 @@ function path_startswith(path1, path2)
     return sub_path == path2
 end
 
+local prevGitPath = ""
+
 function get_current_git_folder_path()
-    return vim.fn.GetCurrentGitPath(get_current_folder_path())
+    local path = vim.fn.GetCurrentGitPath(get_current_folder_path())
+    if (vim.bo.buftype == "terminal") then
+        return prevGitPath
+    end
+    if path == "" then
+        path = prevGitPath
+    else
+        prevGitPath = path
+    end
+    return path
 end
 
 function is_module_available(name)
@@ -49,6 +60,6 @@ function is_module_available(name)
 end
 
 function file_exists(name)
-    if type(name)~="string" then return false end
-    return os.rename(name,name) and true or false
+    if type(name) ~= "string" then return false end
+    return os.rename(name, name) and true or false
 end

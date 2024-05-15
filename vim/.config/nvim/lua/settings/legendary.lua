@@ -30,7 +30,7 @@ require("legendary").setup({
             function()
                 local api = require('nvim-tree.api')
                 api.tree.change_root(vim.g.workspace_path)
-                api.tree.open({ focus = true })
+                api.tree.toggle({ focus = true })
             end,
             description = "Open file explorer",
             mode = "n",
@@ -116,19 +116,10 @@ require("legendary").setup({
             description = "Telescope help tags",
             mode = "n",
         },
-        -- LazyGit
         {
-            "<leader>tg",
-            ":lua require('telescope').extensions.lazygit.lazygit()<CR>",
-            description = "Git repositories",
-            mode = "n",
-        },
-        {
-            "<leader>gg",
-            function()
-                require("lazygit").lazygit(get_current_git_folder_path())
-            end,
-            description = "LazyGit",
+            "<leader>tt",
+            ":Telescope termfinder find<CR>",
+            description = "Telescope find terminals",
             mode = "n",
         },
         -- GitBlame
@@ -137,6 +128,28 @@ require("legendary").setup({
             ":BlamerToggle<CR>",
             description = "Git Blame",
             mode = "n",
+        },
+        -- Vim Git Line
+        {
+            itemgroup = "vimghline",
+            description = "Github line hotkeys",
+            keymaps = {
+                {
+                    "<leader>go",
+                    mode = { "n", "v", "x" },
+                    description = "Git go to repository",
+                },
+                {
+                    "<leader>gh",
+                    mode = { "n", "v", "x" },
+                    description = "Git go to line",
+                },
+                {
+                    "<leader>gb",
+                    mode = { "n", "v", "x" },
+                    description = "Git blame",
+                },
+            },
         },
         -- Legendary
         {
@@ -261,7 +274,7 @@ require("legendary").setup({
                 {
                     "<C-g>a",
                     { n = ":GpPrepend<cr>", v = ":<C-u>'<,'>GpPrepend<cr>", i = "<cmd>GpPrepend<cr>" },
-                    description = "ChatGPT append (below)",
+                    description = "ChatGPT append (above)",
                 },
                 {
                     "<C-g>b",
@@ -303,6 +316,157 @@ require("legendary").setup({
                     mode = "v",
                 },
             },
+        },
+        -- LSP
+        {
+            itemgroup = "lsp",
+            description = "LSP hotkeys",
+            keymaps = {
+                {
+                    "<leader>lr",
+                    function()
+                        vim.cmd("LspRestart")
+                    end,
+                    description = "LSP restart",
+                    mode = "n",
+                },
+                {
+                    "<C-d>",
+                    vim.diagnostic.goto_next,
+                    description = "LSP diagnostic next",
+                    mode = { "n", "i" },
+                },
+                {
+                    "<M-d>",
+                    vim.diagnostic.goto_prev,
+                    description = "LSP diagnostic previous",
+                    mode = { "n", "i" },
+                }
+
+            }
+        },
+        -- Trouble
+        {
+            itemgroup = "trouble",
+            description = "Trouble hotkeys",
+            keymaps = {
+                -- vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+                -- vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
+                -- vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
+                -- vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
+                -- vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
+                {
+                    "<leader>xx",
+                    require("trouble").toggle,
+                    description = "Trouble toggle",
+                    mode = "n",
+                },
+                {
+                    "<leader>xw",
+                    function() require("trouble").toggle("workspace_diagnostics") end,
+                    description = "Trouble workspace diagnostics",
+                    mode = "n",
+                },
+                {
+                    "<leader>xd",
+                    function() require("trouble").toggle("document_diagnostics") end,
+                    description = "Trouble document diagnostics",
+                    mode = "n",
+                },
+                {
+                    "<leader>xq",
+                    function() require("trouble").toggle("quickfix") end,
+                    description = "Trouble quickfix",
+                    mode = "n",
+                },
+                {
+                    "<leader>xl",
+                    function() require("trouble").toggle("loclist") end,
+                    description = "Trouble loclist",
+                    mode = "n",
+                },
+            }
+        },
+        -- Bufterm
+        {
+            itemgroup = "bufterm",
+            description = "Bufterm hotkeys",
+            keymaps = {
+                {
+                    "<leader>te",
+                    ":BufTermEnter<CR>",
+                    mode = "n",
+                    description = "Enter terminal",
+                },
+                {
+                    "<leader>tn",
+                    ":BufTermNext<CR>",
+                    mode = "n",
+                    description = "Go to next termimnal",
+                },
+                {
+                    "<leader>tp",
+                    ":BufTermPrev<CR>",
+                    mode = "n",
+                    description = "Go to prev termimnal",
+                },
+            },
+        },
+        -- Bookmarks
+        {
+            itemgroup = "bookmarks",
+            description = "Bookmarks hotkeys",
+            keymaps = {
+                {
+                    "mm",
+                    require("bookmarks").bookmark_toggle,
+                    description = "Bookmarks toggle",
+                    mode = "n",
+                },
+                {
+                    "mi",
+                    require("bookmarks").bookmark_ann,
+                    description = "Bookmarks add or edit mark annotation at current line",
+                    mode = "n",
+                },
+                {
+                    "mc",
+                    require("bookmarks").bookmark_clean,
+                    description = "Bookmarks clean all marks in local buffer",
+                    mode = "n",
+                },
+                {
+                    "mn",
+                    require("bookmarks").bookmark_next,
+                    description = "Bookmarks jump to next mark in local buffer",
+                    mode = "n",
+                },
+                {
+                    "mp",
+                    require("bookmarks").bookmark_prev,
+                    description = "Bookmarks jump to previous mark in local buffer",
+                    mode = "n",
+                },
+                {
+                    "ml",
+                    require("bookmarks").bookmark_list,
+                    description = "Bookmarks show marked file list in quickfix window",
+                    mode = "n",
+                },
+                {
+                    "<leader>mt",
+                    require('telescope').extensions.bookmarks.list,
+                    description = "Bookmarks show marked file list in telescope window",
+                    mode = "n",
+                },
+            }
+        }
+    },
+    autocmds = {
+        {
+            'BufEnter',
+            get_current_git_folder_path,
+            description = 'Record git path'
         },
     },
 })

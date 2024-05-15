@@ -24,7 +24,9 @@ lspformat.setup {
     },
     yaml = { tab_width = 2 },
 }
-lspsignature.setup({})
+lspsignature.setup({
+    hint_enable = false,
+})
 local prettier = {
     formatCommand = [[prettier --stdin-filepath ${INPUT} ${--tab-width:tab_width}]],
     formatStdin = true,
