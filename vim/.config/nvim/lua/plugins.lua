@@ -35,6 +35,7 @@ return require("packer").startup(function(use)
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-cmdline')
+    use({'MattiasMTS/cmp-dbee', commit = '0feabc1'})
     use('hrsh7th/nvim-cmp')
     use({
         "folke/noice.nvim",
@@ -171,6 +172,15 @@ return require("packer").startup(function(use)
         config = function()
             require('bufterm').setup()
         end,
+    }
+
+    use("codethread/qmk.nvim")
+
+    use {
+      "kndndrj/nvim-dbee",
+      run = function()
+        require("dbee").install()
+      end,
     }
 
     if packer_bootstrap then

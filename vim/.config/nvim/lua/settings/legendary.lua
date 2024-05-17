@@ -460,7 +460,16 @@ require("legendary").setup({
                     mode = "n",
                 },
             }
-        }
+        },
+        -- DBee
+        {
+            "<leader>db",
+            function() 
+                require("dbee").toggle()
+            end,
+            description = "Toggle dbee",
+            mode = "n",
+        },
     },
     autocmds = {
         {

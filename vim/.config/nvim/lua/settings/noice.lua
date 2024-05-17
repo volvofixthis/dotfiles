@@ -83,5 +83,12 @@ require("noice").setup({
             },
             opts = { skip = true },
         },
+        {
+            filter = {
+                event = "notify",
+                find = "Filetype is not sql",
+            },
+            opts = { skip = true },
+        },
     },
 })

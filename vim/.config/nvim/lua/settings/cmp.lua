@@ -5,6 +5,7 @@ local has_words_before = function()
 end
 
 local snippy = require("snippy")
+require("cmp-dbee").setup()
 local cmp = require("cmp")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on(
@@ -82,6 +83,7 @@ cmp.setup({
         -- { name = 'ultisnips' }, -- For ultisnips users.
         { name = 'snippy' }, -- For snippy users.
         { name = 'path',    option = { trailing_slash = true } },
+        { name = 'cmp-dbee' }
     }, {
         { name = 'buffer' },
     })
