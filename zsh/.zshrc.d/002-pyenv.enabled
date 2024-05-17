@@ -1,2 +1,4 @@
 export PYENV_ROOT="$HOME/.pyenv"
 set_path $PYENV_ROOT/bin
+
+alias clean_pyc="find . -name \*.pyc -delete"

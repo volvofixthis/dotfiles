@@ -1,0 +1,11 @@
+function set_env()
+{
+    env_file="/home/loki/.config/envs/$1.env"
+    if [ -f "$env_file" ]; then
+        set -a
+        . "$env_file"
+        set +a
+    else
+        echo "Env not found: $1"
+    fi
+}
