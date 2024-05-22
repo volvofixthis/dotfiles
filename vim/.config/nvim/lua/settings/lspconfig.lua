@@ -23,6 +23,11 @@ lspformat.setup {
         end,
     },
     yaml = { tab_width = 2 },
+    c = {
+        tab_width = function()
+            return vim.opt.shiftwidth:get()
+        end,
+    },
 }
 lspsignature.setup({
     hint_enable = false,
@@ -59,7 +64,7 @@ lspconfig.efm.setup {
             },
         },
     },
-    filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim', 'rust', 'c', 'cpp' }
+    filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim', 'rust'}
 }
 lspconfig.pyright.setup({
     on_attach = function(client, buffer)

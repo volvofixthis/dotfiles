@@ -183,6 +183,8 @@ return require("packer").startup(function(use)
       end,
     }
 
+    use("/home/loki/projects/exrc.nvim/")
+
     if packer_bootstrap then
         require("packer").sync()
     end

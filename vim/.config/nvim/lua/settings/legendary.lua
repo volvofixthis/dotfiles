@@ -331,17 +331,17 @@ require("legendary").setup({
                     mode = "n",
                 },
                 {
-                    "<C-d>",
-                    vim.diagnostic.goto_next,
-                    description = "LSP diagnostic next",
-                    mode = { "n", "i" },
-                },
-                {
-                    "<M-d>",
+                    "[d",
                     vim.diagnostic.goto_prev,
                     description = "LSP diagnostic previous",
-                    mode = { "n", "i" },
-                }
+                    mode = { "n" },
+                },
+                {
+                    "]d",
+                    vim.diagnostic.goto_next,
+                    description = "LSP diagnostic next",
+                    mode = { "n" },
+                },
 
             }
         },
@@ -350,11 +350,6 @@ require("legendary").setup({
             itemgroup = "trouble",
             description = "Trouble hotkeys",
             keymaps = {
-                -- vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
-                -- vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
-                -- vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-                -- vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-                -- vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
                 {
                     "<leader>xx",
                     require("trouble").toggle,
