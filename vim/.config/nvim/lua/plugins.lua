@@ -35,7 +35,7 @@ return require("packer").startup(function(use)
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-cmdline')
-    use({'MattiasMTS/cmp-dbee', commit = '0feabc1'})
+    use({'volvofixthis/cmp-dbee', branch = 'packer' })
     use('hrsh7th/nvim-cmp')
     use({
         "folke/noice.nvim",
@@ -65,7 +65,7 @@ return require("packer").startup(function(use)
     -- Nvimtree
     use("nvim-tree/nvim-tree.lua")
 
-    use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.0" })
+    use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2" })
 
     -- Telescope
     use({
@@ -183,7 +183,7 @@ return require("packer").startup(function(use)
       end,
     }
 
-    use("/home/loki/projects/exrc.nvim/")
+    use("jedrzejboczar/exrc.nvim")
 
     if packer_bootstrap then
         require("packer").sync()

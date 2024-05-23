@@ -12,9 +12,10 @@ require("filetype").setup({
         },
         function_extensions = {
             ["sql"] = function()
-                vim.bo.filetype = "text"
-                -- vim.keymap.del('i','<left>',{buffer = true})
-                -- vim.keymap.del('i','<right>',{buffer = true})
+                vim.bo.filetype = "sql"
+                vim.bo.syntax = "off",
+                vim.keymap.del('i','<left>',{buffer = true})
+                vim.keymap.del('i','<right>',{buffer = true})
             end,
             ["tf"] = function()
                 vim.bo.filetype = "hcl"
