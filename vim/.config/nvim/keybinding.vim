@@ -182,6 +182,14 @@ inoremap <M-р> <Left>
 inoremap <M-о> <Down>
 inoremap <M-л> <Up>
 inoremap <M-д> <Left>
+tnoremap <M-h> <Left>
+tnoremap <M-j> <Down>
+tnoremap <M-k> <Up>
+tnoremap <M-l> <Right>
+tnoremap <M-р> <Left>
+tnoremap <M-о> <Down>
+tnoremap <M-л> <Up>
+tnoremap <M-д> <Left>
 
 " SudaWrite
 command W :SudaWrite

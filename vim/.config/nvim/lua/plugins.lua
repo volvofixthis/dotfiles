@@ -35,7 +35,7 @@ return require("packer").startup(function(use)
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-cmdline')
-    use({'volvofixthis/cmp-dbee', branch = 'packer' })
+    use({ 'volvofixthis/cmp-dbee', branch = 'packer' })
     use('hrsh7th/nvim-cmp')
     use({
         "folke/noice.nvim",
@@ -177,13 +177,16 @@ return require("packer").startup(function(use)
     use("codethread/qmk.nvim")
 
     use {
-      "kndndrj/nvim-dbee",
-      run = function()
-        require("dbee").install()
-      end,
+        "kndndrj/nvim-dbee",
+        run = function()
+            require("dbee").install()
+        end,
     }
 
     use("jedrzejboczar/exrc.nvim")
+
+    use("tpope/vim-repeat")
+    use("justinmk/vim-sneak")
 
     if packer_bootstrap then
         require("packer").sync()

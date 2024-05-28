@@ -4,7 +4,6 @@ set mouse=a  " enable mouse
 set langmenu=en_US.UTF-8
 language en_US.UTF-8
 set encoding=utf-8
-set number
 set noswapfile
 set updatetime=300
 set scrolloff=7

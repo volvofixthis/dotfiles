@@ -1,5 +1,8 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.nu = true
+vim.opt.relativenumber = true
+vim.o.statuscolumn = "%s %l %r "
 
 require("settings.helpers")
 require("settings.filetype")
