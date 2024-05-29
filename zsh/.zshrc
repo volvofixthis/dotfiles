@@ -80,8 +80,13 @@ zinit load z-shell/H-S-MW
 zinit light zsh-users/zsh-autosuggestions
 # zinit light marlonrichert/zsh-autocomplete
 #
-bindkey "[D" backward-word
-bindkey "[C" forward-word
+
+# macos
+# bindkey "[D" backward-word
+# bindkey "[C" forward-word
+# linux
+bindkey ";3D" backward-word
+bindkey ";3C" forward-word
 bindkey "^[a" beginning-of-line
 bindkey "^[e" end-of-line
 bindkey "^[[3~" delete-char
