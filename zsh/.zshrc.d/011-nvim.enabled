@@ -6,9 +6,11 @@ if [ ! -d ~/.config/nvim ]; then
     nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 fi
 if [ -z "$NVIM" ]; then
+    EDITOR=nvim
     alias vim="nvim"
 else
-    alias vim="nvr --remote-tab"
+    EDITOR="nvr -cc 'wincmd l' --remote +'set bufhidden=delete'"
+    alias vim="$EDITOR"
 fi
 alias nvimconfig='nvim ~/.config/nvim/'
-export EDITOR=nvim
+export EDITOR="$EDITOR"
