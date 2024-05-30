@@ -9,6 +9,7 @@ vim.api.nvim_set_keymap("n", "<Esc>", "", {
         if is_module_available("gp") then
             vim.cmd("GpStop")
         end
+        vim.cmd.stopinsert()
     end,
 })
 

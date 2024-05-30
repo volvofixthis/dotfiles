@@ -2,10 +2,10 @@
 
 " close buffer
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
-nnoremap <leader>Q :sil! q<CR>
-nnoremap <leader>qwo :only<CR>
-nnoremap <leader>qb :sil! bp!\|bd!#<CR>
-nnoremap <leader>qo :BufOnly<CR>
+nnoremap <Leader>Q :sil! q<CR>
+nnoremap <Leader>qwo :only<CR>
+nnoremap <Leader>qb :sil! bp!\|bd!#<CR>
+nnoremap <Leader>qo :BufOnly<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
 " nnoremap <M-k>    :resize +2<CR>
@@ -62,15 +62,15 @@ nnoremap <C-A> ggVG
 
 ""Copy file path to clipboard
 " Copy file name
-nmap <leader>cn :let @*=expand("%")<CR>
+nmap <Leader>cn :let @*=expand("%")<CR>
 " Copy file path
-nmap <leader>cf :let @*=expand("%:p")<CR>
+nmap <Leader>cf :let @*=expand("%:p")<CR>
 
 "  DAP
-autocmd BufEnter *.go nmap <buffer> <leader>td :lua require('dap-go').debug_test()<CR>
-autocmd BufEnter *.go nmap <buffer> <leader>tl :lua require('dap-go').debug_test_last()<CR>
-autocmd BufEnter *.py nmap <buffer> <leader>tc :lua require('dap-python').test_class()<CR>
-autocmd BufEnter *.py nmap <buffer> <leader>tf :lua require('dap-python').test_method()<CR>
+autocmd BufEnter *.go nmap <buffer> <Leader>td :lua require('dap-go').debug_test()<CR>
+autocmd BufEnter *.go nmap <buffer> <Leader>tl :lua require('dap-go').debug_test_last()<CR>
+autocmd BufEnter *.py nmap <buffer> <Leader>tc :lua require('dap-python').test_class()<CR>
+autocmd BufEnter *.py nmap <buffer> <Leader>tf :lua require('dap-python').test_method()<CR>
 
 " LazyGit
 function! GetCurrentGitPath(path)
@@ -93,7 +93,7 @@ function! s:copy_git_branch()
   let s = system("cd ".(path)." && git branch --show-current | tr -d '\\n'")
   let @+ = substitute(s, '\n\+$', '', '')
 endfunction
-nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
+nnoremap <silent> <Leader>gc :call <SID>copy_git_branch()<CR>
 
 " Copy mode
 :function! s:enter_cm()
@@ -106,7 +106,7 @@ nnoremap <silent> <leader>gc :call <SID>copy_git_branch()<CR>
     exec ":setlocal nonumber norelativenumber"
 endfunction
 
-nnoremap <silent> <leader>cm :call <SID>enter_cm()<CR>
+nnoremap <silent> <Leader>cm :call <SID>enter_cm()<CR>
 
 function! s:show_whitespace()
     exec ":set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
@@ -114,9 +114,9 @@ function! s:show_whitespace()
     " exec ":IndentBlanklineEnable"
 endfunction
 
-nnoremap <silent> <leader>sw :call <SID>show_whitespace()<CR>
-nnoremap <silent> <leader>md :set mouse-=a<CR>
-nnoremap <silent> <leader>me :set mouse+=a<CR>
+nnoremap <silent> <Leader>sw :call <SID>show_whitespace()<CR>
+nnoremap <silent> <Leader>md :set mouse-=a<CR>
+nnoremap <silent> <Leader>me :set mouse+=a<CR>
 
 " TAB in general mode will move to text buffer
 " nnoremap <TAB> :bnext<CR>
@@ -124,15 +124,15 @@ nnoremap <silent> <leader>me :set mouse+=a<CR>
 " nnoremap <S-TAB> :bprevious<CR>
 
 " Reload vim config
-nnoremap <silent> <leader>rs  :so ~/.config/nvim/init.vim<Cr>
+nnoremap <silent> <Leader>rs  :so ~/.config/nvim/init.vim<Cr>
 
 " Rest client
-nmap <silent> <leader>ru <Plug>RestNvim
-nmap <silent> <leader>rc <Plug>RestNvimPreview
-nmap <silent> <leader>rl <Plug>RestNvimLast
+nmap <silent> <Leader>ru <Plug>RestNvim
+nmap <silent> <Leader>rc <Plug>RestNvimPreview
+nmap <silent> <Leader>rl <Plug>RestNvimLast
 
 " Glow
-noremap <leader>p :Glow<CR>
+noremap <Leader>p :Glow<CR>
 
 " delete and cut without pain https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim/11993928
 nnoremap x "_x
@@ -140,14 +140,14 @@ nnoremap d "_d
 nnoremap D "_D
 vnoremap d "_d
 
-nnoremap <leader>d ""d
-nnoremap <leader>D ""D
-vnoremap <leader>d ""d
-vnoremap <leader>dd ""dd
+nnoremap <Leader>d ""d
+nnoremap <Leader>D ""D
+vnoremap <Leader>d ""d
+vnoremap <Leader>dd ""dd
 
 " Yank
-nmap <leader>y <Plug>YADefault
-xmap <leader>y <Plug>YADefault
+nmap <Leader>y <Plug>YADefault
+xmap <Leader>y <Plug>YADefault
 
 nmap y <Plug>YAMotion
 xmap y <Plug>YAVisual
@@ -202,18 +202,24 @@ autocmd BufWinLeave * silent! mkview
 autocmd BufWinEnter * silent! loadview
 
 " Buffers
-nnoremap <Leader>bp :b>
-nnoremap <Leader>bn :bn<CR>
-nnoremap <silent><leader>1 <Cmd>BufferLineGoToBuffer 1<CR>
-nnoremap <silent><leader>2 <Cmd>BufferLineGoToBuffer 2<CR>
-nnoremap <silent><leader>3 <Cmd>BufferLineGoToBuffer 3<CR>
-nnoremap <silent><leader>4 <Cmd>BufferLineGoToBuffer 4<CR>
-nnoremap <silent><leader>5 <Cmd>BufferLineGoToBuffer 5<CR>
-nnoremap <silent><leader>6 <Cmd>BufferLineGoToBuffer 6<CR>
-nnoremap <silent><leader>7 <Cmd>BufferLineGoToBuffer 7<CR>
-nnoremap <silent><leader>8 <Cmd>BufferLineGoToBuffer 8<CR>
-nnoremap <silent><leader>9 <Cmd>BufferLineGoToBuffer 9<CR>
-nnoremap <silent><leader>$ <Cmd>BufferLineGoToBuffer -1<CR>
+nnoremap <silent><Leader>1 <Cmd>lua require("bufferline").go_to_buffer(1, true)<CR>
+nnoremap <silent><Leader>2 <Cmd>lua require("bufferline").go_to_buffer(2, true)<CR>
+nnoremap <silent><Leader>3 <Cmd>lua require("bufferline").go_to_buffer(3, true)<CR>
+nnoremap <silent><Leader>4 <Cmd>lua require("bufferline").go_to_buffer(4, true)<CR>
+nnoremap <silent><Leader>5 <Cmd>lua require("bufferline").go_to_buffer(5, true)<CR>
+nnoremap <silent><Leader>6 <Cmd>lua require("bufferline").go_to_buffer(6, true)<CR>
+nnoremap <silent><Leader>7 <Cmd>lua require("bufferline").go_to_buffer(7, true)<CR>
+nnoremap <silent><Leader>8 <Cmd>lua require("bufferline").go_to_buffer(8, true)<CR>
+nnoremap <silent><Leader>9 <Cmd>lua require("bufferline").go_to_buffer(9, true)<CR>
+nnoremap <silent><Leader>$ <Cmd>lua require("bufferline").go_to_buffer(-1, true)<CR>
+nnoremap <silent>b] :BufferLineCycleNext<CR>
+nnoremap <silent>b[ :BufferLineCyclePrev<CR>
+nnoremap <silent><Leader>bn :BufferLineMoveNext<CR>
+nnoremap <silent><Leader>bp :BufferLineMovePrev<CR>
+nnoremap <silent><Leader>be :BufferLineSortByExtension<CR>
+nnoremap <silent><Leader>bd :BufferLineSortByDirectory<CR>
+nnoremap <silent><Leader>bi :BufferLineTogglePin<CR>
+nnoremap <silent>bg :BufferLinePick<CR>
 
 " Quit
 nnoremap <Leader>. :wqa<CR>

@@ -13,13 +13,13 @@ local function gen_callback(layout)
         vim.api.nvim_buf_set_keymap(0, "t", "<C-q>", "", {
             noremap = true,
             callback = function()
-                vim.cmd("sil! bp! | bd!#")
+                vim.cmd("sil! bp! | sil! bd!#")
             end,
         })
         vim.api.nvim_buf_set_keymap(0, "n", "<C-q>", "", {
             noremap = true,
             callback = function()
-                vim.cmd("sil! bp! | bd!#")
+                vim.cmd("sil! bp! | sil! bd!#")
             end,
         })
         vim.cmd.startinsert()
