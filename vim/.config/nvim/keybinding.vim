@@ -4,7 +4,7 @@
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
 nnoremap <Leader>Q :sil! q<CR>
 nnoremap <Leader>qwo :only<CR>
-nnoremap <Leader>qb :sil! bp!\|bd!#<CR>
+nnoremap <Leader>qb :sil! bp!\|sil! bd!#<CR>
 nnoremap <Leader>qo :BufOnly<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
@@ -33,6 +33,11 @@ inoremap <silent> <C-j> <Cmd>NvimTmuxNavigateDown<CR>
 inoremap <silent> <C-k> <Cmd>NvimTmuxNavigateUp<CR>
 inoremap <silent> <C-l> <Cmd>NvimTmuxNavigateRight<CR>
 inoremap <silent> <C-\> <Cmd>NvimTmuxNavigateLastActive<CR>
+tnoremap <silent> <C-h> <Cmd>NvimTmuxNavigateLeft<CR>
+tnoremap <silent> <C-j> <Cmd>NvimTmuxNavigateDown<CR>
+tnoremap <silent> <C-k> <Cmd>NvimTmuxNavigateUp<CR>
+tnoremap <silent> <C-l> <Cmd>NvimTmuxNavigateRight<CR>
+tnoremap <silent> <C-\> <Cmd>NvimTmuxNavigateLastActive<CR>
 " inoremap <silent> <C-Space> <Cmd>NvimTmuxNavigateNext<CR>
 " Also allow line-wise scrolling
 inoremap <C-e> <C-o><C-e>
