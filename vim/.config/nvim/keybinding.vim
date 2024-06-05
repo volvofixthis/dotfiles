@@ -2,10 +2,12 @@
 
 " close buffer
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
-nnoremap <Leader>Q :sil! q<CR>
+nnoremap <Leader>qw :sil! q<CR>
 nnoremap <Leader>qwo :only<CR>
-nnoremap <Leader>qb :sil! bp!\|sil! bd!#<CR>
+nnoremap <Leader>qb :sil! bp! \| sil! bd!#<CR>
 nnoremap <Leader>qo :BufOnly<CR>
+nnoremap <Leader>tc :tabc<CR>
+nnoremap <Leader>to :tabo<CR>
 " Use alt + hjkl to resize windows
 " nnoremap <M-j>    :resize -2<CR>
 " nnoremap <M-k>    :resize +2<CR>
