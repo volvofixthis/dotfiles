@@ -459,11 +459,30 @@ require("legendary").setup({
         -- DBee
         {
             "<leader>db",
-            function() 
+            function()
                 require("dbee").toggle()
             end,
             description = "Toggle dbee",
             mode = "n",
+        },
+        -- Overseer
+        {
+            itemgroup = "overseer",
+            description = "Overseer hotkeys",
+            keymaps = {
+                {
+                    "<leader>ov",
+                    ":OverseerToggle<CR>",
+                    mode = "n",
+                    description = "Overseer toggle",
+                },
+                {
+                    "<leader>or",
+                    ":OverseerRun<CR>",
+                    mode = "n",
+                    description = "Overseer run",
+                },
+            },
         },
     },
     autocmds = {

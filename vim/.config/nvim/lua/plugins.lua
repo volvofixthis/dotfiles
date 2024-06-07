@@ -188,6 +188,8 @@ return require("packer").startup(function(use)
     use("tpope/vim-repeat")
     use("justinmk/vim-sneak")
 
+    use("stevearc/overseer.nvim")
+
     if packer_bootstrap then
         require("packer").sync()
     end
