@@ -2,17 +2,21 @@
 
 " close buffer
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
-nnoremap <Leader>qw :sil! q<CR>
-nnoremap <Leader>qwo :only<CR>
+nnoremap <Leader>wc :sil! q<CR>
+nnoremap <Leader>wo :only<CR>
 nnoremap <Leader>qb :sil! bp! \| sil! bd!#<CR>
 nnoremap <Leader>qo :BufOnly<CR>
 nnoremap <Leader>tc :tabc<CR>
 nnoremap <Leader>to :tabo<CR>
 " Use alt + hjkl to resize windows
-" nnoremap <M-j>    :resize -2<CR>
-" nnoremap <M-k>    :resize +2<CR>
-" nnoremap <M-h>   :vertical resize -2<CR>
-" nnoremap <M-l>    :vertical resize +2<CR>
+nnoremap <M-j>    :resize -2<CR>
+nnoremap <M-k>    :resize +2<CR>
+nnoremap <M-h>   :vertical resize -2<CR>
+nnoremap <M-l>    :vertical resize +2<CR>
+tnoremap <M-j>    :resize -2<CR>
+tnoremap <M-k>    :resize +2<CR>
+tnoremap <M-h>   :vertical resize -2<CR>
+tnoremap <M-l>    :vertical resize +2<CR>
 
 " Movement in insert mode
 inoremap <C-h> <C-o><C-w>h
@@ -173,30 +177,30 @@ vnoremap <C-M-h> :MoveHBlock(-1)<CR>
 vnoremap <C-M-l> :MoveHBlock(1)<CR>
 
 " move by same keys in every mode
-noremap <M-h> h
-noremap <M-j> j
-noremap <M-k> k
-noremap <M-l> l
-noremap <M-о> j
-noremap <M-л> k
-noremap <M-р> h
-noremap <M-д> l
-inoremap <M-h> <Left>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-l> <Right>
-inoremap <M-р> <Left>
-inoremap <M-о> <Down>
-inoremap <M-л> <Up>
-inoremap <M-д> <Left>
-tnoremap <M-h> <Left>
-tnoremap <M-j> <Down>
-tnoremap <M-k> <Up>
-tnoremap <M-l> <Right>
-tnoremap <M-р> <Left>
-tnoremap <M-о> <Down>
-tnoremap <M-л> <Up>
-tnoremap <M-д> <Left>
+" noremap <M-h> h
+" noremap <M-j> j
+" noremap <M-k> k
+" noremap <M-l> l
+" noremap <M-о> j
+" noremap <M-л> k
+" noremap <M-р> h
+" noremap <M-д> l
+" inoremap <M-h> <Left>
+" inoremap <M-j> <Down>
+" inoremap <M-k> <Up>
+" inoremap <M-l> <Right>
+" inoremap <M-р> <Left>
+" inoremap <M-о> <Down>
+" inoremap <M-л> <Up>
+" inoremap <M-д> <Left>
+" tnoremap <M-h> <Left>
+" tnoremap <M-j> <Down>
+" tnoremap <M-k> <Up>
+" tnoremap <M-l> <Right>
+" tnoremap <M-р> <Left>
+" tnoremap <M-о> <Down>
+" tnoremap <M-л> <Up>
+" tnoremap <M-д> <Left>
 
 " SudaWrite
 command W :SudaWrite
