@@ -64,7 +64,7 @@ lspconfig.efm.setup {
             },
         },
     },
-    filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim', 'rust'}
+    filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim', 'rust' }
 }
 lspconfig.pyright.setup({
     on_attach = function(client, buffer)
@@ -175,6 +175,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local opts = { buffer = ev.buf }
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
