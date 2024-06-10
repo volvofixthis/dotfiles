@@ -90,5 +90,12 @@ require("noice").setup({
             },
             opts = { skip = true },
         },
+        {
+            filter = {
+                event = "notify",
+                find = "FAILURE",
+            },
+            opts = { skip = true },
+        },
     },
 })
