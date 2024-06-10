@@ -190,6 +190,19 @@ return require("packer").startup(function(use)
 
     use("stevearc/overseer.nvim")
 
+    use({
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "fredrikaverpil/neotest-golang",
+            "rouge8/neotest-rust",
+            "nvim-neotest/neotest-python"
+        }
+    })
+
     if packer_bootstrap then
         require("packer").sync()
     end

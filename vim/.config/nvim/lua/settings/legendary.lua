@@ -484,6 +484,53 @@ require("legendary").setup({
                 },
             },
         },
+        -- Neotest
+        {
+            itemgroup = "neotest",
+            description = "Neotest hotkeys",
+            keymaps = {
+                {
+                    "<leader>tn",
+                    function()
+                        require("neotest").run.run()
+                    end,
+                    mode = "n",
+                    description = "Run nearest",
+                },
+                {
+                    "<leader>tf",
+                    function()
+                        require("neotest").run.run(vim.fn.expand("%"))
+                    end,
+                    mode = "n",
+                    description = "Run current file",
+                },
+                {
+                    "<leader>td",
+                    function()
+                        require("neotest").run.run({ suite = false, strategy = "dap" })
+                    end,
+                    mode = "n",
+                    description = "Debug nearest",
+                },
+                {
+                    "<leader>ts",
+                    function()
+                        require("neotest").run.stop()
+                    end,
+                    mode = "n",
+                    description = "Stop",
+                },
+                {
+                    "<leader>ta",
+                    function()
+                        require("neotest").run.attach()
+                    end,
+                    mode = "n",
+                    description = "Attach",
+                },
+            },
+        },
     },
     autocmds = {
         {
