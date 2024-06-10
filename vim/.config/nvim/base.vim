@@ -56,8 +56,8 @@ set confirm
 " set listchars=trail:·
 set hidden
 " Transparency
-set pumblend=30
-set winblend=30
+set pumblend=15
+set winblend=15
 set viewoptions-=options
 set timeoutlen=1000
 let mapleader = "/"

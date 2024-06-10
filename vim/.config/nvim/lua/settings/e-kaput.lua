@@ -1,1 +1,1 @@
-require('e-kaput').setup({})
+require('e-kaput').setup({ transparency = 10 })
