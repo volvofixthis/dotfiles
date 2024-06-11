@@ -4,8 +4,8 @@
 " nnoremap <C-q> :sil! bp!\|bd! #<CR>
 nnoremap <Leader>wc :sil! q<CR>
 nnoremap <Leader>wo :only<CR>
-nnoremap <Leader>qb :sil! bp! \| sil! bd!#<CR>
-nnoremap <Leader>qo :BufOnly<CR>
+nnoremap <Leader>bc :sil! bp! \| sil! bd!#<CR>
+nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>tc :tabc<CR>
 nnoremap <Leader>to :tabo<CR>
 " Use alt + hjkl to resize windows
