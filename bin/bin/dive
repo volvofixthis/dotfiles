@@ -2,6 +2,14 @@
 if [ "$1" = "ls" ]; then
     for i in $(ls -d $HOME/.vim/saved_workspaces/*/); do echo $(basename $i); done
     exit
+elif [ "$1" = "create" ]; then
+    PROJECT=$2
+    FOLDER=$3
+    WORKSPACE="$HOME/.vim/saved_workspaces/$PROJECT/"
+    mkdir -p $WORKSPACE
+    echo -e "workspace name: ${PROJECT}\ndate create: $(date)" > "${WORKSPACE}/.workspace"
+    cd $WORKSPACE
+    ln -s $FOLDER $(basename $FOLDER)
 elif [ "$1" = "open" ]; then
     PROJECT=$2
     WORKSPACE="$HOME/.vim/saved_workspaces/$PROJECT/"
