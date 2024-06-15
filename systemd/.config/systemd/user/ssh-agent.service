@@ -7,12 +7,12 @@ StartLimitIntervalSec=33
 Type=simple
 Environment=SSH_AUTH_SOCK=%t/ssh-agent.socket
 # DISPLAY required for ssh-askpass to work
-Environment=DISPLAY=:0
-Environment=SSH_ASKPASS='/usr/bin/ksshaskpass'
+Environment=SSH_ASKPASS='%h/bin/auto-ssh-askpass.sh'
 Environment=SSH_ASKPASS_REQUIRE=prefer
 ExecStart=/usr/bin/env ssh-agent -D -a $SSH_AUTH_SOCK
 ExecStartPre=/usr/bin/rm -f $SSH_AUTH_SOCK
-ExecStartPost=/usr/bin/ssh-add -q %h/.ssh/notebook %h/.ssh/gcore
+ExecStartPost=/usr/bin/env ssh-add -q %h/.ssh/notebook %h/.ssh/gcore
+ExecStartPost=/usr/bin/env ssh-add %h/.ssh/gcore
 Restart=always
 RestartSec=5
 
