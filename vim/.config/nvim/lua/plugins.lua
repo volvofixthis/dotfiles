@@ -104,7 +104,7 @@ return require("packer").startup(function(use)
 
     use("gennaro-tedesco/nvim-peekup")
 
-    use({ "ellisonleao/glow.nvim", branch = "main" })
+    use({ "lnc3l0t/glow.nvim", branch = "advanced_window" })
 
     -- Autopairs
     use("windwp/nvim-autopairs")

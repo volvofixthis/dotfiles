@@ -180,7 +180,7 @@ keybinding:
         amendToCommit: "A"
         pickCommit: "p" # pick commit (when mid-rebase)
         revertCommit: "t"
-        cherryPickCopy: "c"
+        cherryPickCopy: "C"
         cherryPickCopyRange: "C"
         pasteCommits: "v"
         tagCommit: "T"
@@ -193,8 +193,7 @@ keybinding:
     commitFiles:
         checkoutCommitFile: "c"
     main:
-        toggleDragSelect: "v"
-        toggleDragSelect-alt: "V"
+        toggleDragSelect: "V"
         toggleSelectHunk: "a"
         pickBothHunks: "b"
     submodules:

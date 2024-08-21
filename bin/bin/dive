@@ -10,11 +10,18 @@ elif [ "$1" = "create" ]; then
     echo -e "workspace name: ${PROJECT}\ndate create: $(date)" > "${WORKSPACE}/.workspace"
     cd $WORKSPACE
     ln -s $FOLDER $(basename $FOLDER)
+elif [ "$1" = "add" ]; then
+    PROJECT=$2
+    FOLDER=$3
+    WORKSPACE="$HOME/.vim/saved_workspaces/$PROJECT/"
+    cd $WORKSPACE
+    ln -s $FOLDER $(basename $FOLDER)
 elif [ "$1" = "open" ]; then
     PROJECT=$2
     WORKSPACE="$HOME/.vim/saved_workspaces/$PROJECT/"
     if [ ! -d "$WORKSPACE" ]; then
         echo "Can't find project $PROJECT"
+        exit
     fi
     export WORKSPACE=$WORKSPACE
     CMD="nvim +'WorkspaceOpen $2' +'NvimTreeOpen ${WORKSPACE}'"
@@ -38,4 +45,5 @@ else
     echo "Available command are:"
     echo "ls - list of projects"
     echo "open [project] - open project for editing"
+    echo "create [project] [path] - create new project"
 fi

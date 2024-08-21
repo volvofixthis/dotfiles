@@ -5,6 +5,7 @@
 nnoremap <Leader>wc :sil! q<CR>
 nnoremap <Leader>wo :only<CR>
 nnoremap <Leader>bc :sil! bp! \| sil! bd!#<CR>
+nnoremap <Leader>bw :w \| sil! bp! \| sil! bd!#<CR>
 nnoremap <Leader>bo :BufOnly<CR>
 nnoremap <Leader>tc :tabc<CR>
 nnoremap <Leader>to :tabo<CR>
@@ -143,7 +144,7 @@ nmap <silent> <Leader>rc <Plug>RestNvimPreview
 nmap <silent> <Leader>rl <Plug>RestNvimLast
 
 " Glow
-noremap <Leader>p :Glow<CR>
+noremap <Leader>p :Glow % keep \| stopinsert<CR>
 
 " delete and cut without pain https://stackoverflow.com/questions/11993851/how-to-delete-not-cut-in-vim/11993928
 nnoremap x "_x

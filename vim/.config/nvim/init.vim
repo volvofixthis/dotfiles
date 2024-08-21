@@ -1,6 +1,5 @@
 """" INIT CONFIG FOR NVIM
 source $HOME/.config/nvim/base.vim
-source $HOME/.config/nvim/glow.vim
 source $HOME/.config/nvim/blamer.vim
 source $HOME/.config/nvim/airline.vim
 " source $HOME/.config/nvim/coq.vim
