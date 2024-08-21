@@ -35,7 +35,7 @@ return require("packer").startup(function(use)
     use('hrsh7th/cmp-buffer')
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-cmdline')
-    use({ 'volvofixthis/cmp-dbee', branch = 'packer' })
+    use('MattiasMTS/cmp-dbee')
     use('hrsh7th/nvim-cmp')
     use({
         "folke/noice.nvim",
