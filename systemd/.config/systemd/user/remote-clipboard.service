@@ -5,7 +5,6 @@ StartLimitIntervalSec=33
 
 [Service]
 Type=simple
-Environment=DISPLAY=:0
 ExecStart=%h/bin/remote_clipboard.sh
 Restart=always
 RestartSec=5
