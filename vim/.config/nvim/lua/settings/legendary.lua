@@ -490,7 +490,7 @@ require("legendary").setup({
             description = "Neotest hotkeys",
             keymaps = {
                 {
-                    "<leader>tn",
+                    "<leader>tu",
                     function()
                         require("neotest").run.run()
                     end,
