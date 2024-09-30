@@ -11,7 +11,7 @@ while getopts "hn:" opt; do
     case $opt in
         h) HOST_NETWORK=true ;;
         s) NODE_NAME=$OPTARG ;;
-        s) NAMESPACE=$OPTARG ;;
+        n) NAMESPACE=$OPTARG ;;
         *) usage ;;
     esac
 done
