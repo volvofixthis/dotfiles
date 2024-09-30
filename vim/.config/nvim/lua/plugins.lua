@@ -203,6 +203,8 @@ return require("packer").startup(function(use)
         }
     })
 
+    use('adelarsq/image_preview.nvim')
+
     if packer_bootstrap then
         require("packer").sync()
     end
