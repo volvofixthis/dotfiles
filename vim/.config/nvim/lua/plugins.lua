@@ -174,7 +174,7 @@ return require("packer").startup(function(use)
         end,
     }
 
-    use("codethread/qmk.nvim")
+    use({ "codethread/qmk.nvim", commit = "cfa6ce" })
 
     use {
         "kndndrj/nvim-dbee",
