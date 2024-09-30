@@ -190,6 +190,8 @@ return require("packer").startup(function(use)
 
     use("stevearc/overseer.nvim")
 
+    use({ "fredrikaverpil/neotest-golang", tag = "v0.11.0" })
+
     use({
         "nvim-neotest/neotest",
         requires = {
@@ -197,10 +199,20 @@ return require("packer").startup(function(use)
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "fredrikaverpil/neotest-golang",
             "rouge8/neotest-rust",
             "nvim-neotest/neotest-python"
-        }
+        },
+        tag = "*"
+    })
+
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
     })
 
     use('adelarsq/image_preview.nvim')
