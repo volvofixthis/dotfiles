@@ -69,6 +69,7 @@ local function my_on_attach(bufnr)
     vim.keymap.set('n', 'yp', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
     vim.keymap.set('n', '<2-LeftMouse>', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
+    vim.keymap.set('n', '<leader>p', require('image_preview').PreviewImageNvimTree)
 end
 
 require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
@@ -281,11 +282,6 @@ require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
         confirm = {
             remove = false,
             trash = false,
-        },
-    },
-    experimental = {
-        git = {
-            async = false,
         },
     },
     log = {
