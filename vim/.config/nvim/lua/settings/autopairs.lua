@@ -14,3 +14,8 @@ npairs.setup({
         highlight_grey = "Comment",
     },
 })
+
+npairs.remove_rule('"')
+npairs.remove_rule("'")
+npairs.remove_rule("'''")
+npairs.remove_rule('"""')
