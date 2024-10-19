@@ -40,11 +40,7 @@ return require("packer").startup(function(use)
     use({
         "folke/noice.nvim",
         requires = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
         },
     })
@@ -76,12 +72,12 @@ return require("packer").startup(function(use)
     -- Themes
     use("sainnhe/sonokai")
 
-    -- Airlines
-    use("vim-airline/vim-airline")
-    use("vim-airline/vim-airline-themes")
+    use {
+        'nvim-lualine/lualine.nvim',
+    }
 
     -- Icons
-    use("kyazdani42/nvim-web-devicons")
+    use("nvim-tree/nvim-web-devicons")
 
     -- Bufferline
     use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
@@ -216,6 +212,14 @@ return require("packer").startup(function(use)
     })
 
     use('adelarsq/image_preview.nvim')
+
+    use {
+        "SmiteshP/nvim-navic",
+    }
+
+    use {
+        "SmiteshP/nvim-navbuddy",
+    }
 
     if packer_bootstrap then
         require("packer").sync()

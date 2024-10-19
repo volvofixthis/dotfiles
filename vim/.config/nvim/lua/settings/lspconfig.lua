@@ -1,6 +1,8 @@
 local lspconfig = require("lspconfig")
 local lspformat = require("lsp-format")
 local lspsignature = require("lsp_signature")
+local navic = require("nvim-navic")
+local navbuddy = require("nvim-navbuddy")
 vim.diagnostic.config({
     virtual_text = false,
     update_in_insert = false,
@@ -55,12 +57,12 @@ lspconfig.efm.setup {
                 { formatCommand = "shfmt -ci -s -bn -i 4", formatStdin = true }
             },
             python = {
-                { formatCommand = "black --quiet -",     formatStdin = true },
-                { formatCommand = "~/bin/isort-wrapper", formatStdin = true },
+                { formatCommand = "black -l 120 --quiet -", formatStdin = true },
+                { formatCommand = "~/bin/isort-wrapper",    formatStdin = true },
             },
             go = {
                 { formatCommand = "goimports", formatStdin = true },
-                { formatCommand = "gofmt -s",  formatStdin = true },
+                { formatCommand = "go fmt",    formatStdin = true },
             },
         },
     },
@@ -110,7 +112,7 @@ lspconfig.pylsp.setup {
                 black = { enabled = false },
                 isort = { enabled = false },
                 rope_autoimport = { enabled = true },
-                pylsp_rope = { enabled = true },
+                rope = { enabled = true },
                 pycodestyle = {
                     ignore = { 'W391' },
                     maxLineLength = 100
@@ -119,7 +121,9 @@ lspconfig.pylsp.setup {
         }
     },
     on_attach = function(client, buffer)
-        lspformat.on_attach(client, buffer)
+        client.server_capabilities.documentFormattingProvider = false
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspsignature.on_attach({
             bind = true,
             handler_opts = {
@@ -131,6 +135,8 @@ lspconfig.pylsp.setup {
 }
 lspconfig.rust_analyzer.setup({
     on_attach = function(client, buffer)
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspformat.on_attach(client, buffer)
         lspsignature.on_attach({
             bind = true,
@@ -144,11 +150,9 @@ lspconfig.rust_analyzer.setup({
 -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting
 lspconfig.gopls.setup({
     on_attach = function(client, buffer)
-        client.resolved_capabilities.document_formatting = false
-        client.handlers["textDocument/formatting"] = function(...)
-        end
-        client.handlers["textDocument/rangeFormatting"] = function(...)
-        end
+        client.server_capabilities.documentFormattingProvider = false
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspsignature.on_attach({
             bind = true,
             handler_opts = {
@@ -157,10 +161,14 @@ lspconfig.gopls.setup({
         }, buffer)
     end,
     cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
-    capabilities = capabilities
+    capabilities = capabilities,
+    init_options = { usePlaceholders = true, completeUnimported = true },
+    root_dir = require("lspconfig").util.root_pattern(".git", "go.mod", "."),
 })
 lspconfig.lua_ls.setup({
     on_attach = function(client, buffer)
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspformat.on_attach(client, buffer)
         lspsignature.on_attach({
             bind = true,

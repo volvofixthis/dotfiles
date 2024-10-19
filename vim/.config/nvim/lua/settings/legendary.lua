@@ -531,6 +531,15 @@ require("legendary").setup({
                 },
             },
         },
+        -- NavBuddy
+        {
+            "<leader>nb",
+            function()
+                require("nvim-navbuddy").open()
+            end,
+            description = "Toggle NavBuddy",
+            mode = "n",
+        },
     },
     autocmds = {
         {
