@@ -6,9 +6,19 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 local api = require('nvim-tree.api')
+local core = require("nvim-tree")
 api.events.subscribe(api.events.Event.FileCreated, function(file)
     vim.cmd("edit " .. file.fname)
 end)
+
+local function toggle_sorter()
+    local config = core.get_config()
+    if config.sort.sorter == "name" then
+        config.sort.sorter = "modification_time"
+    else
+        config.sort.sorter = "name"
+    end
+end
 
 local function my_on_attach(bufnr)
     local function opts(desc)
@@ -69,16 +79,21 @@ local function my_on_attach(bufnr)
     vim.keymap.set('n', 'yp', api.fs.copy.absolute_path, opts('Copy Absolute Path'))
     vim.keymap.set('n', '<2-LeftMouse>', api.node.open.edit, opts('Open'))
     vim.keymap.set('n', '<2-RightMouse>', api.tree.change_root_to_node, opts('CD'))
-    vim.keymap.set('n', '<leader>p', require('image_preview').PreviewImageNvimTree)
+    vim.keymap.set('n', '<Leader>p', require('image_preview').PreviewImageNvimTree)
+    vim.keymap.set('n', '<Leader>s', toggle_sorter)
 end
 
-require("nvim-tree").setup { -- BEGIN_DEFAULT_OPTS
+core.setup { -- BEGIN_DEFAULT_OPTS
     auto_reload_on_write = true,
     disable_netrw = true,
-    hijack_cursor = false,
+    hijack_cursor = true,
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
-    sort_by = "name",
+    sort = {
+        sort = "name",
+        -- sorter = "modification_time",
+        folders_first = true,
+    },
     root_dirs = {},
     prefer_startup_root = false,
     sync_root_with_cwd = false,

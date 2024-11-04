@@ -1,1 +1,1 @@
-require("glow").setup({ pager = false })
+require("glow").setup({ pager = true })
