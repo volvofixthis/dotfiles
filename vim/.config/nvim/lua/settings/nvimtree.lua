@@ -5,6 +5,7 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
+local utils = require "nvim-tree.utils"
 local api = require('nvim-tree.api')
 local core = require("nvim-tree")
 api.events.subscribe(api.events.Event.FileCreated, function(file)
@@ -18,6 +19,10 @@ local function toggle_sorter()
     else
         config.sort.sorter = "name"
     end
+    local relative_path = utils.path_relative(get_current_file_path(), vim.g.workspace_path)
+    api.tree.close()
+    api.tree.change_root(vim.g.workspace_path)
+    api.tree.find_file({ buf = relative_path, open = true, focus = true, update_root = false })
 end
 
 local function my_on_attach(bufnr)
