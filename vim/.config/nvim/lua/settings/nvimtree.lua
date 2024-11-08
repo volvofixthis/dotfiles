@@ -95,7 +95,7 @@ core.setup { -- BEGIN_DEFAULT_OPTS
     hijack_netrw = true,
     hijack_unnamed_buffer_when_opening = false,
     sort = {
-        sort = "name",
+        sorter = "name",
         -- sorter = "modification_time",
         folders_first = true,
     },
