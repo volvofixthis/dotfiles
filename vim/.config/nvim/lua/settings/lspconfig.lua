@@ -162,7 +162,7 @@ lspconfig.gopls.setup({
     end,
     cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
     capabilities = capabilities,
-    init_options = { usePlaceholders = true, completeUnimported = true },
+    init_options = { usePlaceholders = false, completeUnimported = true },
     root_dir = require("lspconfig").util.root_pattern(".git", "go.mod", "."),
 })
 lspconfig.lua_ls.setup({
