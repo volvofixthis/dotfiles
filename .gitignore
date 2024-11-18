@@ -9,3 +9,5 @@ zsh/.zshrc.d/*.local.enabled
 lazygit/.config/lazygit/*
 !lazygit/.config/lazygit/config.yml
 tmux/.tmux/plugins
+hypr/.config/hypr/wallpaper_effects
+hypr/.config/hypr/.initial_startup_done
