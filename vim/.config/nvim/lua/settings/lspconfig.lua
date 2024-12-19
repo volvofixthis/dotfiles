@@ -3,6 +3,7 @@ local lspformat = require("lsp-format")
 local lspsignature = require("lsp_signature")
 local navic = require("nvim-navic")
 local navbuddy = require("nvim-navbuddy")
+vim.g.autoformat = false
 vim.diagnostic.config({
     virtual_text = false,
     update_in_insert = false,
@@ -62,7 +63,7 @@ lspconfig.efm.setup {
             },
             go = {
                 { formatCommand = "goimports", formatStdin = true },
-                { formatCommand = "go fmt",    formatStdin = true },
+                -- { formatCommand = "go fmt",    formatStdin = true },
             },
         },
     },
@@ -150,7 +151,8 @@ lspconfig.rust_analyzer.setup({
 -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting
 lspconfig.gopls.setup({
     on_attach = function(client, buffer)
-        client.server_capabilities.documentFormattingProvider = false
+        lspformat.on_attach(client, buffer)
+        -- client.server_capabilities.documentFormattingProvider = false
         navic.attach(client, buffer)
         navbuddy.attach(client, buffer)
         lspsignature.on_attach({
