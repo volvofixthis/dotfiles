@@ -6,6 +6,7 @@ bin/bin/lazygit
 bin/bin/stylua
 bash/.bashrc.d/*.local.enabled
 zsh/.zshrc.d/*.local.enabled
+zsh/.zshrc.d/*.local.disabled
 lazygit/.config/lazygit/*
 !lazygit/.config/lazygit/config.yml
 tmux/.tmux/plugins
