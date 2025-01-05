@@ -44,7 +44,7 @@ return require("packer").startup(function(use)
             "rcarriga/nvim-notify",
         },
     })
-    use({ "fedepujol/move.nvim", commit = "2cd533590" })
+    use({ "fedepujol/move.nvim" })
 
     -- DAP
     use({ "volvofixthis/nvim-dap-go", branch = "fixes" })
@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
     -- Nvimtree
     use("nvim-tree/nvim-tree.lua")
 
-    use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2" })
+    use({ "nvim-treesitter/nvim-treesitter" })
 
     -- Telescope
     use({
@@ -80,7 +80,7 @@ return require("packer").startup(function(use)
     use("nvim-tree/nvim-web-devicons")
 
     -- Bufferline
-    use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
+    use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons" })
 
     -- Workspaces
     use("andreyorst/SimpleWorkspaces.vim")
@@ -170,7 +170,7 @@ return require("packer").startup(function(use)
         end,
     }
 
-    use({ "codethread/qmk.nvim", commit = "cfa6ce" })
+    use({ "codethread/qmk.nvim" })
 
     use {
         "kndndrj/nvim-dbee",
@@ -186,7 +186,7 @@ return require("packer").startup(function(use)
 
     use("stevearc/overseer.nvim")
 
-    use({ "fredrikaverpil/neotest-golang", tag = "v0.11.0" })
+    use({ "fredrikaverpil/neotest-golang" })
 
     use({
         "nvim-neotest/neotest",
