@@ -1,0 +1,13 @@
+[Unit]
+Description=Shadowsocks
+StartLimitBurst=7
+StartLimitIntervalSec=33
+
+[Service]
+Type=simple
+ExecStart=%h/bin/shadowsocks.sh
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

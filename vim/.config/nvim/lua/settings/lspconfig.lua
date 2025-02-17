@@ -162,10 +162,10 @@ lspconfig.gopls.setup({
             }
         }, buffer)
     end,
-    cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
+    -- cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
     capabilities = capabilities,
     init_options = { usePlaceholders = false, completeUnimported = true },
-    root_dir = require("lspconfig").util.root_pattern(".git", "go.mod", "."),
+    -- root_dir = require("lspconfig").util.root_pattern(".git", "go.mod", "."),
 })
 lspconfig.lua_ls.setup({
     on_attach = function(client, buffer)
@@ -216,6 +216,23 @@ require 'lspconfig'.clangd.setup {
         "clangd",
         "--offset-encoding=utf-16",
     },
+}
+
+require 'lspconfig'.kotlin_language_server.setup {
+    on_attach = function(client, buffer)
+        lspformat.on_attach(client, buffer)
+        -- client.server_capabilities.documentFormattingProvider = false
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
+        lspsignature.on_attach({
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        }, buffer)
+    end,
+    cmd = { "/home/loki/Downloads/kotlin-language-server/bin/kotlin-language-server" },
+    capabilities = capabilities,
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
