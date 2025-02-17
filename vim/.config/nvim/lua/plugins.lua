@@ -40,15 +40,11 @@ return require("packer").startup(function(use)
     use({
         "folke/noice.nvim",
         requires = {
-            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
             "MunifTanjim/nui.nvim",
-            -- OPTIONAL:
-            --   `nvim-notify` is only needed, if you want to use the notification view.
-            --   If not available, we use `mini` as the fallback
             "rcarriga/nvim-notify",
         },
     })
-    use({ "fedepujol/move.nvim", commit = "2cd533590" })
+    use({ "fedepujol/move.nvim" })
 
     -- DAP
     use({ "volvofixthis/nvim-dap-go", branch = "fixes" })
@@ -65,7 +61,7 @@ return require("packer").startup(function(use)
     -- Nvimtree
     use("nvim-tree/nvim-tree.lua")
 
-    use({ "nvim-treesitter/nvim-treesitter", tag = "v0.9.2" })
+    use({ "nvim-treesitter/nvim-treesitter" })
 
     -- Telescope
     use({
@@ -76,15 +72,15 @@ return require("packer").startup(function(use)
     -- Themes
     use("sainnhe/sonokai")
 
-    -- Airlines
-    use("vim-airline/vim-airline")
-    use("vim-airline/vim-airline-themes")
+    use {
+        'nvim-lualine/lualine.nvim',
+    }
 
     -- Icons
-    use("kyazdani42/nvim-web-devicons")
+    use("nvim-tree/nvim-web-devicons")
 
     -- Bufferline
-    use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
+    use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons" })
 
     -- Workspaces
     use("andreyorst/SimpleWorkspaces.vim")
@@ -174,7 +170,7 @@ return require("packer").startup(function(use)
         end,
     }
 
-    use("codethread/qmk.nvim")
+    use({ "codethread/qmk.nvim" })
 
     use {
         "kndndrj/nvim-dbee",
@@ -190,6 +186,8 @@ return require("packer").startup(function(use)
 
     use("stevearc/overseer.nvim")
 
+    use({ "fredrikaverpil/neotest-golang" })
+
     use({
         "nvim-neotest/neotest",
         requires = {
@@ -197,11 +195,31 @@ return require("packer").startup(function(use)
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "fredrikaverpil/neotest-golang",
             "rouge8/neotest-rust",
             "nvim-neotest/neotest-python"
-        }
+        },
+        tag = "*"
     })
+
+    use({
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    })
+
+    use('adelarsq/image_preview.nvim')
+
+    use {
+        "SmiteshP/nvim-navic",
+    }
+
+    use {
+        "SmiteshP/nvim-navbuddy",
+    }
 
     if packer_bootstrap then
         require("packer").sync()

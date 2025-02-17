@@ -1,6 +1,9 @@
 local lspconfig = require("lspconfig")
 local lspformat = require("lsp-format")
 local lspsignature = require("lsp_signature")
+local navic = require("nvim-navic")
+local navbuddy = require("nvim-navbuddy")
+vim.g.autoformat = false
 vim.diagnostic.config({
     virtual_text = false,
     update_in_insert = false,
@@ -39,7 +42,7 @@ local prettier = {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.efm.setup {
     on_attach = lspformat.on_attach,
-    init_options = { documentFormatting = true },
+    init_options = { documentFormatting = true, codeAction = true },
     settings = {
         languages = {
             typescript = { prettier },
@@ -55,27 +58,73 @@ lspconfig.efm.setup {
                 { formatCommand = "shfmt -ci -s -bn -i 4", formatStdin = true }
             },
             python = {
-                { formatCommand = "black --quiet -",     formatStdin = true },
-                { formatCommand = "~/bin/isort-wrapper", formatStdin = true },
+                { formatCommand = "black -l 120 --quiet -", formatStdin = true },
+                { formatCommand = "~/bin/isort-wrapper",    formatStdin = true },
             },
             go = {
                 { formatCommand = "goimports", formatStdin = true },
-                { formatCommand = "gofmt -s",  formatStdin = true },
+                -- { formatCommand = "go fmt",    formatStdin = true },
             },
         },
     },
     filetypes = { 'go', 'python', 'sh', 'yaml', 'json', 'bash', 'vim', 'rust' }
 }
-lspconfig.pyright.setup({
+-- lspconfig.pyright.setup({
+--     settings = {
+--         pyright = {
+--             -- Using Ruff's import organizer
+--             disableOrganizeImports = true,
+--         },
+--         python = {
+--             analysis = {
+--                 -- Ignore all files for analysis to exclusively use Ruff for linting
+--                 ignore = { '*' },
+--             },
+--         },
+--     },
+--     on_new_config = function(config, root_dir)
+--         local env = vim.trim(vim.fn.system('cd "' .. root_dir .. '"; poetry env info -p 2>/dev/null'))
+--         if string.len(env) > 0 then
+--             config.settings.python.pythonPath = env .. '/bin/python'
+--         end
+--     end,
+--     on_attach = function(client, buffer)
+--         client.config.settings.diagnosticMode = "openFilesOnly"
+--         client.config.settings.useLibraryCodeForTypes = true
+--         client.config.settings.autoSearchPaths = true
+--         client.config.settings.
+--             client.notify("workspace/didChangeConfiguration")
+--         client.handlers["textDocument/publishDiagnostics"] = function(...)
+--         end
+--         lspformat.on_attach(client, buffer)
+--         lspsignature.on_attach({
+--             bind = true,
+--             handler_opts = {
+--                 border = "rounded"
+--             }
+--         }, buffer)
+--     end,
+--     capabilities = capabilities
+-- })
+lspconfig.pylsp.setup {
+    settings = {
+        pylsp = {
+            plugins = {
+                black = { enabled = false },
+                isort = { enabled = false },
+                rope_autoimport = { enabled = true },
+                rope = { enabled = true },
+                pycodestyle = {
+                    ignore = { 'W391' },
+                    maxLineLength = 100
+                }
+            }
+        }
+    },
     on_attach = function(client, buffer)
-        client.config.settings.diagnosticMode = "openFilesOnly"
-        client.config.settings.useLibraryCodeForTypes = true
-        client.config.settings.autoSearchPaths = true
-        client.config.settings.
-            client.notify("workspace/didChangeConfiguration")
-        client.handlers["textDocument/publishDiagnostics"] = function(...)
-        end
-        lspformat.on_attach(client, buffer)
+        client.server_capabilities.documentFormattingProvider = false
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspsignature.on_attach({
             bind = true,
             handler_opts = {
@@ -84,9 +133,11 @@ lspconfig.pyright.setup({
         }, buffer)
     end,
     capabilities = capabilities
-})
+}
 lspconfig.rust_analyzer.setup({
     on_attach = function(client, buffer)
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspformat.on_attach(client, buffer)
         lspsignature.on_attach({
             bind = true,
@@ -100,11 +151,10 @@ lspconfig.rust_analyzer.setup({
 -- https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_rangeFormatting
 lspconfig.gopls.setup({
     on_attach = function(client, buffer)
-        client.resolved_capabilities.document_formatting = false
-        client.handlers["textDocument/formatting"] = function(...)
-        end
-        client.handlers["textDocument/rangeFormatting"] = function(...)
-        end
+        lspformat.on_attach(client, buffer)
+        -- client.server_capabilities.documentFormattingProvider = false
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspsignature.on_attach({
             bind = true,
             handler_opts = {
@@ -112,11 +162,15 @@ lspconfig.gopls.setup({
             }
         }, buffer)
     end,
-    cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
-    capabilities = capabilities
+    -- cmd = { "gopls", "-remote=unix;/tmp/gopls-daemon-socket" },
+    capabilities = capabilities,
+    init_options = { usePlaceholders = false, completeUnimported = true },
+    -- root_dir = require("lspconfig").util.root_pattern(".git", "go.mod", "."),
 })
 lspconfig.lua_ls.setup({
     on_attach = function(client, buffer)
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
         lspformat.on_attach(client, buffer)
         lspsignature.on_attach({
             bind = true,
@@ -164,6 +218,23 @@ require 'lspconfig'.clangd.setup {
     },
 }
 
+require 'lspconfig'.kotlin_language_server.setup {
+    on_attach = function(client, buffer)
+        lspformat.on_attach(client, buffer)
+        -- client.server_capabilities.documentFormattingProvider = false
+        navic.attach(client, buffer)
+        navbuddy.attach(client, buffer)
+        lspsignature.on_attach({
+            bind = true,
+            handler_opts = {
+                border = "rounded"
+            }
+        }, buffer)
+    end,
+    cmd = { "/home/loki/Downloads/kotlin-language-server/bin/kotlin-language-server" },
+    capabilities = capabilities,
+}
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
@@ -178,6 +249,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, opts)
         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
         vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
         vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
         vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)

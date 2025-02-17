@@ -490,7 +490,7 @@ require("legendary").setup({
             description = "Neotest hotkeys",
             keymaps = {
                 {
-                    "<leader>tn",
+                    "<leader>tu",
                     function()
                         require("neotest").run.run()
                     end,
@@ -530,6 +530,15 @@ require("legendary").setup({
                     description = "Attach",
                 },
             },
+        },
+        -- NavBuddy
+        {
+            "<leader>nb",
+            function()
+                require("nvim-navbuddy").open()
+            end,
+            description = "Toggle NavBuddy",
+            mode = "n",
         },
     },
     autocmds = {

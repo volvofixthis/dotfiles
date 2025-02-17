@@ -1,1 +1,27 @@
-require('overseer').setup()
+require('overseer').setup({
+    task_list = {
+        bindings = {
+            ["?"] = "ShowHelp",
+            ["g?"] = "ShowHelp",
+            ["<CR>"] = "RunAction",
+            ["<C-e>"] = "Edit",
+            ["o"] = "Open",
+            ["<C-v>"] = "OpenVsplit",
+            ["<C-s>"] = "OpenSplit",
+            ["<C-f>"] = "OpenFloat",
+            ["<C-q>"] = "OpenQuickFix",
+            ["p"] = "TogglePreview",
+            ["i"] = "IncreaseDetail",
+            ["d"] = "DecreaseDetail",
+            ["I"] = "IncreaseAllDetail",
+            ["D"] = "DecreaseAllDetail",
+            ["["] = "DecreaseWidth",
+            ["]"] = "IncreaseWidth",
+            ["{"] = "PrevTask",
+            ["}"] = "NextTask",
+            ["K"] = "ScrollOutputUp",
+            ["J"] = "ScrollOutputDown",
+            ["q"] = "Close",
+        },
+    },
+})

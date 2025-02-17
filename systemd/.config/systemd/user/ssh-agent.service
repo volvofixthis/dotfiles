@@ -11,8 +11,8 @@ Environment=SSH_ASKPASS='%h/bin/auto-ssh-askpass.sh'
 Environment=SSH_ASKPASS_REQUIRE=prefer
 ExecStart=/usr/bin/env ssh-agent -D -a $SSH_AUTH_SOCK
 ExecStartPre=/usr/bin/rm -f $SSH_AUTH_SOCK
-ExecStartPost=/usr/bin/env ssh-add -q %h/.ssh/notebook %h/.ssh/gcore
-ExecStartPost=/usr/bin/env ssh-add %h/.ssh/gcore
+ExecStartPost=/usr/bin/env ssh-add -q %h/.ssh/notebook
+ExecStartPost=/usr/bin/env ssh-add -q %h/.ssh/wb
 Restart=always
 RestartSec=5
 
