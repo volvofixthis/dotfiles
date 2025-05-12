@@ -12,3 +12,4 @@ lazygit/.config/lazygit/*
 tmux/.tmux/plugins
 hypr/.config/hypr/wallpaper_effects
 hypr/.config/hypr/.initial_startup_done
+*.pyc

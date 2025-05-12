@@ -78,12 +78,6 @@ nmap <Leader>cn :let @*=expand("%")<CR>
 " Copy file path
 nmap <Leader>cf :let @*=expand("%:p")<CR>
 
-"  DAP
-autocmd BufEnter *.go nmap <buffer> <Leader>td :lua require('dap-go').debug_test()<CR>
-autocmd BufEnter *.go nmap <buffer> <Leader>tl :lua require('dap-go').debug_test_last()<CR>
-autocmd BufEnter *.py nmap <buffer> <Leader>tc :lua require('dap-python').test_class()<CR>
-autocmd BufEnter *.py nmap <buffer> <Leader>tf :lua require('dap-python').test_method()<CR>
-
 " LazyGit
 function! GetCurrentGitPath(path)
   " echo "git in: "..a:path
