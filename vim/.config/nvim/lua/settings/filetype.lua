@@ -39,6 +39,18 @@ require("filetype").setup({
                 vim.opt.expandtab = true
                 vim.bo.softtabstop = 2
             end,
+            ["c"] = function()
+                vim.opt.tabstop = 2
+                vim.opt.shiftwidth = 2
+                vim.opt.expandtab = true
+                vim.bo.softtabstop = 2
+            end,
+            ["cpp"] = function()
+                vim.opt.tabstop = 2
+                vim.opt.shiftwidth = 2
+                vim.opt.expandtab = true
+                vim.bo.softtabstop = 2
+            end,
         },
         function_complex = {
             [".*.terraformrc"] = hcl_syntax,
