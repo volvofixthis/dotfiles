@@ -1,0 +1,49 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+// ### Minimal -SHORT ### //
+
+{
+"include": "~/.config/waybar/modules",
+"layer": "top",
+"position": "top",
+"width": 1050,
+"margin-top": 3,
+
+"modules-left": [
+	"clock",  
+	"custom/weather", 
+	],
+
+ "modules-center": [
+ 	"idle_inhibitor",
+    "cpu",
+    "memory",
+    "battery",
+	],
+
+"modules-right": [
+    "custom/layout1",
+    "custom/layout2",
+	"custom/menu", 
+	"tray",
+	"custom/swaync",
+	"mpris", 
+	"backlight", 
+	"pulseaudio", 
+	"custom/power"],
+"bluetooth": {
+    "on-click": "blueman",
+},
+"custom/layout1": {
+    "format": "A:{} ",
+    "exec": "~/bin/keyboard-layout.sh keyd-virtual-keyboard",
+    "interval": 1,
+    "on-click": "~/.config/hypr/scripts/SwitchKeyboardLayout.sh keyd-virtual-keyboard"
+},
+"custom/layout2": {
+    "format": "D:{} ",
+    "exec": "~/bin/keyboard-layout.sh dao-left-keyboard",
+    "interval": 1,
+    "on-click": "~/.config/hypr/scripts/SwitchKeyboardLayout.sh dao-left-keyboard"
+}
+}

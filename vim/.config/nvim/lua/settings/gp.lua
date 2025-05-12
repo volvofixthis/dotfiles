@@ -1,25 +1,65 @@
 require("gp").setup({
+    curl_params = { "--socks5", "127.0.0.1:1080" },
+    agents = {
+        {
+            provider = "openai",
+            name = "ChatGPT4o",
+            disable = true,
+            chat = true,
+            command = false,
+        },
+        {
+            provider = "openai",
+            name = "ChatGPT4o-mini",
+            disable = true,
+            chat = true,
+            command = false,
+        },
+        {
+            provider = "openai",
+            name = "CodeGPT4o-mini",
+            disable = true,
+            chat = false,
+            command = true,
+        },
+        {
+            provider = "openai",
+            name = "CodeGPT4o",
+            disable = true,
+            chat = false,
+            command = true,
+        },
+        {
+            name = "OpenAI-o3-mini",
+            chat = true,
+            command = true,
+            -- string with model name or table with model name and parameters
+            model = { model = "o3-mini" },
+            -- system prompt (use this to specify the persona/role of the AI)
+            system_prompt = require("gp.defaults").chat_system_prompt,
+        },
+    },
     hooks = {
         UnitTests = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
                 .. "```{{filetype}}\n{{selection}}\n```\n\n"
                 .. "Please respond by writing table driven unit tests for the code above."
             local agent = gp.get_command_agent()
-            gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
+            gp.Prompt(params, gp.Target.enew, agent, template)
         end,
         Explain = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
                 .. "```{{filetype}}\n{{selection}}\n```\n\n"
                 .. "Please respond by explaining the code above."
             local agent = gp.get_command_agent()
-            gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
+            gp.Prompt(params, gp.Target.enew, agent, template, nil, nil)
         end,
         CodeReview = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
                 .. "```{{filetype}}\n{{selection}}\n```\n\n"
                 .. "Please analyze for code smells and suggest improvements."
             local agent = gp.get_command_agent()
-            gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
+            gp.Prompt(params, gp.Target.enew, agent, template, nil, nil)
         end,
         CodeSimplify = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
@@ -56,7 +96,7 @@ require("gp").setup({
                 .. "- Follow KISS, DRY and SOLID principles.\n"
                 .. "- Use only slash for comments.\n"
             local agent = gp.get_command_agent()
-            gp.Prompt(params, gp.Target.vnew, nil, agent.model, template, agent.system_prompt)
+            gp.Prompt(params, gp.Target.vnew, agent, template, nil, nil)
         end,
         CodeFormat = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
@@ -76,7 +116,7 @@ require("gp").setup({
                 .. "- You must answer only with valid code and nothing else.\n"
                 .. "- Use only slash for comments.\n"
             local agent = gp.get_command_agent()
-            gp.Prompt(params, gp.Target.rewrite, nil, agent.model, template, agent.system_prompt)
+            gp.Prompt(params, gp.Target.rewrite, agent, template, nil, nil)
         end,
         CodeFix = function(gp, params)
             local template = "I have the following code from {{filename}}:\n\n"
@@ -92,7 +132,7 @@ require("gp").setup({
                 .. "- Produced code must compile without errors.\n"
                 .. "- You must answer only with fixed code and nothing else.\n"
             local agent = gp.get_command_agent()
-            gp.Prompt(params, gp.Target.rewrite, nil, agent.model, template, agent.system_prompt)
+            gp.Prompt(params, gp.Target.rewrite, agent, template, nil, nil)
         end,
     }
 })

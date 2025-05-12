@@ -312,7 +312,7 @@ require("legendary").setup({
                 {
                     "<C-g>v",
                     ":<C-u>'<,'>GpCodeFix<cr>",
-                    description = "ChatGPT visual code format",
+                    description = "ChatGPT visual code fix",
                     mode = "v",
                 },
             },
@@ -352,31 +352,25 @@ require("legendary").setup({
             keymaps = {
                 {
                     "<leader>xx",
-                    require("trouble").toggle,
-                    description = "Trouble toggle",
-                    mode = "n",
-                },
-                {
-                    "<leader>xw",
-                    function() require("trouble").toggle("workspace_diagnostics") end,
+                    "<cmd>Trouble diagnostics toggle<cr>",
                     description = "Trouble workspace diagnostics",
                     mode = "n",
                 },
                 {
                     "<leader>xd",
-                    function() require("trouble").toggle("document_diagnostics") end,
+                    "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
                     description = "Trouble document diagnostics",
                     mode = "n",
                 },
                 {
                     "<leader>xq",
-                    function() require("trouble").toggle("quickfix") end,
+                    "<cmd>Trouble qflist toggle<cr>",
                     description = "Trouble quickfix",
                     mode = "n",
                 },
                 {
                     "<leader>xl",
-                    function() require("trouble").toggle("loclist") end,
+                    "<cmd>Trouble loclist toggle<cr>",
                     description = "Trouble loclist",
                     mode = "n",
                 },
@@ -514,7 +508,7 @@ require("legendary").setup({
                     description = "Debug nearest",
                 },
                 {
-                    "<leader>ts",
+                    "<leader>ti",
                     function()
                         require("neotest").run.stop()
                     end,
@@ -528,6 +522,22 @@ require("legendary").setup({
                     end,
                     mode = "n",
                     description = "Attach",
+                },
+                {
+                    "<leader>tt",
+                    function()
+                        require("neotest").output_panel.toggle()
+                    end,
+                    mode = "n",
+                    description = "Open panel",
+                },
+                {
+                    "<leader>ts",
+                    function()
+                        require("neotest").summary.toggle()
+                    end,
+                    mode = "n",
+                    description = "Open summary",
                 },
             },
         },

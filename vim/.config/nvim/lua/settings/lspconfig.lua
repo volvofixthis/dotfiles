@@ -3,6 +3,7 @@ local lspformat = require("lsp-format")
 local lspsignature = require("lsp_signature")
 local navic = require("nvim-navic")
 local navbuddy = require("nvim-navbuddy")
+local util = require('lspconfig/util')
 vim.g.autoformat = false
 vim.diagnostic.config({
     virtual_text = false,
@@ -221,7 +222,7 @@ require 'lspconfig'.clangd.setup {
 require 'lspconfig'.kotlin_language_server.setup {
     on_attach = function(client, buffer)
         lspformat.on_attach(client, buffer)
-        -- client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentFormattingProvider = false
         navic.attach(client, buffer)
         navbuddy.attach(client, buffer)
         lspsignature.on_attach({
@@ -231,8 +232,10 @@ require 'lspconfig'.kotlin_language_server.setup {
             }
         }, buffer)
     end,
-    cmd = { "/home/loki/Downloads/kotlin-language-server/bin/kotlin-language-server" },
-    capabilities = capabilities,
+    cmd = { table.concat({ os.getenv("HOME"), "/projects/kotlin-language-server/server/build/install/server/bin/kotlin-language-server" }) },
+    init_options = {
+        storagePath = table.concat({ os.getenv("HOME"), "/.local/share/nvim/" }),
+    }
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {

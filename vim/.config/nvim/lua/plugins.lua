@@ -118,7 +118,7 @@ return require("packer").startup(function(use)
 
     use({ "alexghergh/nvim-tmux-navigation" })
 
-    use("robitx/gp.nvim")
+    use("volvofixthis/gp.nvim")
 
     use("mrjones2014/legendary.nvim")
 

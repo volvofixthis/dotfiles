@@ -51,6 +51,13 @@ require("filetype").setup({
                 vim.opt.expandtab = true
                 vim.bo.softtabstop = 2
             end,
+            ["lua"] = function()
+                vim.bo.filetype = "lua"
+                vim.opt.tabstop = 2
+                vim.opt.shiftwidth = 2
+                vim.opt.expandtab = true
+                vim.bo.softtabstop = 2
+            end,
         },
         function_complex = {
             [".*.terraformrc"] = hcl_syntax,
@@ -58,6 +65,7 @@ require("filetype").setup({
         complex = {
             -- Set the filetype of any full filename matching the regex to gitconfig
             [".*.zshrc.d/.*"] = "bash", -- Included in the plugin
+            [".env"] = "bash",
         },
     },
 })
