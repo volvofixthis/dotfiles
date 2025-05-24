@@ -1,0 +1,29 @@
+
+#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+output $o1 {
+    mode 2560x1600@60.000Hz
+    #pos 0 0
+    pos 0 0
+    adaptive_sync on
+    subpixel rgb
+}
+
+#seat * hide_cursor 6000
+
+input "type:keyboard" {
+    xkb_model "pc101"
+    xkb_layout "us,ru"
+    xkb_variant ",winkeys"
+    xkb_options "grp:win_space_toggle"
+    repeat_delay 250
+    repeat_rate 100
+	xkb_numlock enable 
+}
+
+input "type:touchpad" {
+   dwt enabled
+   tap enabled
+   natural_scroll disabled
+   middle_emulation enabled
+}

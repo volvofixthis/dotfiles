@@ -1,0 +1,91 @@
+
+workspace_layout tabbed
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+
+focus_follows_mouse yes
+
+workspace 11 output $o1
+workspace 12 output $o1
+workspace 13 output $o1
+workspace 14 output $o1
+workspace 15 output $o1
+workspace 16 output $o1
+workspace 17 output $o1
+workspace 2q output $o1
+workspace 2w output $o1
+workspace 2e output $o1
+workspace 3a output $o1
+workspace 3s output $o1
+workspace 3d output $o1
+workspace 4z output $o1
+workspace 4x output $o1
+workspace 4c output $o1
+workspace 01 output $o1
+workspace 02 output $o1
+workspace 03 output $o1
+
+workspace r8 output $o2
+workspace r9 output $o2
+workspace r0 output $o2
+workspace ri output $o2
+workspace ro output $o2
+workspace rp output $o2
+workspace rk output $o2
+workspace rl output $o2
+
+#workspace 21 layout tabbed
+#workspace 4z layout tabbed
+
+bindsym --to-code {
+    $mod+1  workspace 11
+    $mod+2  workspace 12
+    $mod+3  workspace 13
+    $mod+4  workspace 14
+    $mod+5  workspace 15
+    $mod+6  workspace 16
+    $mod+7  workspace 17
+
+
+    $mod+Shift+1  move container to workspace 11  
+    $mod+Shift+2  move container to workspace 12  
+    $mod+Shift+3  move container to workspace 13  
+    $mod+Shift+4  move container to workspace 14  
+    $mod+Shift+5  move container to workspace 15  
+    $mod+Shift+q  move container to workspace 2q  
+    $mod+Shift+w  move container to workspace 2w  
+    $mod+Shift+e  move container to workspace 2e  
+    $mod+Shift+a  move container to workspace 3a  
+    $mod+Shift+s  move container to workspace 3s  
+    $mod+Shift+d  move container to workspace 3d  
+    $mod+Shift+z  move container to workspace 4z  
+    $mod+Shift+x  move container to workspace 4x  
+    $mod+Shift+c  move container to workspace 4c  
+    $mod+Shift+F1 move container to workspace 01 
+    $mod+Shift+F2 move container to workspace 02 
+    $mod+Shift+F3 move container to workspace 03 
+
+    $mod+Shift+8 move container to workspace r8
+    $mod+Shift+9 move container to workspace r9
+    $mod+Shift+0 move container to workspace r0
+    $mod+Shift+i move container to workspace ri
+    $mod+Shift+o move container to workspace ro
+    $mod+Shift+p move container to workspace rp
+    $mod+Shift+k move container to workspace rk
+    $mod+Shift+l move container to workspace rl
+}

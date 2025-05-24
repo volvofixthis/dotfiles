@@ -1,0 +1,10 @@
+
+# Start mako - notifications
+exec mako
+
+exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DESKTOP SWAYSOCK I3SOCK XCURSOR_SIZE XCURSOR_THEME
+exec telegram-asahi
+exec kitty
+exec_always xrdb -merge ~/.Xresources
+exec_always xrdb -merge ~/.colors-zenburn
+

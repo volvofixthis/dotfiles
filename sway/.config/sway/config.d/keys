@@ -1,0 +1,62 @@
+
+
+bindsym $mod+Return exec $term
+bindsym $mod+Escape kill
+bindsym $mod+q kill
+bindsym $mod+d exec $menu
+
+
+bindsym $mod+Shift+Ctrl+c reload
+
+
+bindsym --to-code {
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    #$mod+b splith
+    #$mod+v splitv
+    #$mod+g layout stacking
+    #$mod+h layout tabbed
+    $mod+j layout toggle split tabbed stacked
+    $mod+Tab layout toggle split tabbed stacked
+    $mod+f fullscreen
+    $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    $mod+Ctrl+space focus mode_toggle
+
+    $mod+Ctrl+p focus parent
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+    # Move the currently focused window to the scratchpad
+    $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    $mod+minus scratchpad show
+
+}
+
+# Special keys to adjust volume via PulseAudio
+bindsym --locked XF86AudioRaiseVolume exec $scriptsDir/Volume.sh --inc #volume up
+bindsym --locked XF86AudioLowerVolume exec $scriptsDir/Volume.sh --dec #volume down
+bindsym --locked XF86AudioMicMute exec $scriptsDir/Volume.sh --toggle-mic #mute mic
+bindsym --locked XF86AudioMute exec $scriptsDir/Volume.sh --toggle
+
+bindsym --locked XF86MonBrightnessDown exec parallel -j1 'ddccontrol -r 0x10 -w 6  {}' ::: dev:/dev/i2c-6 dev:/dev/i2c-3
+bindsym --locked XF86MonBrightnessUp exec   parallel -j1 'ddccontrol -r 0x10 -w 32 {}' ::: dev:/dev/i2c-6 dev:/dev/i2c-3
+
+# wl-kbptr
+bindsym $mod+G exec wl-kbptr
+
+# airpods
+bindsym $mod+P exec bluetoothctl --timeout 15 -- connect C4:35:D9:2D:6A:96
+
+# printscreen
+bindsym Print exec $scriptsDir/ScreenShot.sh --area
+
+bindsym $mod+Ctrl+F12 output * dpms off
+bindsym $mod+F12      output * dpms on
+
+# vpn
+bindsym $mod+k exec nmcli connection up WB

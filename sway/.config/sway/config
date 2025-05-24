@@ -1,0 +1,21 @@
+# https://github.com/swaywm/sway/wiki/Running-programs-natively-under-Wayland
+
+set $mod Super
+set $scriptsDir ~/.config/sway/scripts
+
+
+set $left Left
+set $down Down
+set $up Up
+set $right Right
+
+set $term alacritty
+
+set $menu rofi -show run -icon-theme Papirus -show-icons
+
+
+set $o1 eDP-1
+
+include $HOME/.config/sway/config.d/*
+
+
