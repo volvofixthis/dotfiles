@@ -33,6 +33,7 @@ notify_user() {
 
 # Change brightness
 change_backlight() {
+    swaymsg "output * dpms on"
 	brightnessctl set "$1" -n && get_icon && notify_user
 }
 
@@ -42,10 +43,10 @@ case "$1" in
 		get_backlight
 		;;
 	"--inc")
-		change_backlight "+10%"
+		change_backlight "+2%"
 		;;
 	"--dec")
-		change_backlight "10%-"
+		change_backlight "2%-"
 		;;
 	*)
 		get_backlight

@@ -1,0 +1,42 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+
+// ### Minimal -SHORT ### //
+
+{
+"include": "~/.config/waybar/modules",
+"layer": "top",
+"position": "top",
+"width": 1050,
+"margin-top": 3,
+
+"modules-left": [
+	"clock",  
+	"custom/weather", 
+	],
+
+ "modules-center": [
+ 	"idle_inhibitor",
+    "cpu",
+    "memory",
+    "battery",
+	],
+
+"modules-right": [
+    "custom/layout1",
+    "custom/layout2",
+	"custom/menu", 
+	"tray",
+	"custom/swaync",
+	"mpris", 
+	"backlight", 
+	"pulseaudio", 
+	"custom/power"],
+"bluetooth": {
+    "on-click": "blueman",
+},
+"custom/layout1": {
+    "format": "A:{} ",
+    "exec": "~/.config/waybar/scripts/keyboard-layout.sh 4012:2782:keyd_virtual_keyboard",
+    "interval": 1,
+},
+}

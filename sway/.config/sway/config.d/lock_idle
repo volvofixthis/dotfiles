@@ -1,23 +1,14 @@
+for_window [title=".*screensaver.*"] fullscreen enable
+for_window [title="^(?!.*screensaver).*"] inhibit_idle fullscreen
 
-## Lock after 5 min, displays off after 10 min, lock after suspend
-#    exec swayidle -w \
-#            timeout 300 'lock' \
-#            timeout 600 'swaymsg "output * dpms off"' \
-#                    resume 'swaymsg "output * dpms on"' \
-#            before-sleep 'lock' 
-#exec swayidle -w \
-#        timeout 600 'swaymsg "output * dpms off"' \
-#            resume 'swaymsg "output * dpms on"' \
+set $lock "swaylock -f -c 000000 -i ~/Pictures/wallpapers/Lofi-Anime-Room.png"
 
-#for_window [class="^.*"] inhibit_idle fullscreen
-#for_window [app_id="^.*"] inhibit_idle fullscreen
+bindsym $mod+L exec $lock
 
-# $mod+s: Lock screen 
-#bindsym $mod+Ctrl+- exec swaylock -f -c 000000 -i ~/.cache/wallpaper3.jpg
-#bindsym $mod+Shift+s exec sudo systemctl suspend
-
-#exec swayidle \
-#    timeout 240 "swaymsg exec '/home/yekm/src/yekm/cloudlife/b/cloudlife -a 8 -S'" \
-#    timeout 6000 'swaymsg "output * dpms off"' \
-#    resume 'swaymsg "output * dpms on"' \
-#    resume "swaymsg exec 'killall cloudlife'"
+exec swayidle \
+    timeout 240 "swaymsg exec '~/projects/cloudlife/build/cloudlife -a 8 -S'" \
+    resume "swaymsg exec 'killall cloudlife'" \
+    timeout 600 "swaymsg exec 'swaylock -f -c 000000 -i ~/Pictures/wallpapers/Lofi-Anime-Room.png'" \
+    timeout 630 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 1200 'swaymsg exec "systemctl suspend"'

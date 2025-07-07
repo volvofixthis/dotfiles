@@ -9,7 +9,9 @@ set $down Down
 set $up Up
 set $right Right
 
-set $term alacritty
+set $term kitty
+
+set $files thunar
 
 set $menu rofi -show run -icon-theme Papirus -show-icons
 
