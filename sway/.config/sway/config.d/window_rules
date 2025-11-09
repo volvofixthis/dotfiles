@@ -45,11 +45,11 @@ for_window [app_id="org.freedesktop.impl.portal.desktop.kde"] floating enable
 # Auto float apps
 for_window [app_id="system-config-printer"] floating enable
 for_window [app_id="gnome-calculator"] floating enable
-for_window [app_id="keepassxc"] floating enable
+# for_window [app_id="keepassxc"] floating enable
 for_window [class="(?i)Lxappearance$"] floating enable
 for_window [app_id="(?i)mpv"] floating enable
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="(?i)thunar"] floating enable
+# for_window [app_id="pavucontrol"] floating enable
+# for_window [app_id="(?i)thunar"] floating enable
 for_window [app_id="vlc"] floating enable
 for_window [app_id="tlp-ui"] floating enable
 for_window [app_id="pamac-manager"] floating enable

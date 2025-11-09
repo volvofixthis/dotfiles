@@ -13,6 +13,7 @@ ExecStart=/usr/bin/env ssh-agent -D -a $SSH_AUTH_SOCK
 ExecStartPre=/usr/bin/rm -f $SSH_AUTH_SOCK
 ExecStartPost=/usr/bin/env ssh-add -q %h/.ssh/notebook
 ExecStartPost=/usr/bin/env ssh-add -q %h/.ssh/wb
+ExecStartPost=/usr/bin/env ssh-add -q %h/.ssh/id_ed25519_sk
 Restart=always
 RestartSec=5
 
