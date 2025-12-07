@@ -1,14 +1,14 @@
 for_window [title=".*screensaver.*"] fullscreen enable
 for_window [title="^(?!.*screensaver).*"] inhibit_idle fullscreen
 
-set $lock "swaylock -f -c 000000 -i ~/Pictures/wallpapers/Lofi-Anime-Room.png"
+set $lock "swaylock -f -c 000000 -i ~/Pictures/Wallpapers/data-breach.jpg"
 
 bindsym $mod+L exec $lock
 
 exec swayidle \
     timeout 240 "swaymsg exec '~/projects/cloudlife/build/cloudlife -a 8 -S'" \
     resume "swaymsg exec 'killall cloudlife'" \
-    timeout 600 "swaymsg exec 'swaylock -f -c 000000 -i ~/Pictures/wallpapers/Lofi-Anime-Room.png'" \
+    timeout 600 "swaymsg exec 'swaylock -f -c 000000 -i ~/Pictures/Wallpapers/data-breach.jpg'" \
     timeout 630 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     timeout 1200 'swaymsg exec "systemctl suspend"'

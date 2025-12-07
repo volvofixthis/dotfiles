@@ -1,5 +1,5 @@
 
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/Pictures/Wallpapers/alien-planet.jpg fill
 
 output $o1 {
     mode 2560x1600@60.000Hz
@@ -12,7 +12,7 @@ output $o1 {
 #seat * hide_cursor 6000
 
 input "type:keyboard" {
-    xkb_model "pc101"
+    xkb_model "applealu_iso"
     xkb_layout "us,ru"
     xkb_variant ",winkeys"
     xkb_options "grp:win_space_toggle"

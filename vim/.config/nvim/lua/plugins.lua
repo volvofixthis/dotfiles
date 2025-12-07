@@ -83,8 +83,9 @@ return require("packer").startup(function(use)
   use({ "akinsho/bufferline.nvim", requires = "nvim-tree/nvim-web-devicons" })
 
   -- Workspaces
-  use("andreyorst/SimpleWorkspaces.vim")
+  -- use("natecraddock/workspaces.nvim")
   -- use("tpope/vim-projectionist")
+  use("volvofixthis/SimpleWorkspaces.vim")
 
   -- Git
   use("APZelos/blamer.nvim")
@@ -184,7 +185,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-repeat")
   use("justinmk/vim-sneak")
 
-  use("stevearc/overseer.nvim")
+  use({"stevearc/overseer.nvim", tag = "v1.6.0"})
 
   use({ "fredrikaverpil/neotest-golang" })
 

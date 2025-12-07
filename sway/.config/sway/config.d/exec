@@ -9,4 +9,4 @@ exec kitty
 exec chromium
 exec blueman-applet
 exec nm-applet
-exec /usr/libexec/hyprpolkitagent
+exec lxpolkit
