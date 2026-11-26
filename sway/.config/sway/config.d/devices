@@ -3,11 +3,12 @@ output * bg ~/Pictures/Wallpapers/alien-planet.jpg fill
 
 output $o1 {
     mode 2560x1600@60.000Hz
-    #pos 0 0
     pos 0 0
     adaptive_sync on
     subpixel rgb
 }
+
+output $o2 resolution 1920x1080 position 2560 0
 
 #seat * hide_cursor 6000
 

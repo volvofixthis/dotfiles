@@ -37,9 +37,13 @@ workspace 17 output $o1
 
 bindsym --to-code {
     $mod+1  workspace 11
+    $mod+z  workspace 11
     $mod+2  workspace 12
+    $mod+x  workspace 12
     $mod+3  workspace 13
+    $mod+c  workspace 13
     $mod+4  workspace 14
+    $mod+v  workspace 14
     $mod+5  workspace 15
     $mod+6  workspace 16
     $mod+7  workspace 17
@@ -53,3 +57,38 @@ bindsym --to-code {
     $mod+Shift+6  move container to workspace 16
     $mod+Shift+7  move container to workspace 17
 }
+
+workspace 21 output $o2
+workspace 22 output $o2
+workspace 23 output $o2
+workspace 24 output $o2
+workspace 25 output $o2
+workspace 26 output $o2
+workspace 27 output $o2
+
+bindsym --to-code {
+    # focus HDMI workspaces
+    $mod+Ctrl+1 workspace 21
+    $mod+Ctrl+z workspace 21
+    $mod+Ctrl+2 workspace 22
+    $mod+Ctrl+x workspace 22
+    $mod+Ctrl+3 workspace 23
+    $mod+Ctrl+c workspace 23
+    $mod+Ctrl+4 workspace 24
+    $mod+Ctrl+v workspace 24
+    $mod+Ctrl+5 workspace 25
+    $mod+Ctrl+6 workspace 26
+    $mod+Ctrl+7 workspace 27
+
+    # move container to HDMI
+    $mod+Ctrl+Shift+1 move container to workspace 21
+    $mod+Ctrl+Shift+2 move container to workspace 22
+    $mod+Ctrl+Shift+3 move container to workspace 23
+    $mod+Ctrl+Shift+4 move container to workspace 24
+    $mod+Ctrl+Shift+5 move container to workspace 25
+    $mod+Ctrl+Shift+6 move container to workspace 26
+    $mod+Ctrl+Shift+7 move container to workspace 27
+}
+
+bindsym $mod+N workspace next_on_output
+bindsym $mod+P  workspace prev_on_output

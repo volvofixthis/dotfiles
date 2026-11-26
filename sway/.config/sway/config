@@ -17,6 +17,7 @@ set $menu rofi -show run -icon-theme Papirus -show-icons
 
 
 set $o1 eDP-1
+set $o2 HDMI-A-1
 
 include /etc/sway/config.d/*
 include $HOME/.config/sway/config.d/*

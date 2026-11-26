@@ -41,10 +41,10 @@ bindsym --locked XF86AudioMicMute exec $scriptsDir/Volume.sh --toggle-mic #mute 
 bindsym --locked XF86AudioMute exec $scriptsDir/Volume.sh --toggle
 
 # wl-kbptr
-bindsym --to-code $mod+G exec wl-kbptr
+bindsym --to-code $mod+G exec ~/bin/wl-kbptr
 
 # airpods
-bindsym --to-code $mod+P exec bluetoothctl --timeout 15 -- connect C4:B3:49:8D:FD:D7
+# bindsym --to-code $mod+P exec bluetoothctl --timeout 15 -- connect C4:B3:49:8D:FD:D7
 
 # printscreen
 bindsym Print exec $scriptsDir/ScreenShot.sh --area
@@ -53,7 +53,7 @@ bindsym --locked $mod+Ctrl+F12 output * dpms off
 bindsym --locked $mod+F12      output * dpms on
 
 # vpn
-bindsym --to-code $mod+k exec nmcli connection up WB
+bindsym --to-code $mod+k exec ~/bin/wb-toggle-vpn.sh
 
 bindsym $mod+Return exec $term
 bindsym --to-code $mod+T exec $files

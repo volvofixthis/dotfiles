@@ -61,7 +61,7 @@ return require("packer").startup(function(use)
   -- Nvimtree
   use("nvim-tree/nvim-tree.lua")
 
-  use({ "nvim-treesitter/nvim-treesitter" })
+  use({ "nvim-treesitter/nvim-treesitter", branch = "main" })
 
   -- Telescope
   use({
@@ -118,8 +118,6 @@ return require("packer").startup(function(use)
   use("tpope/vim-unimpaired")
 
   use({ "alexghergh/nvim-tmux-navigation" })
-
-  use("volvofixthis/gp.nvim")
 
   use("mrjones2014/legendary.nvim")
 
@@ -185,9 +183,9 @@ return require("packer").startup(function(use)
   use("tpope/vim-repeat")
   use("justinmk/vim-sneak")
 
-  use({"stevearc/overseer.nvim", tag = "v1.6.0"})
+  use({ "stevearc/overseer.nvim", tag = "v1.6.0" })
 
-  use({ "fredrikaverpil/neotest-golang" })
+  use({ "fredrikaverpil/neotest-golang", version = "*" })
 
   use({
     "nvim-neotest/neotest",
@@ -195,11 +193,11 @@ return require("packer").startup(function(use)
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter",
+      -- "nvim-treesitter/nvim-treesitter",
       "rouge8/neotest-rust",
       "nvim-neotest/neotest-python"
     },
-    tag = "*"
+    tag = "v5.18.0"
   })
 
   use({
@@ -223,6 +221,10 @@ return require("packer").startup(function(use)
   }
 
   use('nvimtools/none-ls.nvim')
+
+  use('folke/snacks.nvim')
+
+  use('nickjvandyke/opencode.nvim')
 
   if packer_bootstrap then
     require("packer").sync()

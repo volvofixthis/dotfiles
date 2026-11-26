@@ -31,6 +31,14 @@ require("noice").setup({
             filter = {
                 event = "msg_show",
                 kind = "",
+                find = "lines",
+            },
+            opts = { skip = true },
+        },
+        {
+            filter = {
+                event = "msg_show",
+                kind = "",
                 find = "BufOnly",
             },
             opts = { skip = true },

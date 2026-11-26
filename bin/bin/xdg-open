@@ -1,5 +1,6 @@
 #!/bin/bash
 if [[ "$1" =~ ^https?:// ]]; then
-    hyprctl dispatch workspace 3
+    # hyprctl dispatch workspace 3
+    swaymsg workspace "13"
 fi
 /usr/bin/xdg-open $1

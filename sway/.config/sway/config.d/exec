@@ -6,7 +6,7 @@ exec systemctl --user import-environment WAYLAND_DISPLAY DISPLAY XDG_CURRENT_DES
 exec nwg-look -a
 exec telegram-asahi
 exec kitty
-exec chromium
+exec xdg-open https://dzen.ru
 exec blueman-applet
 exec nm-applet
 exec lxpolkit

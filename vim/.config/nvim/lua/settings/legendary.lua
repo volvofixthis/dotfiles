@@ -264,64 +264,42 @@ require("legendary").setup({
       description = "Generate file doc",
       mode = "n",
     },
-    -- ChatGPT
+    -- Opencode
     {
-      itemgroup = "chatgpt",
-      description = "ChatGPT hotkeys",
+      itemgroup = "opencode",
+      description = "Opencode hotkeys",
       keymaps = {
         {
-          "<C-g>r",
-          { n = ":GpRewrite<cr>", v = ":<C-u>'<,'>GpRewrite<cr>", i = "<cmd>GpRewrite<cr>" },
-          description = "ChatGPT rewrite",
-        },
-        {
-          "<C-g>i",
-          { n = ":GpImplement<cr>", v = ":<C-u>'<,'>GpImplement<cr>", i = "<cmd>GpImplement<cr>" },
-          description = "ChatGPT implement",
-        },
-        {
           "<C-g>a",
-          { n = ":GpPrepend<cr>", v = ":<C-u>'<,'>GpPrepend<cr>", i = "<cmd>GpPrepend<cr>" },
-          description = "ChatGPT append (above)",
+          function() require("opencode").ask("@this: ", { submit = true }) end,
+          description = "ask",
+          mode = { "n", "x" }
         },
         {
-          "<C-g>b",
-          { n = ":GpAppend<cr>", v = ":<C-u>'<,'>GpAppend<cr>", i = "<cmd>GpAppend<cr>" },
-          description = "ChatGPT append (below)",
+          "<C-g>x",
+          function() require("opencode").select() end,
+          description = "select",
+          mode = { "n", "x" }
         },
         {
-          "<C-g>n",
-          { n = ":GpChatNew<cr>", v = ":<C-u>'<,'>GpChatNew<cr>" },
-          description = "ChatGPT new chat",
+          "<C-g>l",
+          function() return require("opencode").operator("@this ") .. "_" end,
+          description = "Add line",
+          mode = { "n" },
+          opts = { expr = true }
+        },
+        {
+          "<C-g>r",
+          function() return require("opencode").operator("@this ") end,
+          description = "Add line",
+          mode = { "n", "x" },
+          opts = { expr = true }
         },
         {
           "<C-g>t",
-          { n = ":GpChatToggle<cr>", v = ":<C-u>'<,'>GpChatToggle<cr>" },
-          description = "ChatGPT chat toggle",
-        },
-        {
-          "<C-g>p",
-          ":<C-u>'<,'>GpChatPaste<cr>",
-          description = "ChatGPT visual chat paste",
-          mode = "v",
-        },
-        {
-          "<C-g>s",
-          ":<C-u>'<,'>GpCodeSimplify<cr>",
-          description = "ChatGPT visual code simplify",
-          mode = "v",
-        },
-        {
-          "<C-g>f",
-          ":<C-u>'<,'>GpCodeFormat<cr>",
-          description = "ChatGPT visual code format",
-          mode = "v",
-        },
-        {
-          "<C-g>v",
-          ":<C-u>'<,'>GpCodeFix<cr>",
-          description = "ChatGPT visual code fix",
-          mode = "v",
+          function() require("opencode").toggle() end,
+          description = "Opencode toggle",
+          mode = { "n", "t" }
         },
       },
     },
