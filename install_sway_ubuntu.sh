@@ -28,6 +28,7 @@ SCRIPT_DIR=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")
 
 # Packages used by the Sway/Waybar configuration and its common scripts.
 APT_PACKAGES=(
+  golang cargo
   stow
   sway swaybg swayidle swaylock waybar
   kitty thunar thunar-archive-plugin file-roller thunar-volman

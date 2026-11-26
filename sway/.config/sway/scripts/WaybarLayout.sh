@@ -8,7 +8,6 @@ IFS=$'\n\t'
 # Define directories
 waybar_layouts="$HOME/.config/waybar/configs"
 waybar_config="$HOME/.config/waybar/config"
-SCRIPTSDIR="$HOME/.config/hypr/scripts"
 rofi_config="$HOME/.config/rofi/config-waybar-layout.rasi"
 
 # Function to display menu options
@@ -30,10 +29,10 @@ apply_config() {
 # Restart Waybar
 restart_waybar_if_needed() {
     if pgrep -x "waybar" >/dev/null; then
-        pkill waybar
-        sleep 0.1  # Delay for Waybar to completely terminate
+        pkill -USR2 -x waybar || true
+    else
+        waybar >/dev/null 2>&1 &
     fi
-    "${SCRIPTSDIR}/Refresh.sh" &
 }
 
 # Main function
