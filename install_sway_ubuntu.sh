@@ -30,7 +30,9 @@ SCRIPT_DIR=$(dirname -- "$(readlink -f -- "${BASH_SOURCE[0]}")")
 APT_PACKAGES=(
   stow
   sway swaybg swayidle swaylock waybar
-  kitty thunar rofi xwayland mako-notifier
+  kitty thunar thunar-archive-plugin file-roller thunar-volman
+  gvfs gvfs-backends udisks2 tumbler tumbler-plugins-extra ffmpegthumbnailer
+  rofi xwayland mako-notifier
   wl-clipboard grim slurp
   brightnessctl playerctl
   jq curl imagemagick

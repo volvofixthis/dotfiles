@@ -1,6 +1,6 @@
 # https://github.com/swaywm/sway/wiki/Running-programs-natively-under-Wayland
 
-set $mod Super
+set $mod Mod4
 set $scriptsDir ~/.config/sway/scripts
 
 
@@ -21,5 +21,4 @@ set $o2 HDMI-A-1
 
 include /etc/sway/config.d/*
 include $HOME/.config/sway/config.d/*
-
 
